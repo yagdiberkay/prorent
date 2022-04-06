@@ -89,26 +89,12 @@ src/Umbraco.Web.UI/[Ww]eb.config
 node_modules
 lib-bower
 
-src/Umbraco.Web.UI/[Uu]mbraco/[Ll]ib/*
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/umbraco.*
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/*.loader.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/init.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/routes.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/app.dev.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/loader.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/loader.dev.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/main.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/app.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/canvasdesigner.*.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/navigation.controller.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/main.controller.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Jj]s/utilities.js
+
 
 src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/
 src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/**/*.js
 src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/**/*.css
 src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/**/*.html
-src/Umbraco.Web.UI/[Uu]mbraco/[Aa]ssets/*
 src/Umbraco.Web.UI.Client/[Bb]uild/*
 src/Umbraco.Web.UI.Client/[Bb]uild/[Bb]elle/
 src/Umbraco.Web.UI/[Uu]ser[Cc]ontrols/
