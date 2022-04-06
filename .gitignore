@@ -1,4 +1,4 @@
-#
+﻿#
 # Umbraco Cms Git Ignore
 #
 
@@ -76,8 +76,6 @@ src/Umbraco.Web.UI/[Cc]onfig/ClientDependency.config
 src/Umbraco.Web.UI/[Cc]onfig/serilog.config
 src/Umbraco.Web.UI/[Cc]onfig/serilog.user.config
 src/Umbraco.Tests/config/404handlers.config
-src/Umbraco.Web.UI/[Vv]iews/*.cshtml
-src/Umbraco.Web.UI/[Vv]iews/*.vbhtml
 src/Umbraco.Tests/[Cc]onfig/umbracoSettings.config
 src/Umbraco.Web.UI/[Vv]iews/*
 src/packages/
@@ -91,10 +89,6 @@ lib-bower
 
 
 
-src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/
-src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/**/*.js
-src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/**/*.css
-src/Umbraco.Web.UI/[Uu]mbraco/[Vv]iews/**/*.html
 src/Umbraco.Web.UI.Client/[Bb]uild/*
 src/Umbraco.Web.UI.Client/[Bb]uild/[Bb]elle/
 src/Umbraco.Web.UI/[Uu]ser[Cc]ontrols/
