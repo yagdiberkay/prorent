@@ -77,7 +77,7 @@ src/Umbraco.Web.UI/[Cc]onfig/serilog.config
 src/Umbraco.Web.UI/[Cc]onfig/serilog.user.config
 src/Umbraco.Tests/config/404handlers.config
 src/Umbraco.Tests/[Cc]onfig/umbracoSettings.config
-src/Umbraco.Web.UI/[Vv]iews/*
+
 src/packages/
 src/packages/repositories.config
 
