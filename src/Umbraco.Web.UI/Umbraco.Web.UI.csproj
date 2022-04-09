@@ -71,6 +71,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -143,12 +144,30 @@
     <Compile Include="Config\splashes\NoNodes.aspx.designer.cs">
       <DependentUpon>noNodes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\LiveProrent24Service\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Dto\AddressDto.cs" />
+    <Compile Include="Dto\FlightDto.cs" />
+    <Compile Include="Dto\OperationResultDto.cs" />
+    <Compile Include="Dto\ProductsDto.cs" />
+    <Compile Include="Dto\ReservationDto.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\FlightModel.cs" />
+    <Compile Include="Models\OperationResultModel.cs" />
+    <Compile Include="Models\ProductsModel.cs" />
+    <Compile Include="Models\ReservationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\IProrentService.cs" />
+    <Compile Include="Services\ProrentService.cs" />
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="Config\Lang\cs-CZ.user.xml" />
     <Content Include="Config\Lang\da-DK.user.xml" />
@@ -169,6 +188,12 @@
     <Content Include="Config\Lang\sv-SE.user.xml" />
     <Content Include="Config\Lang\zh-CN.user.xml" />
     <Content Include="Config\splashes\noNodes.aspx" />
+    <None Include="Connected Services\LiveProrent24Service\configuration91.svcinfo" />
+    <None Include="Connected Services\LiveProrent24Service\configuration.svcinfo" />
+    <None Include="Connected Services\LiveProrent24Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Umbraco\assets\css\canvasdesigner.css" />
     <Content Include="Umbraco\assets\css\installer.css" />
@@ -2789,6 +2814,199 @@
     <Content Include="Umbraco\assets\fonts\lato\LatoLatin-Regular.woff2" />
     <Content Include="Umbraco\assets\fonts\web.config" />
     <Content Include="Umbraco\Js\web.config" />
+    <None Include="Connected Services\LiveProrent24Service\reservation.wsdl" />
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.AddressNosOfCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.AddressNosOfCustomerResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.BrokerLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.BrokerLoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.campaign.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CampaignsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CancelReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CancelReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CapacitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.capacity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.city.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CountriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CurrenciesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.currency.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CustomerAddressInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.CustomerAddressInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.exchangeRate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.ExchangeRatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.extraProduct.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.ExtraProductsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.holiday.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.HolidaysResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertCustomerAddressInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertCustomerAddressInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertReservationByRegionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertReservationByRegionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertXLSReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.InsertXLSReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.location.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.LocationCitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.LocationRegionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.LocationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.paymentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.PaymentTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.PoolLocationCapacitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.region.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.RegionCapacitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.regionCapacity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.ReservationsOfBrokerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.ReservationsOfCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.reservationSource.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.ReservationSourcesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.reservationView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.SendBankTransactionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.SendBankTransactionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.SendMailOnReservationInsertResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.SendMailOnReservationInsertResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.tariff.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.TariffsOfCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.TariffsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.UpdateCustomerAddressInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.UpdateCustomerAddressInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.UpdateReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.UpdateReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.vehicleClass.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.VehicleClassesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.vehicleType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.VehicleTypeDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.VehicleTypeDetailsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.VehicleTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>
@@ -2812,6 +3030,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\BackOfficeTours\getting-started.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\LiveProrent24Service\" />
   </ItemGroup>
   <!-- determine VSToolsPath -->
   <PropertyGroup>

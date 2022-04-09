@@ -1,0 +1,1743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://ws.naryaz.com/model/dto" xmlns:tns="http://ws.naryaz.com/model/dto" targetNamespace="http://ws.naryaz.com/model/dto" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" elementFormDefault="qualified" targetNamespace="http://ws.naryaz.com/model/dto" jaxb:version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="LocationsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="xs:string" />
+            <xs:element name="cityName" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LocationsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="locations" type="tns:location" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="location">
+        <xs:sequence>
+          <xs:element name="locNo" type="xs:long" />
+          <xs:element name="locCode" type="xs:string" />
+          <xs:element name="locName" type="xs:string" />
+          <xs:element name="locLogoImage" type="xs:string" />
+          <xs:element name="locAddress" type="xs:string" />
+          <xs:element name="locPhone" type="xs:string" />
+          <xs:element name="locMobilePhone" type="xs:string" />
+          <xs:element name="locFax" type="xs:string" />
+          <xs:element name="locEmail" type="xs:string" />
+          <xs:element name="countryCode" type="xs:string" />
+          <xs:element name="countryName" type="xs:string" />
+          <xs:element name="cityName" type="xs:string" />
+          <xs:element name="districtName" type="xs:string" />
+          <xs:element name="locGpsCoordinates" type="xs:string" />
+          <xs:element name="locIata" type="xs:string" />
+          <xs:element name="language" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="openingTimes" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="closingTimes" type="xs:double" />
+          <xs:element name="ownerNo" type="xs:long" />
+          <xs:element name="ownerName" type="xs:string" />
+          <xs:element name="pool" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LocationCitiesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="xs:string" />
+            <xs:element name="cityName" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LocationCitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="cities" type="tns:city" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="city">
+        <xs:sequence>
+          <xs:element name="cityNo" type="xs:long" />
+          <xs:element name="cityName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="locations" type="tns:location" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LocationRegionsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LocationRegionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="regions" type="tns:region" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="region">
+        <xs:sequence>
+          <xs:element name="regionName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="locations" type="tns:location" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CountriesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CountriesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="countries" type="tns:country" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="country">
+        <xs:sequence>
+          <xs:element name="countryCode" type="xs:string" />
+          <xs:element name="countryName" type="xs:string" />
+          <xs:element name="phoneCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="cities" type="tns:city" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CitiesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="countryCode" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="cities" type="tns:city" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VehicleClassesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VehicleClassesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="vehicleClasses" type="tns:vehicleClass" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="vehicleClass">
+        <xs:sequence>
+          <xs:element name="classNo" type="xs:long" />
+          <xs:element name="classCode" type="xs:string" />
+          <xs:element name="className" type="xs:string" />
+          <xs:element name="classOrder" type="xs:string" />
+          <xs:element name="classCodeAcriss" type="xs:string" />
+          <xs:element name="provision" type="xs:double" />
+          <xs:element name="creditCardQty" type="xs:int" />
+          <xs:element name="minDriverAge" type="xs:int" />
+          <xs:element name="minDlicensePeriod" type="xs:int" />
+          <xs:element name="minYdriverAge" type="xs:int" />
+          <xs:element name="minYdlicensePeriod" type="xs:int" />
+          <xs:element name="hasCampaign" type="xs:boolean" />
+          <xs:element name="language" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PaymentTypesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PaymentTypesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="paymentTypes" type="tns:paymentType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="paymentType">
+        <xs:sequence>
+          <xs:element name="payNo" type="xs:long" />
+          <xs:element name="payCode" type="xs:string" />
+          <xs:element name="payName" type="xs:string" />
+          <xs:element name="language" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ReservationSourcesRequest">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReservationSourcesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="reservationSources" type="tns:reservationSource" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="reservationSource">
+        <xs:sequence>
+          <xs:element name="resSourceNo" type="xs:long" />
+          <xs:element name="resSourceCode" type="xs:string" />
+          <xs:element name="resSourceName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="VehicleTypesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VehicleTypesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="vehicleTypes" type="tns:vehicleType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="vehicleType">
+        <xs:sequence>
+          <xs:element name="typeNo" type="xs:long" />
+          <xs:element name="typeFullname" type="xs:string" />
+          <xs:element name="mark" type="xs:string" />
+          <xs:element name="model" type="xs:string" />
+          <xs:element name="classNo" type="xs:long" />
+          <xs:element name="classCode" type="xs:string" />
+          <xs:element name="className" type="xs:string" />
+          <xs:element name="body" type="xs:string" />
+          <xs:element name="transmission" type="xs:string" />
+          <xs:element name="ccm" type="xs:int" />
+          <xs:element name="engineType" type="xs:string" />
+          <xs:element name="hp" type="xs:int" />
+          <xs:element name="fuelType" type="xs:string" />
+          <xs:element name="fuelCapacity" type="xs:int" />
+          <xs:element name="co2Emission" type="xs:int" />
+          <xs:element name="weight" type="xs:int" />
+          <xs:element name="weightLoad" type="xs:int" />
+          <xs:element name="doors" type="xs:int" />
+          <xs:element name="seats" type="xs:int" />
+          <xs:element name="udc" type="xs:double" />
+          <xs:element name="eudc" type="xs:double" />
+          <xs:element name="nedc" type="xs:double" />
+          <xs:element name="luggageCapacity" type="xs:int" />
+          <xs:element name="img1" type="xs:string" />
+          <xs:element name="img2" type="xs:string" />
+          <xs:element name="img3" type="xs:string" />
+          <xs:element name="img4" type="xs:string" />
+          <xs:element name="img5" type="xs:string" />
+          <xs:element name="description" type="xs:string" />
+          <xs:element name="note" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="features" type="tns:vehicleFeature" />
+          <xs:element name="classOnlineResYn" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vehicleFeature">
+        <xs:sequence>
+          <xs:element name="featureCode" type="xs:string" />
+          <xs:element name="featureName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="VehicleTypeDetailsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="typeNo" type="xs:long" />
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VehicleTypeDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="vehicleType" type="tns:vehicleType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CurrenciesRequest">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CurrenciesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="currencies" type="tns:currency" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="currency">
+        <xs:sequence>
+          <xs:element name="currency" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ExchangeRatesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="date" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExchangeRatesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="exchangeRates" type="tns:exchangeRate" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="exchangeRate">
+        <xs:sequence>
+          <xs:element name="currency" type="xs:string" />
+          <xs:element name="date" type="xs:string" />
+          <xs:element name="forexBuying" type="xs:double" />
+          <xs:element name="forexSelling" type="xs:double" />
+          <xs:element name="banknoteBuying" type="xs:double" />
+          <xs:element name="banknoteSelling" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TariffsRequest">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TariffsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="tariffs" type="tns:tariff" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="tariff">
+        <xs:sequence>
+          <xs:element name="tariffNo" type="xs:long" />
+          <xs:element name="tariffCode" type="xs:string" />
+          <xs:element name="tariffName" type="xs:string" />
+          <xs:element name="totalRentalPrice" type="xs:double" />
+          <xs:element name="hourLimitExceedPrice" type="xs:double" />
+          <xs:element name="rentalPriceCurrency" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TariffsOfCustomerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="promotionCode" type="xs:string" />
+            <xs:element name="promotionCodeType" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TariffsOfCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="tariffs" type="tns:tariff" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CampaignsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pickupLocNo" type="xs:long" />
+            <xs:element name="pickupDate" type="xs:string" />
+            <xs:element name="returnLocNo" type="xs:long" />
+            <xs:element name="returnDate" type="xs:string" />
+            <xs:element name="tariffNo" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CampaignsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="campaigns" type="tns:campaign" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="campaign">
+        <xs:sequence>
+          <xs:element name="campaignNo" type="xs:long" />
+          <xs:element name="campaignName" type="xs:string" />
+          <xs:element name="start" type="xs:string" />
+          <xs:element name="end" type="xs:string" />
+          <xs:element name="pickupLocNos" type="xs:string" />
+          <xs:element name="returnLocNos" type="xs:string" />
+          <xs:element name="tariffNos" type="xs:string" />
+          <xs:element name="classNos" type="xs:string" />
+          <xs:element name="minimumDays" type="xs:int" />
+          <xs:element name="maximumDays" type="xs:int" />
+          <xs:element name="ratio" type="xs:double" />
+          <xs:element name="onewayDiscountPct" type="xs:double" />
+          <xs:element name="monday" type="xs:boolean" />
+          <xs:element name="tuesday" type="xs:boolean" />
+          <xs:element name="wednesday" type="xs:boolean" />
+          <xs:element name="thursday" type="xs:boolean" />
+          <xs:element name="friday" type="xs:boolean" />
+          <xs:element name="saturday" type="xs:boolean" />
+          <xs:element name="sunday" type="xs:boolean" />
+          <xs:element name="mandatory" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CapacitiesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pickupLocNo" type="xs:long" />
+            <xs:element name="pickupDate" type="xs:string" />
+            <xs:element name="returnLocNo" type="xs:long" />
+            <xs:element name="returnDate" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="classNos" type="xs:long" />
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="tariffNos" type="xs:long" />
+            <xs:element name="campaignNo" type="xs:long" />
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CapacitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="capacities" type="tns:capacity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="capacity">
+        <xs:sequence>
+          <xs:element name="available" type="xs:boolean" />
+          <xs:element name="pickupLocNo" type="xs:long" />
+          <xs:element name="pickupLocName" type="xs:string" />
+          <xs:element name="pickupLocLogoImage" type="xs:string" />
+          <xs:element name="pickupLocOwnerName" type="xs:string" />
+          <xs:element name="returnLocNo" type="xs:long" />
+          <xs:element name="returnLocName" type="xs:string" />
+          <xs:element name="classNo" type="xs:long" />
+          <xs:element name="classCode" type="xs:string" />
+          <xs:element name="className" type="xs:string" />
+          <xs:element name="classCodeAcriss" type="xs:string" />
+          <xs:element name="classHasCampaign" type="xs:boolean" />
+          <xs:element name="provision" type="xs:double" />
+          <xs:element name="minDriverAge" type="xs:int" />
+          <xs:element name="minDlicencePeriod" type="xs:int" />
+          <xs:element name="minYdriverAge" type="xs:int" />
+          <xs:element name="minYdlicencePeriod" type="xs:int" />
+          <xs:element name="creditCardQty" type="xs:int" />
+          <xs:element name="pickupDate" type="xs:string" />
+          <xs:element name="returnDate" type="xs:string" />
+          <xs:element name="pickupInsideOfficeHours" type="xs:boolean" />
+          <xs:element name="returnInsideOfficeHours" type="xs:boolean" />
+          <xs:element name="rentalDays" type="xs:int" />
+          <xs:element name="limitKm" type="xs:int" />
+          <xs:element name="extraHours" type="xs:int" />
+          <xs:element name="campaignNo" type="xs:long" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="vehicleTypes" type="tns:vehicleType" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tariffs" type="tns:tariff" />
+          <xs:element name="onewayPrice" type="xs:double" />
+          <xs:element name="onewayCurrency" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="capacityCounts" type="tns:capacityCount" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="capacityCount">
+        <xs:sequence>
+          <xs:element name="capacityDate" type="xs:string" />
+          <xs:element name="totalCount" type="xs:int" />
+          <xs:element name="remainingCount" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RegionCapacitiesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pickupRegion" type="xs:string" />
+            <xs:element name="pickupDate" type="xs:string" />
+            <xs:element name="returnRegion" type="xs:string" />
+            <xs:element name="returnDate" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="classNos" type="xs:long" />
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="tariffNos" type="xs:long" />
+            <xs:element name="campaignNo" type="xs:long" />
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegionCapacitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="regionCapacities" type="tns:regionCapacity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="regionCapacity">
+        <xs:sequence>
+          <xs:element name="available" type="xs:boolean" />
+          <xs:element name="pickupRegionName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="pickupLocNos" type="xs:long" />
+          <xs:element name="returnRegionName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="returnLocNos" type="xs:long" />
+          <xs:element name="classNo" type="xs:long" />
+          <xs:element name="classCode" type="xs:string" />
+          <xs:element name="className" type="xs:string" />
+          <xs:element name="classCodeAcriss" type="xs:string" />
+          <xs:element name="pickupDate" type="xs:string" />
+          <xs:element name="returnDate" type="xs:string" />
+          <xs:element name="rentalDays" type="xs:int" />
+          <xs:element name="extraHours" type="xs:int" />
+          <xs:element name="campaignNo" type="xs:long" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="vehicleTypes" type="tns:vehicleType" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tariffs" type="tns:tariff" />
+          <xs:element name="onewayPrice" type="xs:double" />
+          <xs:element name="onewayCurrency" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PoolLocationCapacitiesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pickupPoolLocNo" type="xs:long" />
+            <xs:element name="pickupDate" type="xs:string" />
+            <xs:element name="returnPoolLocNo" type="xs:long" />
+            <xs:element name="returnDate" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="classNos" type="xs:long" />
+            <xs:element name="campaignNo" type="xs:long" />
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PoolLocationCapacitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="poolLocationCapacities" type="tns:capacity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExtraProductsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="rentalDays" type="xs:int" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="tariffNos" type="xs:long" />
+            <xs:element name="campaignNo" type="xs:long" />
+            <xs:element name="classNo" type="xs:long" />
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExtraProductsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="extraProducts" type="tns:extraProduct" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="extraProduct">
+        <xs:sequence>
+          <xs:element name="productNo" type="xs:long" />
+          <xs:element name="productName" type="xs:string" />
+          <xs:element name="tariffNo" type="xs:long" />
+          <xs:element name="salesType" type="xs:string" />
+          <xs:element name="unitPrice" type="xs:double" />
+          <xs:element name="totalPrice" type="xs:double" />
+          <xs:element name="currency" type="xs:string" />
+          <xs:element name="included" type="xs:boolean" />
+          <xs:element name="selected" type="xs:boolean" />
+          <xs:element name="incremental" type="xs:boolean" />
+          <xs:element name="calculateTax" type="xs:boolean" />
+          <xs:element name="productDescription" type="xs:string" />
+          <xs:element name="insurance" type="xs:boolean" />
+          <xs:element name="order" type="xs:string" />
+          <xs:element name="prodImg" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InsertReservationByRegionRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="reservation" type="tns:reservation" />
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="pickupLocNos" type="xs:long" />
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="returnLocNos" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertReservationByRegionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertReservationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="reservation" type="tns:reservation" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertReservationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="reservation">
+        <xs:sequence>
+          <xs:element name="resNo" type="xs:long" />
+          <xs:element name="resCorpNo" type="xs:long" />
+          <xs:element name="pickupDate" type="xs:string" />
+          <xs:element name="returnDate" type="xs:string" />
+          <xs:element name="pickupLocNo" type="xs:long" />
+          <xs:element name="returnLocNo" type="xs:long" />
+          <xs:element name="classNo" type="xs:long" />
+          <xs:element name="typeNo" type="xs:long" />
+          <xs:element name="rentalDays" type="xs:int" />
+          <xs:element name="extraHours" type="xs:int" />
+          <xs:element name="onewayPrice" type="xs:double" />
+          <xs:element name="onewayCurrency" type="xs:string" />
+          <xs:element name="totalRentalPrice" type="xs:double" />
+          <xs:element name="rentalPriceCurrency" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="addresses" type="tns:address" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="products" type="tns:reservationProduct" />
+          <xs:element minOccurs="1" maxOccurs="1" name="landingFlight" type="tns:flight" />
+          <xs:element minOccurs="1" maxOccurs="1" name="takeoffFlight" type="tns:flight" />
+          <xs:element name="referenceNo" type="xs:string" />
+          <xs:element name="voucherNo" type="xs:string" />
+          <xs:element name="fullCredit" type="xs:boolean" />
+          <xs:element name="deliveryPlace" type="xs:string" />
+          <xs:element name="dropPlace" type="xs:string" />
+          <xs:element name="pickupFromAirport" type="xs:boolean" />
+          <xs:element name="returnToAirport" type="xs:boolean" />
+          <xs:element name="resSourceNo" type="xs:long" />
+          <xs:element name="paymentTypeNo" type="xs:long" />
+          <xs:element name="tariffNo" type="xs:long" />
+          <xs:element name="campaignNo" type="xs:long" />
+          <xs:element name="note" type="xs:string" />
+          <xs:element name="webSource" type="xs:string" />
+          <xs:element name="requireConfirmation" type="xs:boolean" />
+          <xs:element name="resStatus" type="xs:string" />
+          <xs:element name="brokerUserNo" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InsertXLSReservationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="xlsReservation" type="tns:xlsReservation" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertXLSReservationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="xlsReservation">
+        <xs:sequence>
+          <xs:element name="referenceNo" type="xs:string" />
+          <xs:element name="lastname" type="xs:string" />
+          <xs:element name="name" type="xs:string" />
+          <xs:element name="address" type="xs:string" />
+          <xs:element name="cityName" type="xs:string" />
+          <xs:element name="countryCode" type="xs:string" />
+          <xs:element name="phone" type="xs:string" />
+          <xs:element name="email" type="xs:string" />
+          <xs:element name="mobPhone" type="xs:string" />
+          <xs:element name="pickupLocCode" type="xs:string" />
+          <xs:element name="returnLocCode" type="xs:string" />
+          <xs:element name="resDate" type="xs:string" />
+          <xs:element name="pickupDate" type="xs:string" />
+          <xs:element name="returnDate" type="xs:string" />
+          <xs:element name="resNote" type="xs:string" />
+          <xs:element name="resName" type="xs:string" />
+          <xs:element name="resLandingFlight" type="xs:string" />
+          <xs:element name="resLandingFlightNo" type="xs:string" />
+          <xs:element name="resStatus" type="xs:string" />
+          <xs:element name="corpName" type="xs:string" />
+          <xs:element name="classCode" type="xs:string" />
+          <xs:element name="rentalDays" type="xs:int" />
+          <xs:element name="trfCode" type="xs:string" />
+          <xs:element name="totalPrice" type="xs:double" />
+          <xs:element name="totalPriceCustomer" type="xs:double" />
+          <xs:element name="totalPriceFirm" type="xs:double" />
+          <xs:element name="addProducts" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="address">
+        <xs:sequence>
+          <xs:element name="addressNo" type="xs:long" />
+          <xs:element name="addressCorpNo" type="xs:long" />
+          <xs:element name="addressType" type="xs:string" />
+          <xs:element name="billingAddress" type="xs:boolean" />
+          <xs:element name="shippingAddress" type="xs:boolean" />
+          <xs:element name="name" type="xs:string" />
+          <xs:element name="lastname" type="xs:string" />
+          <xs:element name="corpName" type="xs:string" />
+          <xs:element name="corpStyle" type="xs:string" />
+          <xs:element name="title" type="xs:string" />
+          <xs:element name="address" type="xs:string" />
+          <xs:element name="roomNo" type="xs:string" />
+          <xs:element name="buildingName" type="xs:string" />
+          <xs:element name="buildingNo" type="xs:string" />
+          <xs:element name="districtName" type="xs:string" />
+          <xs:element name="cityNo" type="xs:long" />
+          <xs:element name="countryCode" type="xs:string" />
+          <xs:element name="countryName" type="xs:string" />
+          <xs:element name="postalZone" type="xs:string" />
+          <xs:element name="taxOffice" type="xs:string" />
+          <xs:element name="taxId" type="xs:string" />
+          <xs:element name="phone1" type="xs:string" />
+          <xs:element name="phone2" type="xs:string" />
+          <xs:element name="fax" type="xs:string" />
+          <xs:element name="mobPhone1" type="xs:string" />
+          <xs:element name="mobPhone2" type="xs:string" />
+          <xs:element name="phoneHome" type="xs:string" />
+          <xs:element name="email" type="xs:string" />
+          <xs:element name="idType" type="xs:string" />
+          <xs:element name="idNo" type="xs:string" />
+          <xs:element name="idIssuePlace" type="xs:string" />
+          <xs:element name="idIssueDate" type="xs:string" />
+          <xs:element name="birthPlace" type="xs:string" />
+          <xs:element name="birthDate" type="xs:string" />
+          <xs:element name="licenseNo" type="xs:string" />
+          <xs:element name="licenseIssuePlace" type="xs:string" />
+          <xs:element name="licenseIssueDate" type="xs:string" />
+          <xs:element name="permitPersonalDataStorage" type="xs:boolean" />
+          <xs:element name="permitCommunication" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reservationProduct">
+        <xs:sequence>
+          <xs:element name="selected" type="xs:boolean" />
+          <xs:element name="productNo" type="xs:long" />
+          <xs:element name="productName" type="xs:string" />
+          <xs:element name="count" type="xs:int" />
+          <xs:element name="salesType" type="xs:string" />
+          <xs:element name="unitPrice" type="xs:double" />
+          <xs:element name="totalPrice" type="xs:double" />
+          <xs:element name="currency" type="xs:string" />
+          <xs:element name="included" type="xs:boolean" />
+          <xs:element name="incremental" type="xs:boolean" />
+          <xs:element name="calculateTax" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="flight">
+        <xs:sequence>
+          <xs:element name="airline" type="xs:string" />
+          <xs:element name="flightNo" type="xs:string" />
+          <xs:element name="time" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="operationResult">
+        <xs:sequence>
+          <xs:element name="success" type="xs:boolean" />
+          <xs:element name="resStatus" type="xs:string" />
+          <xs:element name="resNo" type="xs:long" />
+          <xs:element name="resCorpNo" type="xs:long" />
+          <xs:element name="resAdNo" type="xs:long" />
+          <xs:element name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CancelReservationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="resNo" type="xs:long" />
+            <xs:element name="resCorpNo" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelReservationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateReservationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="updateReservation" type="tns:updateReservation" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateReservationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="updateReservation">
+        <xs:sequence>
+          <xs:element name="resNo" type="xs:long" />
+          <xs:element name="resCorpNo" type="xs:long" />
+          <xs:element name="voucherNo" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SendBankTransactionRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="bankTransaction" type="tns:bankTransaction" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendBankTransactionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="bankTransaction">
+        <xs:sequence>
+          <xs:element name="resNo" type="xs:long" />
+          <xs:element name="resCorpNo" type="xs:long" />
+          <xs:element name="bankTxNo" type="xs:string" />
+          <xs:element name="bankTxError" type="xs:string" />
+          <xs:element name="vposIntegrator" type="xs:string" />
+          <xs:element name="orderId" type="xs:string" />
+          <xs:element name="paidAmount" type="xs:double" />
+          <xs:element name="paidAmountLocalCurrency" type="xs:double" />
+          <xs:element name="currency" type="xs:string" />
+          <xs:element name="exchangeRate" type="xs:double" />
+          <xs:element name="paymentTypeNo" type="xs:long" />
+          <xs:element name="cardNo" type="xs:string" />
+          <xs:element name="cardCvv" type="xs:string" />
+          <xs:element name="cardHolder" type="xs:string" />
+          <xs:element name="cardExpiryMonth" type="xs:int" />
+          <xs:element name="cardExpiryYear" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ReservationsOfCustomerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="resAdNo" type="xs:long" />
+            <xs:element name="resNo" type="xs:long" />
+            <xs:element name="resCorpNo" type="xs:long" />
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReservationsOfCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="reservations" type="tns:reservationView" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReservationsOfBrokerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="brokerUserNo" type="xs:long" />
+            <xs:element name="resNo" type="xs:long" />
+            <xs:element name="resCorpNo" type="xs:long" />
+            <xs:element name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReservationsOfBrokerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="reservations" type="tns:reservationView" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="reservationView">
+        <xs:sequence>
+          <xs:element name="resNo" type="xs:long" />
+          <xs:element name="resCorpNo" type="xs:long" />
+          <xs:element name="pickupDate" type="xs:string" />
+          <xs:element name="returnDate" type="xs:string" />
+          <xs:element name="pickupLocNo" type="xs:long" />
+          <xs:element name="pickupLocCode" type="xs:string" />
+          <xs:element name="pickupLocName" type="xs:string" />
+          <xs:element name="returnLocNo" type="xs:long" />
+          <xs:element name="returnLocCode" type="xs:string" />
+          <xs:element name="returnLocName" type="xs:string" />
+          <xs:element name="classNo" type="xs:long" />
+          <xs:element name="classCode" type="xs:string" />
+          <xs:element name="className" type="xs:string" />
+          <xs:element name="typeNo" type="xs:long" />
+          <xs:element name="typeName" type="xs:string" />
+          <xs:element name="rentalDays" type="xs:int" />
+          <xs:element name="extraHours" type="xs:int" />
+          <xs:element name="onewayPrice" type="xs:double" />
+          <xs:element name="onewayCurrency" type="xs:string" />
+          <xs:element name="totalRentalPrice" type="xs:double" />
+          <xs:element name="rentalPriceCurrency" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="addresses" type="tns:address" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="products" type="tns:reservationProduct" />
+          <xs:element minOccurs="1" maxOccurs="1" name="landingFlight" type="tns:flight" />
+          <xs:element minOccurs="1" maxOccurs="1" name="takeoffFlight" type="tns:flight" />
+          <xs:element name="referenceNo" type="xs:string" />
+          <xs:element name="voucherNo" type="xs:string" />
+          <xs:element name="deliveryPlace" type="xs:string" />
+          <xs:element name="dropPlace" type="xs:string" />
+          <xs:element name="pickupFromAirport" type="xs:boolean" />
+          <xs:element name="returnToAirport" type="xs:boolean" />
+          <xs:element name="resSourceNo" type="xs:long" />
+          <xs:element name="resSourceCode" type="xs:string" />
+          <xs:element name="resSourceName" type="xs:string" />
+          <xs:element name="paymentTypeNo" type="xs:long" />
+          <xs:element name="paymentTypeCode" type="xs:string" />
+          <xs:element name="paymentTypeName" type="xs:string" />
+          <xs:element name="tariffNo" type="xs:long" />
+          <xs:element name="tariffCode" type="xs:string" />
+          <xs:element name="tariffName" type="xs:string" />
+          <xs:element name="campaignNo" type="xs:long" />
+          <xs:element name="campaignName" type="xs:string" />
+          <xs:element name="note" type="xs:string" />
+          <xs:element name="webSource" type="xs:string" />
+          <xs:element name="requireConfirmation" type="xs:boolean" />
+          <xs:element name="resStatus" type="xs:string" />
+          <xs:element name="insertDate" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AddressNosOfCustomerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="idType" type="xs:string" />
+            <xs:element name="idNo" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddressNosOfCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="customerAddress" type="tns:customerAddress" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="customerAddress">
+        <xs:sequence>
+          <xs:element name="addressNo" type="xs:long" />
+          <xs:element name="addressCorpNo" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CustomerAddressInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="addressNo" type="xs:long" />
+            <xs:element name="addressCorpNo" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CustomerAddressInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="success" type="xs:boolean" />
+            <xs:element name="addressNo" type="xs:long" />
+            <xs:element name="addressCorpNo" type="xs:long" />
+            <xs:element name="message" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="customerAddressInfo" type="tns:addressInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCustomerAddressInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="customerAddressInfo" type="tns:addressInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCustomerAddressInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCustomerAddressInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="customerAddressInfo" type="tns:addressInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCustomerAddressInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="operationResult" type="tns:operationResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="addressInfo">
+        <xs:sequence>
+          <xs:element name="addressNo" type="xs:long" />
+          <xs:element name="addressCorpNo" type="xs:long" />
+          <xs:element name="personalAddress" type="xs:boolean" />
+          <xs:element name="name" type="xs:string" />
+          <xs:element name="lastname" type="xs:string" />
+          <xs:element name="corpName" type="xs:string" />
+          <xs:element name="corpStyle" type="xs:string" />
+          <xs:element name="title" type="xs:string" />
+          <xs:element name="position" type="xs:string" />
+          <xs:element name="address" type="xs:string" />
+          <xs:element name="roomNo" type="xs:string" />
+          <xs:element name="buildingName" type="xs:string" />
+          <xs:element name="buildingNo" type="xs:string" />
+          <xs:element name="districtName" type="xs:string" />
+          <xs:element name="cityNo" type="xs:long" />
+          <xs:element name="countryCode" type="xs:string" />
+          <xs:element name="postalZone" type="xs:string" />
+          <xs:element name="addressHome" type="xs:string" />
+          <xs:element name="roomNoHome" type="xs:string" />
+          <xs:element name="buildingNameHome" type="xs:string" />
+          <xs:element name="buildingNoHome" type="xs:string" />
+          <xs:element name="districtNameHome" type="xs:string" />
+          <xs:element name="cityNoHome" type="xs:long" />
+          <xs:element name="countryCodeHome" type="xs:string" />
+          <xs:element name="postalZoneHome" type="xs:string" />
+          <xs:element name="taxOffice" type="xs:string" />
+          <xs:element name="taxId" type="xs:string" />
+          <xs:element name="phone1" type="xs:string" />
+          <xs:element name="phone2" type="xs:string" />
+          <xs:element name="fax" type="xs:string" />
+          <xs:element name="mobPhone1" type="xs:string" />
+          <xs:element name="mobPhone2" type="xs:string" />
+          <xs:element name="phone1Ext" type="xs:string" />
+          <xs:element name="phoneHome" type="xs:string" />
+          <xs:element name="email" type="xs:string" />
+          <xs:element name="idType" type="xs:string" />
+          <xs:element name="idNo" type="xs:string" />
+          <xs:element name="idIssuePlace" type="xs:string" />
+          <xs:element name="idIssueDate" type="xs:string" />
+          <xs:element name="birthPlace" type="xs:string" />
+          <xs:element name="birthDate" type="xs:string" />
+          <xs:element name="licenseNo" type="xs:string" />
+          <xs:element name="licenseIssuePlace" type="xs:string" />
+          <xs:element name="licenseIssueDate" type="xs:string" />
+          <xs:element name="licenseChangeDate" type="xs:string" />
+          <xs:element name="personalDataStoragePermitted" type="xs:boolean" />
+          <xs:element name="communicationPermitted" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BrokerLoginRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="password" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="BrokerLoginResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="brokerUser" type="tns:brokerUser" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="brokerUser">
+        <xs:sequence>
+          <xs:element name="userNo" type="xs:long" />
+          <xs:element name="name" type="xs:string" />
+          <xs:element name="lastname" type="xs:string" />
+          <xs:element name="tariffNo" type="xs:long" />
+          <xs:element name="loginMessage" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SendMailOnReservationInsertRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="resNo" type="xs:long" />
+            <xs:element name="resCorpNo" type="xs:long" />
+            <xs:element name="toVendor" type="xs:boolean" />
+            <xs:element name="toCustomer" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendMailOnReservationInsertResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="resNo" type="xs:long" />
+            <xs:element name="resCorpNo" type="xs:long" />
+            <xs:element name="successVendor" type="xs:boolean" />
+            <xs:element name="successCustomer" type="xs:boolean" />
+            <xs:element name="emailsVendor" type="xs:string" />
+            <xs:element name="emailsCustomer" type="xs:string" />
+            <xs:element name="message" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HolidaysRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="locNo" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HolidaysResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="holidays" type="tns:holiday" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="holiday">
+        <xs:sequence>
+          <xs:element name="locNo" type="xs:long" />
+          <xs:element name="locCode" type="xs:string" />
+          <xs:element name="holName" type="xs:string" />
+          <xs:element name="holDayFrom" type="xs:int" />
+          <xs:element name="holMonthFrom" type="xs:int" />
+          <xs:element name="holYearFrom" type="xs:int" />
+          <xs:element name="holDayTo" type="xs:int" />
+          <xs:element name="holMonthTo" type="xs:int" />
+          <xs:element name="holYearTo" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="LocationCitiesResponse">
+    <wsdl:part name="LocationCitiesResponse" element="tns:LocationCitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertReservationResponse">
+    <wsdl:part name="InsertReservationResponse" element="tns:InsertReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReservationSourcesRequest">
+    <wsdl:part name="ReservationSourcesRequest" element="tns:ReservationSourcesRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendBankTransactionRequest">
+    <wsdl:part name="SendBankTransactionRequest" element="tns:SendBankTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="PaymentTypesRequest">
+    <wsdl:part name="PaymentTypesRequest" element="tns:PaymentTypesRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomerAddressInfoRequest">
+    <wsdl:part name="UpdateCustomerAddressInfoRequest" element="tns:UpdateCustomerAddressInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehicleTypeDetailsRequest">
+    <wsdl:part name="VehicleTypeDetailsRequest" element="tns:VehicleTypeDetailsRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateReservationResponse">
+    <wsdl:part name="UpdateReservationResponse" element="tns:UpdateReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendBankTransactionResponse">
+    <wsdl:part name="SendBankTransactionResponse" element="tns:SendBankTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaymentTypesResponse">
+    <wsdl:part name="PaymentTypesResponse" element="tns:PaymentTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsRequest">
+    <wsdl:part name="CampaignsRequest" element="tns:CampaignsRequest" />
+  </wsdl:message>
+  <wsdl:message name="CustomerAddressInfoResponse">
+    <wsdl:part name="CustomerAddressInfoResponse" element="tns:CustomerAddressInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailOnReservationInsertRequest">
+    <wsdl:part name="SendMailOnReservationInsertRequest" element="tns:SendMailOnReservationInsertRequest" />
+  </wsdl:message>
+  <wsdl:message name="CitiesResponse">
+    <wsdl:part name="CitiesResponse" element="tns:CitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReservationsOfCustomerRequest">
+    <wsdl:part name="ReservationsOfCustomerRequest" element="tns:ReservationsOfCustomerRequest" />
+  </wsdl:message>
+  <wsdl:message name="HolidaysResponse">
+    <wsdl:part name="HolidaysResponse" element="tns:HolidaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateReservationRequest">
+    <wsdl:part name="UpdateReservationRequest" element="tns:UpdateReservationRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehicleClassesRequest">
+    <wsdl:part name="VehicleClassesRequest" element="tns:VehicleClassesRequest" />
+  </wsdl:message>
+  <wsdl:message name="InsertReservationRequest">
+    <wsdl:part name="InsertReservationRequest" element="tns:InsertReservationRequest" />
+  </wsdl:message>
+  <wsdl:message name="LocationRegionsRequest">
+    <wsdl:part name="LocationRegionsRequest" element="tns:LocationRegionsRequest" />
+  </wsdl:message>
+  <wsdl:message name="CountriesResponse">
+    <wsdl:part name="CountriesResponse" element="tns:CountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TariffsOfCustomerResponse">
+    <wsdl:part name="TariffsOfCustomerResponse" element="tns:TariffsOfCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExtraProductsResponse">
+    <wsdl:part name="ExtraProductsResponse" element="tns:ExtraProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomerAddressInfoResponse">
+    <wsdl:part name="UpdateCustomerAddressInfoResponse" element="tns:UpdateCustomerAddressInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelReservationResponse">
+    <wsdl:part name="CancelReservationResponse" element="tns:CancelReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="LocationCitiesRequest">
+    <wsdl:part name="LocationCitiesRequest" element="tns:LocationCitiesRequest" />
+  </wsdl:message>
+  <wsdl:message name="BrokerLoginRequest">
+    <wsdl:part name="BrokerLoginRequest" element="tns:BrokerLoginRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehicleClassesResponse">
+    <wsdl:part name="VehicleClassesResponse" element="tns:VehicleClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReservationsOfBrokerResponse">
+    <wsdl:part name="ReservationsOfBrokerResponse" element="tns:ReservationsOfBrokerResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegionCapacitiesRequest">
+    <wsdl:part name="RegionCapacitiesRequest" element="tns:RegionCapacitiesRequest" />
+  </wsdl:message>
+  <wsdl:message name="LocationRegionsResponse">
+    <wsdl:part name="LocationRegionsResponse" element="tns:LocationRegionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddressNosOfCustomerRequest">
+    <wsdl:part name="AddressNosOfCustomerRequest" element="tns:AddressNosOfCustomerRequest" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerAddressInfoRequest">
+    <wsdl:part name="InsertCustomerAddressInfoRequest" element="tns:InsertCustomerAddressInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="BrokerLoginResponse">
+    <wsdl:part name="BrokerLoginResponse" element="tns:BrokerLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesResponse">
+    <wsdl:part name="ExchangeRatesResponse" element="tns:ExchangeRatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PoolLocationCapacitiesResponse">
+    <wsdl:part name="PoolLocationCapacitiesResponse" element="tns:PoolLocationCapacitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertXLSReservationResponse">
+    <wsdl:part name="InsertXLSReservationResponse" element="tns:InsertXLSReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddressNosOfCustomerResponse">
+    <wsdl:part name="AddressNosOfCustomerResponse" element="tns:AddressNosOfCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="VehicleTypeDetailsResponse">
+    <wsdl:part name="VehicleTypeDetailsResponse" element="tns:VehicleTypeDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsResponse">
+    <wsdl:part name="CampaignsResponse" element="tns:CampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesRequest">
+    <wsdl:part name="ExchangeRatesRequest" element="tns:ExchangeRatesRequest" />
+  </wsdl:message>
+  <wsdl:message name="InsertXLSReservationRequest">
+    <wsdl:part name="InsertXLSReservationRequest" element="tns:InsertXLSReservationRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReservationsOfBrokerRequest">
+    <wsdl:part name="ReservationsOfBrokerRequest" element="tns:ReservationsOfBrokerRequest" />
+  </wsdl:message>
+  <wsdl:message name="LocationsResponse">
+    <wsdl:part name="LocationsResponse" element="tns:LocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapacitiesRequest">
+    <wsdl:part name="CapacitiesRequest" element="tns:CapacitiesRequest" />
+  </wsdl:message>
+  <wsdl:message name="CapacitiesResponse">
+    <wsdl:part name="CapacitiesResponse" element="tns:CapacitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PoolLocationCapacitiesRequest">
+    <wsdl:part name="PoolLocationCapacitiesRequest" element="tns:PoolLocationCapacitiesRequest" />
+  </wsdl:message>
+  <wsdl:message name="CountriesRequest">
+    <wsdl:part name="CountriesRequest" element="tns:CountriesRequest" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerAddressInfoResponse">
+    <wsdl:part name="InsertCustomerAddressInfoResponse" element="tns:InsertCustomerAddressInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertReservationByRegionRequest">
+    <wsdl:part name="InsertReservationByRegionRequest" element="tns:InsertReservationByRegionRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendMailOnReservationInsertResponse">
+    <wsdl:part name="SendMailOnReservationInsertResponse" element="tns:SendMailOnReservationInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExtraProductsRequest">
+    <wsdl:part name="ExtraProductsRequest" element="tns:ExtraProductsRequest" />
+  </wsdl:message>
+  <wsdl:message name="CurrenciesRequest">
+    <wsdl:part name="CurrenciesRequest" element="tns:CurrenciesRequest" />
+  </wsdl:message>
+  <wsdl:message name="CancelReservationRequest">
+    <wsdl:part name="CancelReservationRequest" element="tns:CancelReservationRequest" />
+  </wsdl:message>
+  <wsdl:message name="InsertReservationByRegionResponse">
+    <wsdl:part name="InsertReservationByRegionResponse" element="tns:InsertReservationByRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TariffsRequest">
+    <wsdl:part name="TariffsRequest" element="tns:TariffsRequest" />
+  </wsdl:message>
+  <wsdl:message name="HolidaysRequest">
+    <wsdl:part name="HolidaysRequest" element="tns:HolidaysRequest" />
+  </wsdl:message>
+  <wsdl:message name="CurrenciesResponse">
+    <wsdl:part name="CurrenciesResponse" element="tns:CurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TariffsOfCustomerRequest">
+    <wsdl:part name="TariffsOfCustomerRequest" element="tns:TariffsOfCustomerRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehicleTypesResponse">
+    <wsdl:part name="VehicleTypesResponse" element="tns:VehicleTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerAddressInfoRequest">
+    <wsdl:part name="CustomerAddressInfoRequest" element="tns:CustomerAddressInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="LocationsRequest">
+    <wsdl:part name="LocationsRequest" element="tns:LocationsRequest" />
+  </wsdl:message>
+  <wsdl:message name="RegionCapacitiesResponse">
+    <wsdl:part name="RegionCapacitiesResponse" element="tns:RegionCapacitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReservationSourcesResponse">
+    <wsdl:part name="ReservationSourcesResponse" element="tns:ReservationSourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReservationsOfCustomerResponse">
+    <wsdl:part name="ReservationsOfCustomerResponse" element="tns:ReservationsOfCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="TariffsResponse">
+    <wsdl:part name="TariffsResponse" element="tns:TariffsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CitiesRequest">
+    <wsdl:part name="CitiesRequest" element="tns:CitiesRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehicleTypesRequest">
+    <wsdl:part name="VehicleTypesRequest" element="tns:VehicleTypesRequest" />
+  </wsdl:message>
+  <wsdl:portType name="ReservationPort">
+    <wsdl:operation name="LocationCities">
+      <wsdl:input name="LocationCitiesRequest" message="tns:LocationCitiesRequest" />
+      <wsdl:output name="LocationCitiesResponse" message="tns:LocationCitiesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertReservation">
+      <wsdl:input name="InsertReservationRequest" message="tns:InsertReservationRequest" />
+      <wsdl:output name="InsertReservationResponse" message="tns:InsertReservationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ReservationSources">
+      <wsdl:input name="ReservationSourcesRequest" message="tns:ReservationSourcesRequest" />
+      <wsdl:output name="ReservationSourcesResponse" message="tns:ReservationSourcesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBankTransaction">
+      <wsdl:input name="SendBankTransactionRequest" message="tns:SendBankTransactionRequest" />
+      <wsdl:output name="SendBankTransactionResponse" message="tns:SendBankTransactionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentTypes">
+      <wsdl:input name="PaymentTypesRequest" message="tns:PaymentTypesRequest" />
+      <wsdl:output name="PaymentTypesResponse" message="tns:PaymentTypesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerAddressInfo">
+      <wsdl:input name="UpdateCustomerAddressInfoRequest" message="tns:UpdateCustomerAddressInfoRequest" />
+      <wsdl:output name="UpdateCustomerAddressInfoResponse" message="tns:UpdateCustomerAddressInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VehicleTypeDetails">
+      <wsdl:input name="VehicleTypeDetailsRequest" message="tns:VehicleTypeDetailsRequest" />
+      <wsdl:output name="VehicleTypeDetailsResponse" message="tns:VehicleTypeDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReservation">
+      <wsdl:input name="UpdateReservationRequest" message="tns:UpdateReservationRequest" />
+      <wsdl:output name="UpdateReservationResponse" message="tns:UpdateReservationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <wsdl:input name="CampaignsRequest" message="tns:CampaignsRequest" />
+      <wsdl:output name="CampaignsResponse" message="tns:CampaignsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerAddressInfo">
+      <wsdl:input name="CustomerAddressInfoRequest" message="tns:CustomerAddressInfoRequest" />
+      <wsdl:output name="CustomerAddressInfoResponse" message="tns:CustomerAddressInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMailOnReservationInsert">
+      <wsdl:input name="SendMailOnReservationInsertRequest" message="tns:SendMailOnReservationInsertRequest" />
+      <wsdl:output name="SendMailOnReservationInsertResponse" message="tns:SendMailOnReservationInsertResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Cities">
+      <wsdl:input name="CitiesRequest" message="tns:CitiesRequest" />
+      <wsdl:output name="CitiesResponse" message="tns:CitiesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ReservationsOfCustomer">
+      <wsdl:input name="ReservationsOfCustomerRequest" message="tns:ReservationsOfCustomerRequest" />
+      <wsdl:output name="ReservationsOfCustomerResponse" message="tns:ReservationsOfCustomerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Holidays">
+      <wsdl:input name="HolidaysRequest" message="tns:HolidaysRequest" />
+      <wsdl:output name="HolidaysResponse" message="tns:HolidaysResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VehicleClasses">
+      <wsdl:input name="VehicleClassesRequest" message="tns:VehicleClassesRequest" />
+      <wsdl:output name="VehicleClassesResponse" message="tns:VehicleClassesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="LocationRegions">
+      <wsdl:input name="LocationRegionsRequest" message="tns:LocationRegionsRequest" />
+      <wsdl:output name="LocationRegionsResponse" message="tns:LocationRegionsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Countries">
+      <wsdl:input name="CountriesRequest" message="tns:CountriesRequest" />
+      <wsdl:output name="CountriesResponse" message="tns:CountriesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TariffsOfCustomer">
+      <wsdl:input name="TariffsOfCustomerRequest" message="tns:TariffsOfCustomerRequest" />
+      <wsdl:output name="TariffsOfCustomerResponse" message="tns:TariffsOfCustomerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtraProducts">
+      <wsdl:input name="ExtraProductsRequest" message="tns:ExtraProductsRequest" />
+      <wsdl:output name="ExtraProductsResponse" message="tns:ExtraProductsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelReservation">
+      <wsdl:input name="CancelReservationRequest" message="tns:CancelReservationRequest" />
+      <wsdl:output name="CancelReservationResponse" message="tns:CancelReservationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BrokerLogin">
+      <wsdl:input name="BrokerLoginRequest" message="tns:BrokerLoginRequest" />
+      <wsdl:output name="BrokerLoginResponse" message="tns:BrokerLoginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ReservationsOfBroker">
+      <wsdl:input name="ReservationsOfBrokerRequest" message="tns:ReservationsOfBrokerRequest" />
+      <wsdl:output name="ReservationsOfBrokerResponse" message="tns:ReservationsOfBrokerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RegionCapacities">
+      <wsdl:input name="RegionCapacitiesRequest" message="tns:RegionCapacitiesRequest" />
+      <wsdl:output name="RegionCapacitiesResponse" message="tns:RegionCapacitiesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddressNosOfCustomer">
+      <wsdl:input name="AddressNosOfCustomerRequest" message="tns:AddressNosOfCustomerRequest" />
+      <wsdl:output name="AddressNosOfCustomerResponse" message="tns:AddressNosOfCustomerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerAddressInfo">
+      <wsdl:input name="InsertCustomerAddressInfoRequest" message="tns:InsertCustomerAddressInfoRequest" />
+      <wsdl:output name="InsertCustomerAddressInfoResponse" message="tns:InsertCustomerAddressInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRates">
+      <wsdl:input name="ExchangeRatesRequest" message="tns:ExchangeRatesRequest" />
+      <wsdl:output name="ExchangeRatesResponse" message="tns:ExchangeRatesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="PoolLocationCapacities">
+      <wsdl:input name="PoolLocationCapacitiesRequest" message="tns:PoolLocationCapacitiesRequest" />
+      <wsdl:output name="PoolLocationCapacitiesResponse" message="tns:PoolLocationCapacitiesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertXLSReservation">
+      <wsdl:input name="InsertXLSReservationRequest" message="tns:InsertXLSReservationRequest" />
+      <wsdl:output name="InsertXLSReservationResponse" message="tns:InsertXLSReservationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Locations">
+      <wsdl:input name="LocationsRequest" message="tns:LocationsRequest" />
+      <wsdl:output name="LocationsResponse" message="tns:LocationsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Capacities">
+      <wsdl:input name="CapacitiesRequest" message="tns:CapacitiesRequest" />
+      <wsdl:output name="CapacitiesResponse" message="tns:CapacitiesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertReservationByRegion">
+      <wsdl:input name="InsertReservationByRegionRequest" message="tns:InsertReservationByRegionRequest" />
+      <wsdl:output name="InsertReservationByRegionResponse" message="tns:InsertReservationByRegionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Currencies">
+      <wsdl:input name="CurrenciesRequest" message="tns:CurrenciesRequest" />
+      <wsdl:output name="CurrenciesResponse" message="tns:CurrenciesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Tariffs">
+      <wsdl:input name="TariffsRequest" message="tns:TariffsRequest" />
+      <wsdl:output name="TariffsResponse" message="tns:TariffsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VehicleTypes">
+      <wsdl:input name="VehicleTypesRequest" message="tns:VehicleTypesRequest" />
+      <wsdl:output name="VehicleTypesResponse" message="tns:VehicleTypesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReservationPortSoap11" type="tns:ReservationPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LocationCities">
+      <soap:operation soapAction="" />
+      <wsdl:input name="LocationCitiesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LocationCitiesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertReservation">
+      <soap:operation soapAction="" />
+      <wsdl:input name="InsertReservationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="InsertReservationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReservationSources">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ReservationSourcesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReservationSourcesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBankTransaction">
+      <soap:operation soapAction="" />
+      <wsdl:input name="SendBankTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SendBankTransactionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentTypes">
+      <soap:operation soapAction="" />
+      <wsdl:input name="PaymentTypesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PaymentTypesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerAddressInfo">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateCustomerAddressInfoRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateCustomerAddressInfoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehicleTypeDetails">
+      <soap:operation soapAction="" />
+      <wsdl:input name="VehicleTypeDetailsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VehicleTypeDetailsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReservation">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateReservationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateReservationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CampaignsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CampaignsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerAddressInfo">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CustomerAddressInfoRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CustomerAddressInfoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailOnReservationInsert">
+      <soap:operation soapAction="" />
+      <wsdl:input name="SendMailOnReservationInsertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SendMailOnReservationInsertResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cities">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CitiesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CitiesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReservationsOfCustomer">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ReservationsOfCustomerRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReservationsOfCustomerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Holidays">
+      <soap:operation soapAction="" />
+      <wsdl:input name="HolidaysRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="HolidaysResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehicleClasses">
+      <soap:operation soapAction="" />
+      <wsdl:input name="VehicleClassesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VehicleClassesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LocationRegions">
+      <soap:operation soapAction="" />
+      <wsdl:input name="LocationRegionsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LocationRegionsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Countries">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CountriesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CountriesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TariffsOfCustomer">
+      <soap:operation soapAction="" />
+      <wsdl:input name="TariffsOfCustomerRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TariffsOfCustomerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtraProducts">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ExtraProductsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ExtraProductsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelReservation">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CancelReservationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CancelReservationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrokerLogin">
+      <soap:operation soapAction="" />
+      <wsdl:input name="BrokerLoginRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BrokerLoginResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReservationsOfBroker">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ReservationsOfBrokerRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReservationsOfBrokerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegionCapacities">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RegionCapacitiesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RegionCapacitiesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressNosOfCustomer">
+      <soap:operation soapAction="" />
+      <wsdl:input name="AddressNosOfCustomerRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddressNosOfCustomerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerAddressInfo">
+      <soap:operation soapAction="" />
+      <wsdl:input name="InsertCustomerAddressInfoRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="InsertCustomerAddressInfoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRates">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ExchangeRatesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ExchangeRatesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PoolLocationCapacities">
+      <soap:operation soapAction="" />
+      <wsdl:input name="PoolLocationCapacitiesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PoolLocationCapacitiesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertXLSReservation">
+      <soap:operation soapAction="" />
+      <wsdl:input name="InsertXLSReservationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="InsertXLSReservationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Locations">
+      <soap:operation soapAction="" />
+      <wsdl:input name="LocationsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LocationsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Capacities">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CapacitiesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CapacitiesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertReservationByRegion">
+      <soap:operation soapAction="" />
+      <wsdl:input name="InsertReservationByRegionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="InsertReservationByRegionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Currencies">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CurrenciesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CurrenciesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Tariffs">
+      <soap:operation soapAction="" />
+      <wsdl:input name="TariffsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TariffsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehicleTypes">
+      <soap:operation soapAction="" />
+      <wsdl:input name="VehicleTypesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VehicleTypesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReservationPortService">
+    <wsdl:port name="ReservationPortSoap11" binding="tns:ReservationPortSoap11">
+      <soap:address location="https://jupicar.cloud:2034/ws" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
