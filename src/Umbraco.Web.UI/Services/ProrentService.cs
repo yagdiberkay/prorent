@@ -1,17 +1,20 @@
 ﻿using Umbraco.Web.UI.Models;
 using Umbraco.Web.UI.LiveProrent24Service;
-using Umbraco.Core.Persistence.Mappers;
 using System;
+using Umbraco.Web.UI.Mapping;
+using AutoMapper;
 
 namespace Umbraco.Web.UI.Services
 {
 
     public class ProrentService : IProrentService
     {
-        private readonly Lazy<IMapperCollection> _mappers;
-        public ProrentService(Lazy<IMapperCollection> mappers)
+        Umbraco.Web.UI.Mapping.Mapping _mapping;
+        private IMapper _mapper;
+        public ProrentService(IMapper mapper)
         {
-            _mappers = mappers;
+            _mapping = new Umbraco.Web.UI.Mapping.Mapping();
+            _mapper = mapper;
         }
 
         public OperationResultModel InsertReservation(ReservationModel model)
@@ -19,17 +22,20 @@ namespace Umbraco.Web.UI.Services
             OperationResultModel result = new OperationResultModel();
             try
             {
+                _mapper = _mapping.MappingConfig().CreateMapper();
+                var data = _mapper.Map<ReservationModel, reservation>(model);
                 ReservationPortClient client = new ReservationPortClient();
                 client.ClientCredentials.UserName.UserName = "testuser@prorent24.com";
                 client.ClientCredentials.UserName.Password = "Tu123456";
-                InsertReservationRequest insertReservationRequest = new InsertReservationRequest();
-                //request model'e maplenecek
-
-                //client.InsertReservationAsync(insertReservationRequest);
+                InsertReservationRequest insertReservationRequest = new InsertReservationRequest
+                {
+                    reservation = data
+                };
+                var response = client.InsertReservationAsync(insertReservationRequest);
+                result = _mapper.Map<InsertReservationResponse1, OperationResultModel>(response.Result);
             }
             catch (System.Exception ex)
             {
-
                 throw;
             }
             return result;
