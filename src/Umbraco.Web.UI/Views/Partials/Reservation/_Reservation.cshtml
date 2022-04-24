@@ -1,0 +1,43 @@
+﻿@inherits UmbracoViewPage<Umbraco.Web.UI.Dto.ReservationDto>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+}
+@using (Html.BeginUmbracoForm("SubmitReservation", "Reservation", FormMethod.Post))
+{
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        @Html.LabelFor(m => m.resNo)
+        @Html.TextBoxFor(m => m.resNo)
+        @Html.ValidationMessageFor(m => m.resNo)
+
+        @Html.LabelFor(m => m.classNo)
+        @Html.TextBoxFor(m => m.classNo)
+        @Html.ValidationMessageFor(m => m.classNo)
+
+        @Html.LabelFor(m => m.deliveryPlace)
+        @Html.TextBoxFor(m => m.deliveryPlace)
+        @Html.ValidationMessageFor(m => m.deliveryPlace)
+
+        @Html.LabelFor(m => m.dropPlace)
+        @Html.TextBoxFor(m => m.dropPlace)
+        @Html.ValidationMessageFor(m => m.dropPlace)
+
+        @Html.LabelFor(m => m.resStatus)
+        @Html.TextBoxFor(m => m.resStatus)
+        @Html.ValidationMessageFor(m => m.resStatus)
+
+        @Html.LabelFor(m => m.resCorpNo)
+        @Html.TextBoxFor(m => m.resCorpNo)
+        @Html.ValidationMessageFor(m => m.resCorpNo)
+
+        @Html.LabelFor(m => m.returnDate)
+        @Html.TextBoxFor(m => m.returnDate)
+        @Html.ValidationMessageFor(m => m.returnDate)
+
+        @Html.LabelFor(m => m.rentalDays)
+        @Html.TextBoxFor(m => m.rentalDays)
+        @Html.ValidationMessageFor(m => m.rentalDays)
+        <button type="submit"> Submit </button>
+}

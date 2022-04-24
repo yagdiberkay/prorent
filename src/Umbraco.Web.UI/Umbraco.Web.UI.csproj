@@ -92,6 +92,9 @@
     <PackageReference Include="Examine" Version="1.2.2" />
     <PackageReference Include="ImageProcessor.Web" Version="4.12.1" />
     <PackageReference Include="ImageProcessor.Web.Config" Version="2.6.0" />
+    <PackageReference Include="Mapster">
+      <Version>7.3.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.7" />
@@ -149,17 +152,45 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\TestProrent24Service\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Dto\AddressDto.cs" />
+    <Compile Include="Dto\CampaignsRequestDto.cs" />
+    <Compile Include="Dto\CampaignsResponseDto.cs" />
+    <Compile Include="Dto\CitiesResponseDto.cs" />
+    <Compile Include="Dto\CountriesResponseDto.cs" />
+    <Compile Include="Dto\CurrenciesResponseDto.cs" />
     <Compile Include="Dto\FlightDto.cs" />
+    <Compile Include="Dto\LocationsRequestDto.cs" />
+    <Compile Include="Dto\LocationsResponseDto.cs" />
     <Compile Include="Dto\OperationResultDto.cs" />
+    <Compile Include="Dto\PaymentTypesResponseDto.cs" />
     <Compile Include="Dto\ProductsDto.cs" />
     <Compile Include="Dto\ReservationDto.cs" />
+    <Compile Include="Dto\SendMailOnReservationInsertRequestDto.cs" />
+    <Compile Include="Dto\SendMailOnReservationInsertResponseDto.cs" />
+    <Compile Include="Dto\TariffsResponseDto.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\CampaignsRequestModel.cs" />
+    <Compile Include="Models\CampaignsResponseModel.cs" />
+    <Compile Include="Models\CitiesResponseModel.cs" />
+    <Compile Include="Models\CountriesResponseModel.cs" />
+    <Compile Include="Models\CurrenciesResponseModel.cs" />
     <Compile Include="Models\FlightModel.cs" />
+    <Compile Include="Models\LocationsRequestModel.cs" />
+    <Compile Include="Models\LocationsResponseModel.cs" />
     <Compile Include="Models\OperationResultModel.cs" />
+    <Compile Include="Models\PaymentTypesResponseModel.cs" />
     <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Models\ReservationModel.cs" />
+    <Compile Include="Models\SendMailOnReservationInsertRequestModel.cs" />
+    <Compile Include="Models\SendMailOnReservationInsertResponseModel.cs" />
+    <Compile Include="Models\TariffsResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -191,6 +222,12 @@
     <None Include="Connected Services\LiveProrent24Service\configuration91.svcinfo" />
     <None Include="Connected Services\LiveProrent24Service\configuration.svcinfo" />
     <None Include="Connected Services\LiveProrent24Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\TestProrent24Service\configuration91.svcinfo" />
+    <None Include="Connected Services\TestProrent24Service\configuration.svcinfo" />
+    <None Include="Connected Services\TestProrent24Service\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -3007,6 +3044,208 @@
     <Content Include="Connected Services\LiveProrent24Service\Umbraco.Web.UI.LiveProrent24Service.VehicleTypesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\TestProrent24Service\reservation.wsdl" />
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.AddressNosOfCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.AddressNosOfCustomerResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.BrokerLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.BrokerLoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.campaign.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CampaignsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CancelReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CancelReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CapacitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.capacity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.city.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CountriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CurrenciesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.currency.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CustomerAddressInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.CustomerAddressInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.exchangeRate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.ExchangeRatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.extraProduct.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.ExtraProductsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.holiday.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.HolidaysResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertCustomerAddressInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertCustomerAddressInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertReservationByRegionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertReservationByRegionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertXLSReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.InsertXLSReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.location.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.LocationCitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.LocationRegionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.LocationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.paymentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.PaymentTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.PoolLocationCapacitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.region.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.RegionCapacitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.regionCapacity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.ReservationsOfBrokerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.ReservationsOfCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.reservationSource.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.ReservationSourcesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.reservationView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.SendBankTransactionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.SendBankTransactionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.SendCashdeskTransactionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.SendCashdeskTransactionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.SendMailOnReservationInsertResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.SendMailOnReservationInsertResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.tariff.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.TariffsOfCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.TariffsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.UpdateCustomerAddressInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.UpdateCustomerAddressInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.UpdateReservationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.UpdateReservationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.vehicleClass.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.VehicleClassesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.vehicleType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.VehicleTypeDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.VehicleTypeDetailsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\TestProrent24Service\Umbraco.Web.UI.TestProrent24Service.VehicleTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Views\Partials\Reservation\_Reservation.cshtml" />
+    <Content Include="Views\Reservation.cshtml" />
+    <Content Include="Views\Partials\Reservation\_ReservationDate.cshtml" />
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>
@@ -3036,6 +3275,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\LiveProrent24Service\" />
+    <WCFMetadataStorage Include="Connected Services\TestProrent24Service\" />
   </ItemGroup>
   <!-- determine VSToolsPath -->
   <PropertyGroup>

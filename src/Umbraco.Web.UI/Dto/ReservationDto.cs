@@ -4,10 +4,6 @@ namespace Umbraco.Web.UI.Dto
 {
     public class ReservationDto
     {
-        public ReservationDto()
-        {
-
-        }
         public long resNo { get; set; }
         public long resCorpNo { get; set; }
         public string pickupDate { get; set; }

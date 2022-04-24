@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using Mapster;
 using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
@@ -12,39 +12,27 @@ namespace Umbraco.Web.UI.Controllers
     public class ReservationController : SurfaceController
     {
         IProrentService _prorentService;
-        Umbraco.Web.UI.Mapping.Mapping _mapping;
-        private IMapper _mapper;
-        public ReservationController(IProrentService prorentService, IMapper mapper)
+        public const string PARTIAL_VIEW_FOLDER = "~/Views/Partials/Reservation/";
+        public ReservationController(IProrentService prorentService)
         {
             _prorentService = prorentService;
-            _mapper = mapper;
         }
-        public ActionResult RemderForm()
+        public ActionResult RenderForm()
         {
-
-            return View("Reservation.cshtml");
+            return View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml");
         }
 
-        public ActionResult InsertReservation(ReservationDto dto)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SubmitReservation(ReservationDto dto)
         {
             if (ModelState.IsValid)
             {
-                _mapper = _mapping.MappingConfig().CreateMapper();
-                var data = _mapper.Map<ReservationDto, ReservationModel>(dto);
-
-                OperationResultModel resultModel = _prorentService.InsertReservation(data);
-                SendEmail(dto);
+                var model = dto.Adapt<ReservationModel>();
+                OperationResultModel resultModel = _prorentService.InsertReservation(model);
                 return RedirectToCurrentUmbracoPage();
             }
             return CurrentUmbracoPage();
-        }
-        public void SendEmail(ReservationDto dto)
-        {
-            MailMessage mailMessage = new MailMessage(dto.addresses.FirstOrDefault().email, "mailadresigelecek");
-            mailMessage.Subject = string.Format("Talebiniz {0} rezervasyon numarası ile alınmıştır", dto.resNo);
-            mailMessage.Body = string.Empty;
-            SmtpClient client = new SmtpClient("127.0.0.0", 25);
-            client.Send(mailMessage);
         }
     }
 }
