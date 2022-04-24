@@ -10,7 +10,7 @@ namespace Umbraco.Web.UI.Services
 {
     public interface IProrentService
     {
-        OperationResultModel InsertReservation(ReservationModel model);
+
         CitiesResponseModel[] GetCities(string countryCode);
         CountriesResponseModel[] GetCountries(string language);
         CurrenciesResponseModel[] GetCurrencies();
@@ -18,6 +18,12 @@ namespace Umbraco.Web.UI.Services
         CampaignsResponseModel[] GetCampaigns(CampaignsRequestModel model);
         TariffsResponseModel[] GetTariffs();
         PaymentTypesResponseModel[] GetPaymentTypes(string language);
-        SendMailOnReservationInsertResponseModel SendMailOnReservationInsertResponse(SendMailOnReservationInsertRequestModel model);
+        CapacitiesResponseModel[] GetCapacities(CapacitiesRequestModel model);
+        VehicleTypeDetailsResponseModel GetVehicleTypeDetails(VehicleTypeDetailsRequestModel model);
+        ExtraProductsResponseModel[] GetExtraProducts(ExtraProductsRequestModel model);
+        ReservationSourcesResponseModel[] GetReservationSources();
+        SendMailOnReservationInsertResponseModel SendMailOnReservationInsert(SendMailOnReservationInsertRequestModel model);
+        OperationResultModel SendBankTransaction(SendBankTransactionRequestModel model);
+        OperationResultModel InsertReservation(ReservationRequestModel model);
     }
 }

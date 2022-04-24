@@ -56,8 +56,8 @@ namespace Umbraco.Web.UI.Services
                 {
                     countryCode = countryCode
                 };
-                var response = client.CitiesAsync(citiesRequest);
-                result = response.Result.CitiesResponse1.Adapt<CitiesResponseModel[]>();
+                var response = client.Cities(citiesRequest);
+                result = response.Adapt<CitiesResponseModel[]>();
             }
             catch (System.Exception)
             {
@@ -95,8 +95,8 @@ namespace Umbraco.Web.UI.Services
                 ReservationPortClient client = ProrentServiceClient();
                 CurrenciesRequest currenciesRequest = new CurrenciesRequest();
 
-                var response = client.CurrenciesAsync(currenciesRequest);
-                result = response.Result.CurrenciesResponse1.Adapt<CurrenciesResponseModel[]>();
+                var response = client.Currencies(currenciesRequest);
+                result = response.Adapt<CurrenciesResponseModel[]>();
             }
             catch (System.Exception)
             {
@@ -115,7 +115,7 @@ namespace Umbraco.Web.UI.Services
                 LocationsRequest locationsRequest = new LocationsRequest();
                 locationsRequest = model.Adapt<LocationsRequest>();
 
-                var response = client.LocationsAsync(locationsRequest);
+                var response = client.Locations(locationsRequest);
                 result = response.Adapt<LocationsResponseModel[]>();
             }
             catch (System.Exception)
@@ -134,8 +134,8 @@ namespace Umbraco.Web.UI.Services
                 ReservationPortClient client = ProrentServiceClient();
                 CampaignsRequest campaignsRequest = new CampaignsRequest();
                 campaignsRequest = model.Adapt<CampaignsRequest>();
-                var response = client.CampaignsAsync(campaignsRequest);
-                result = response.Result.Adapt<CampaignsResponseModel[]>();
+                var response = client.Campaigns(campaignsRequest);
+                result = response.Adapt<CampaignsResponseModel[]>();
             }
             catch (System.Exception)
             {
@@ -179,7 +179,7 @@ namespace Umbraco.Web.UI.Services
             }
             return result;
         }
-        public SendMailOnReservationInsertResponseModel SendMailOnReservationInsertResponse(SendMailOnReservationInsertRequestModel model)
+        public SendMailOnReservationInsertResponseModel SendMailOnReservationInsert(SendMailOnReservationInsertRequestModel model)
         {
             SendMailOnReservationInsertResponseModel result = new SendMailOnReservationInsertResponseModel();
             try
@@ -197,7 +197,98 @@ namespace Umbraco.Web.UI.Services
             }
             return result;
         }
-        public OperationResultModel InsertReservation(ReservationModel model)
+        public CapacitiesResponseModel[] GetCapacities(CapacitiesRequestModel model)
+        {
+            CapacitiesResponseModel[] result = new CapacitiesResponseModel[0];
+            try
+            {
+                ReservationPortClient client = ProrentServiceClient();
+                CapacitiesRequest capacitiesRequest = new CapacitiesRequest();
+                capacitiesRequest = model.Adapt<CapacitiesRequest>();
+                var response = client.Capacities(capacitiesRequest);
+                result = response.Adapt<CapacitiesResponseModel[]>();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            return result;
+        }
+        public VehicleTypeDetailsResponseModel GetVehicleTypeDetails(VehicleTypeDetailsRequestModel model)
+        {
+            VehicleTypeDetailsResponseModel result = new VehicleTypeDetailsResponseModel();
+            try
+            {
+                ReservationPortClient client = ProrentServiceClient();
+                VehicleTypeDetailsRequest vehicleTypeDetailsRequest = new VehicleTypeDetailsRequest();
+                vehicleTypeDetailsRequest = model.Adapt<VehicleTypeDetailsRequest>();
+                var response = client.VehicleTypeDetails(vehicleTypeDetailsRequest);
+                result = response.Adapt<VehicleTypeDetailsResponseModel>();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            return result;
+        }
+        public ExtraProductsResponseModel[] GetExtraProducts(ExtraProductsRequestModel model)
+        {
+            ExtraProductsResponseModel[] result = new ExtraProductsResponseModel[0];
+            try
+            {
+                ReservationPortClient client = ProrentServiceClient();
+                ExtraProductsRequest extraProductsRequest = new ExtraProductsRequest();
+                extraProductsRequest = model.Adapt<ExtraProductsRequest>();
+                var response = client.ExtraProducts(extraProductsRequest);
+                result = response.Adapt<ExtraProductsResponseModel[]>();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+        public ReservationSourcesResponseModel[] GetReservationSources()
+        {
+            ReservationSourcesResponseModel[] result = new ReservationSourcesResponseModel[0];
+            try
+            {
+                ReservationPortClient client = ProrentServiceClient();
+                ReservationSourcesRequest reservationSourcesRequest = new ReservationSourcesRequest();
+                var response = client.ReservationSources(reservationSourcesRequest);
+                result = response.Adapt<ReservationSourcesResponseModel[]>();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            return result;
+        }
+        public OperationResultModel SendBankTransaction(SendBankTransactionRequestModel model)
+        {
+            var data = model.Adapt<bankTransaction>();
+            OperationResultModel result = new OperationResultModel();
+            try
+            {
+                ReservationPortClient client = ProrentServiceClient();
+                SendBankTransactionRequest sendBankTransactionRequest = new SendBankTransactionRequest
+                {
+                    bankTransaction = data
+                };
+                var response = client.SendBankTransaction(sendBankTransactionRequest);
+                result = response.operationResult.Adapt<OperationResultModel>();
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+            return result;
+        }
+        public OperationResultModel InsertReservation(ReservationRequestModel model)
         {
             var data = model.Adapt<reservation>();
             OperationResultModel result = new OperationResultModel();
@@ -208,8 +299,8 @@ namespace Umbraco.Web.UI.Services
                 {
                     reservation = data
                 };
-                var response = client.InsertReservationAsync(insertReservationRequest);
-                result = response.Result.InsertReservationResponse.Adapt<OperationResultModel>();
+                var response = client.InsertReservation(insertReservationRequest);
+                result = response.operationResult.Adapt<OperationResultModel>();
             }
             catch (System.Exception ex)
             {
@@ -217,7 +308,6 @@ namespace Umbraco.Web.UI.Services
             }
             return result;
         }
-
 
     }
 }

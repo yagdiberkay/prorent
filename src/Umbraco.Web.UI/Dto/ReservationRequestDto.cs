@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Umbraco.Web.UI.Models
+namespace Umbraco.Web.UI.Dto
 {
-    public class ReservationModel
+    public class ReservationRequestDto
     {
         public long resNo { get; set; }
         public long resCorpNo { get; set; }
@@ -18,10 +18,10 @@ namespace Umbraco.Web.UI.Models
         public string onewayCurrency { get; set; }
         public double totalRentalPrice { get; set; }
         public string rentalPriceCurrency { get; set; }
-        public List<AddressModel> addresses { get; set; }
-        public List<ProductsModel> products { get; set; }
-        public FlightModel landingFlight { get; set; }
-        public FlightModel takeoffFlight { get; set; }
+        public List<AddressDto> addresses { get; set; }
+        public List<ProductsDto> products { get; set; }
+        public FlightDto landingFlight { get; set; }
+        public FlightDto takeoffFlight { get; set; }
         public string referenceNo { get; set; }
         public string voucherNo { get; set; }
         public bool fullCredit { get; set; }

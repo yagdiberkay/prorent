@@ -3,7 +3,7 @@
 @{
     Layout = null;
 }
-@using (Html.BeginUmbracoForm("SubmitReservation", "Reservation", FormMethod.Post))
+@using (Html.BeginUmbracoForm("InsertReservation", "Reservation", FormMethod.Post))
 {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary()
