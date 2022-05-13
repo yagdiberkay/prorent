@@ -93802,3 +93802,12 @@ table.woocommerce-checkout-review-order-table thead tr th {
 .white-bg {
     background-color: #fff !important;
 }
+@media screen and (max-width: 767px) {
+    .footer_widgets_wrapper .widget_socials li a i {
+        line-height: 45px;
+    }
+
+    .wpb_wrapper .icon-box .icon i {
+        line-height: 54px;
+    }
+}
