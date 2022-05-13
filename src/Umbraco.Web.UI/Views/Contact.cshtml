@@ -243,7 +243,7 @@
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
                         <script>
-                            jQuery(document).on('ready', function($) {
+                            jQuery(document).on('ready', function ($) {
 
                                 var icon1 = '/umbraco/asset/img/uploads/motors_car_rental_pin.svg';
                                 var icon2 = '/umbraco/asset/img/uploads/pin2.svg';
@@ -324,8 +324,8 @@
 
                                     // Display multiple markers on a map
                                     var infoWindow = new google.maps.InfoWindow({
-                                            pixelOffset: new google.maps.Size(-140, -215)
-                                        }),
+                                        pixelOffset: new google.maps.Size(-140, -215)
+                                    }),
                                         marker, i;
 
                                     // Loop through our array of markers & place each one on the map
@@ -339,16 +339,16 @@
                                             icon: icon1
                                         });
 
-                                        google.maps.event.addListener(marker, 'mouseover', function() {
+                                        google.maps.event.addListener(marker, 'mouseover', function () {
                                             this.setIcon(icon2);
                                         });
-                                        google.maps.event.addListener(marker, 'mouseout', function() {
+                                        google.maps.event.addListener(marker, 'mouseout', function () {
                                             this.setIcon(icon1);
                                         });
 
                                         // Allow each marker to have an info window
-                                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                                            return function() {
+                                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                            return function () {
                                                 infoWindow.setContent(markers[i][0]);
                                                 infoWindow.open(map, marker);
                                             }
@@ -360,16 +360,16 @@
 
                                     var timeOut;
                                     // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-                                    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+                                    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
                                         window.clearTimeout(timeOut);
-                                        timeOut = window.setTimeout(function() {
+                                        timeOut = window.setTimeout(function () {
                                             map.setZoom(13);
                                         }, 400);
 
                                         google.maps.event.removeListener(boundsListener);
                                     });
 
-                                    google.maps.event.addListener(infoWindow, 'domready', function() {
+                                    google.maps.event.addListener(infoWindow, 'domready', function () {
 
                                         var iwOuter = $('.gm-style-iw');
                                         var iwBackground = iwOuter.prev();
@@ -387,7 +387,7 @@
                             });
                         </script>
 
-                        <div id="stm_map_offices" style="height:552px;" class=""></div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3125.478696571109!2d27.209419315194456!3d38.43041057964527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b963caef2ce749%3A0xd624feaea52b9cb9!2sProRent24%20Car%20Rental%20%C4%B0zmir%20Ara%C3%A7%20Kiralama!5e0!3m2!1str!2str!4v1652453446135!5m2!1str!2str" width="100%" height="548" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

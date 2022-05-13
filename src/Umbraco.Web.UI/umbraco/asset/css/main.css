@@ -16756,7 +16756,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .stm-layout-header-car_rental .header-rental.header-listing {
     min-height: 96px;
     width: 100%;
-    padding: 29px 0 13px;
+    padding: 15px 0 15px;
     background-color: transparent;
     transition: background-color .3s 0s, top .3s 0s
 }
@@ -93802,12 +93802,20 @@ table.woocommerce-checkout-review-order-table thead tr th {
 .white-bg {
     background-color: #fff !important;
 }
+.footer_widgets_wrapper .widget_socials li a i {
+    line-height: 45px;
+}
+
+.wpb_wrapper .icon-box .icon i {
+    line-height: 54px;
+}
+
 @media screen and (max-width: 767px) {
-    .footer_widgets_wrapper .widget_socials li a i {
-        line-height: 45px;
+    .stm-template-car_rental .stm-background-centered.vc_custom_1485758847623 {
+        background: none !important;
     }
 
-    .wpb_wrapper .icon-box .icon i {
-        line-height: 54px;
-    }
+        .stm-template-car_rental .stm-background-centered.vc_custom_1485758847623 > .wpb_column.vc_column_container:first-child {
+            display: none;
+        }
 }
