@@ -3481,6 +3481,7 @@
     <Content Include="Umbraco\asset\webfonts\service-fonts\stm-service-default.woff" />
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\Term.cshtml" />
+    <Content Include="Views\Partials\Reservation\_ContactForm.cshtml" />
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>

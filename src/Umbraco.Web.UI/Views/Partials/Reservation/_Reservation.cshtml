@@ -3,41 +3,25 @@
 @{
     Layout = null;
 }
-@using (Html.BeginUmbracoForm("InsertReservation", "Reservation", FormMethod.Post))
-{
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary()
 
-        @Html.LabelFor(m => m.resNo)
-        @Html.TextBoxFor(m => m.resNo)
-        @Html.ValidationMessageFor(m => m.resNo)
+<div class="stm_nav_wizard_step stm_nav_wizard_step_2">
 
-        @Html.LabelFor(m => m.classNo)
-        @Html.TextBoxFor(m => m.classNo)
-        @Html.ValidationMessageFor(m => m.classNo)
-
-        @Html.LabelFor(m => m.deliveryPlace)
-        @Html.TextBoxFor(m => m.deliveryPlace)
-        @Html.ValidationMessageFor(m => m.deliveryPlace)
-
-        @Html.LabelFor(m => m.dropPlace)
-        @Html.TextBoxFor(m => m.dropPlace)
-        @Html.ValidationMessageFor(m => m.dropPlace)
-
-        @Html.LabelFor(m => m.resStatus)
-        @Html.TextBoxFor(m => m.resStatus)
-        @Html.ValidationMessageFor(m => m.resStatus)
-
-        @Html.LabelFor(m => m.resCorpNo)
-        @Html.TextBoxFor(m => m.resCorpNo)
-        @Html.ValidationMessageFor(m => m.resCorpNo)
-
-        @Html.LabelFor(m => m.returnDate)
-        @Html.TextBoxFor(m => m.returnDate)
-        @Html.ValidationMessageFor(m => m.returnDate)
-
-        @Html.LabelFor(m => m.rentalDays)
-        @Html.TextBoxFor(m => m.rentalDays)
-        @Html.ValidationMessageFor(m => m.rentalDays)
-        <button type="submit"> Submit </button>
-}
+    <div class="inner current">
+        <a href="~/Views/Partials/Reservation/_Reservation.cshtml" class="top heading-font external" rel="nofollow">
+            <div class="number">
+                <span>2</span>
+            </div>
+            <label>Select Vehicle/Add-ons</label>
+        </a>
+        <div class="content">
+            <div class="first">
+                <h5>Type</h5>
+                <div>--</div>
+            </div>
+            <div class="second">
+                <h5>Addons</h5>
+                <div>--</div>
+            </div>
+        </div>
+    </div>
+</div>

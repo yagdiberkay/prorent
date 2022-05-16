@@ -17,9 +17,17 @@ namespace Umbraco.Web.UI.Controllers
         {
             _prorentService = prorentService;
         }
-        public ActionResult RenderForm()
+        public ActionResult RenderReservationDateForm()
+        {
+            return View(PARTIAL_VIEW_FOLDER + "_ReservationDate.cshtml");
+        }
+        public ActionResult RenderReservationForm()
         {
             return View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml");
+        }
+        public ActionResult RenderContactForm()
+        {
+            return View(PARTIAL_VIEW_FOLDER + "_ContactForm.cshtml");
         }
 
         [HttpPost]

@@ -5,7 +5,7 @@
 }
 
 <div class="container">
-    @{ Html.RenderAction("RenderForm", "Reservation");}
+    @*@{ Html.RenderAction("RenderForm", "Reservation");}*@
 
 </div>
 
@@ -18,52 +18,10 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-12">
-                <div class="stm_nav_wizard_step stm_nav_wizard_step_1">
-
-                    <div class="inner ">
-                        <a href="../date-reservation/index.html" class="top heading-font external" rel="nofollow">
-                            <div class="number">
-                                <span>1</span>
-                            </div>
-                            <label>Your Itinerary</label>
-                        </a>
-                        <div class="content">
-                            <div class="first">
-                                <h5>Pick up</h5>
-                                <div class="stm_filled_pickup_location">--</div>
-                                <div class="stm_filled_pickup_date">--</div>
-                            </div>
-                            <div class="second">
-                                <h5 class="second">Drop off</h5>
-                                <div class="stm_filled_return_location">--</div>
-                                <div class="stm_filled_return_date">--</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @{ Html.RenderAction("RenderReservationDateForm", "Reservation");}
             </div>
             <div class="col-md-4 col-sm-12">
-                <div class="stm_nav_wizard_step stm_nav_wizard_step_2">
-
-                    <div class="inner current">
-                        <a href="index.html" class="top heading-font external" rel="nofollow">
-                            <div class="number">
-                                <span>2</span>
-                            </div>
-                            <label>Select Vehicle/Add-ons</label>
-                        </a>
-                        <div class="content">
-                            <div class="first">
-                                <h5>Type</h5>
-                                <div>--</div>
-                            </div>
-                            <div class="second">
-                                <h5>Addons</h5>
-                                <div>--</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @{ Html.RenderAction("RenderReservationForm", "Reservation");}
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="stm_nav_wizard_step stm_nav_wizard_step_3">

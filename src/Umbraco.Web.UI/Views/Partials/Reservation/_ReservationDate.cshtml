@@ -19,48 +19,27 @@
         });
     </script>
 }
-<div class="container info">
-    <div class="page-header content-center" style="background-color:aqua">
-        <p>Rezervasyon</p>
-    </div>
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-    <div class="row">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.pickupDate)
-            @Html.TextBoxFor(m => m.pickupDate, new { id = "datepicker2", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.resNo)
-        </div>
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.returnDate)
-            @Html.TextBoxFor(m => m.returnDate, new { id = "datepicker2", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.returnDate)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.deliveryPlace)
-            @Html.TextBoxFor(m => m.deliveryPlace, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.deliveryPlace)
-        </div>
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.dropPlace)
-            @Html.TextBoxFor(m => m.dropPlace, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.dropPlace)
+<div class="stm_nav_wizard_step stm_nav_wizard_step_1">
+
+    <div class="inner ">
+        <a href="~/Views/Partials/Reservation/_ReservationDate.cshtml" class="top heading-font external" rel="nofollow">
+            <div class="number">
+                <span>1</span>
+            </div>
+            <label>Your Itinerary</label>
+        </a>
+        <div class="content">
+            <div class="first">
+                <h5>Pick up</h5>
+                <div class="stm_filled_pickup_location">--</div>
+                <div class="stm_filled_pickup_date">--</div>
+            </div>
+            <div class="second">
+                <h5 class="second">Drop off</h5>
+                <div class="stm_filled_return_location">--</div>
+                <div class="stm_filled_return_date">--</div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.resStatus)
-            @Html.TextBoxFor(m => m.resStatus, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.resStatus)
-        </div>
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.resCorpNo)
-            @Html.TextBoxFor(m => m.resCorpNo, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.resCorpNo)
-        </div>
-    </div>
-    <button type="submit" class="btn btn-info"> Ara</button>
 </div>
 

@@ -12,52 +12,8 @@
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
                         <h2 style="font-size: 30px;text-align: left" class="vc_custom_heading vc_custom_1485319686996">İletişim</h2>
-                        <div role="form" class="wpcf7" id="wpcf7-f347-p311-o1" lang="en-US" dir="ltr">
-                            <div class="screen-reader-response">
-                                <p role="status" aria-live="polite" aria-atomic="true"></p>
-                                <ul></ul>
-                            </div>
-                            <form action="/" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
-                                <div style="display: none;">
-                                    <input type="hidden" name="_wpcf7" value="347" />
-                                    <input type="hidden" name="_wpcf7_version" value="5.5.6" />
-                                    <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f347-p311-o1" />
-                                    <input type="hidden" name="_wpcf7_container_post" value="311" />
-                                    <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <div class="contact-us-label">Mesaj</div>
-                                                <p>
-                                                    <span class="wpcf7-form-control-wrap message"><textarea name="message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Lütfen mesajınızı yazınız..."></textarea></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <div class="contact-us-label">İSİM SOYAD*</div>
-                                            <p>
-                                                <span class="wpcf7-form-control-wrap first-name"><input type="text" name="first-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="İsim Soyad giriniz" /></span>
-                                            </p>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="contact-us-label">Eposta*</div>
-                                            <p>
-                                                <span class="wpcf7-form-control-wrap email"><input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="email@domain.com" /></span>
-                                            </p>
-                                        </div>
-                                        <div class="form-group"></div>
-                                        <div class="contact-us-submit">
-                                            <input type="submit" value="Gönder" class="wpcf7-form-control has-spinner wpcf7-submit contact-us-submit" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wpcf7-response-output" aria-hidden="true"></div>
-                            </form>
+                        <div class="">
+                            @{ Html.RenderAction("RenderContactForm", "Reservation");}
                         </div>
                     </div>
                 </div>
@@ -67,7 +23,7 @@
             <div class="wpb_column vc_column_container vc_col-sm-4">
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
-                 
+
 
 
                         <div class="icon-box  vc_custom_1485260253393 icon_box_87505 stm-layout-box-car_dealer " style="color:#2a4045">
@@ -109,7 +65,7 @@
             <div class="wpb_column vc_column_container vc_col-sm-4">
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
-                     
+
 
 
 
@@ -143,7 +99,7 @@
             <div class="wpb_column vc_column_container vc_col-sm-4">
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
-                   
+
 
 
 
@@ -339,9 +295,6 @@
             </div>
         </div>
         <div class="vc_row-full-width"></div>
-
-
-
         <div class="clearfix">
         </div>
     </div>
