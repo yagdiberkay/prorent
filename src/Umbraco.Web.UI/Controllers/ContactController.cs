@@ -44,7 +44,7 @@ namespace Umbraco.Web.UI.Controllers
             message.Body = string.Format(body, model.EmailAddress, model.Name, model.Message);
             message.IsBodyHtml = true;
 
-            SmtpClient client = new SmtpClient(server, 25);
+            SmtpClient client = new SmtpClient(server, 587);
             client.UseDefaultCredentials = false;
             client.EnableSsl = false;
             client.Credentials = new NetworkCredential(from, fromPassword);
