@@ -93819,3 +93819,11 @@ table.woocommerce-checkout-review-order-table thead tr th {
             display: none;
         }
 }
+.woocommerce-checkout #payment ul.payment_methods li input {
+    visibility: hidden;
+}
+
+.stm-template-car_rental .woocommerce form .form-row .input-checkbox {
+    opacity: 1;
+    margin-top: 0 !important;
+}

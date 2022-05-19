@@ -33,9 +33,9 @@ namespace Umbraco.Web.UI.Controllers
 
         private void SendEmail(ContactModel model)
         {
-            string server = "mail.prorent24.com"; //yönetim panelinden
-            string from = "info@prorent24.com"; //yönetim panelinden
-            string fromPassword = "lc5q6Y_72"; //yönetim panelinden
+            string server = "prorent24.com"; //yönetim panelinden
+            string from = "mail@prorent24.com"; //yönetim panelinden
+            string fromPassword = "h36b2Sl&9"; //yönetim panelinden
             string to = "yagdiberkay@gmail.com"; // yönetim panelinden
 
             MailMessage message = new MailMessage(from, to);
