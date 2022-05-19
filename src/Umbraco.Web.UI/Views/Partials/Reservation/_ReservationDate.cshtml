@@ -94,7 +94,8 @@
                                     .remove()
                                     .end()
                                     .append('<option value="">Teslimat Yeri</option>')
-                                    .val('')
+                                    .val('');
+                                $("#dropLocations option").val($('#startLocations option').filter(':selected').val());
                             } else {
                                 GetLocations("dropLocations");
                                 $('.stm_same_return').slideDown();
@@ -400,6 +401,14 @@
                             if (error) {
                                 e.preventDefault();
                             }
+                            var obj = {
+                                pickupLocNo: $('#startLocations option').filter(':selected').val(),
+                                pickupDate: startDate,
+                                returnLocNo: $('input[name="return_same"]').prop('checked') == true ? $('#startLocations option').filter(':selected').val(): $('#dropLocations option').filter(':selected').val(),
+                                returnDate: endDate,
+                                language:"TR"
+                            };
+                            GetCapacities(obj);
                         });
 
                         $('.stm-template-car_rental .stm_rent_order_info .image.image-placeholder a').on('click', function (e) {
@@ -450,6 +459,26 @@
                     type: "POST",
                     url: "@Url.Action("GetLocations", "Reservation")",
                     dataType: "json",
+                    cache: false,
+                         success: function (retval) {
+                        for (var i = 0; i < retval.length; i++) {
+                            var o = new Option(retval[i].cityName, retval[i].locNo);
+                            /// jquerify the DOM object 'o' so we can use the html method
+                            $(o).html(retval[i].cityName);
+                            $("#"+locations+'').append(o);
+                        }
+                    },
+                    error: function () {
+                        alert("Error figen");
+                    }
+                });
+                }
+                 function GetCapacities(obj) {
+                    $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GetCapacities", "Reservation")",
+                    dataType: "json",
+                    data: { dto: obj },
                     cache: false,
                          success: function (retval) {
                         for (var i = 0; i < retval.length; i++) {

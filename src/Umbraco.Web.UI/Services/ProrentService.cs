@@ -208,9 +208,8 @@ namespace Umbraco.Web.UI.Services
                 var response = client.Capacities(capacitiesRequest);
                 result = response.Adapt<CapacitiesResponseModel[]>();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
                 throw;
             }
             return result;

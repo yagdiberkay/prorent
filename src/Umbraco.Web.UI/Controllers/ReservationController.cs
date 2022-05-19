@@ -75,15 +75,11 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        public ActionResult GetCapacities(CapacitiesRequestDto dto)
+        public string GetCapacities(CapacitiesRequestDto dto)
         {
-            if (ModelState.IsValid)
-            {
-                var model = dto.Adapt<CapacitiesRequestModel>();
-                CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
-                return RedirectToCurrentUmbracoPage();
-            }
-            return CurrentUmbracoPage();
+            var model = dto.Adapt<CapacitiesRequestModel>();
+            CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
+            return JsonConvert.SerializeObject(resultModel);
         }
         [HttpPost]
         public ActionResult GetVehicleTypeDetails(VehicleTypeDetailsRequestDto dto)

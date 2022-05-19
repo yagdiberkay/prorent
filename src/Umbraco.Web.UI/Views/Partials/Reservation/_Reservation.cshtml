@@ -86,4 +86,32 @@
         </div>
     </div>
 </div>
+<script>
+    (function ($) {
+        "use strict";
+        $(document).ready(function () {
+        });
+    })(jQuery);
+
+                function GetCapacities(obj) {
+                    $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GetCapacities", "Reservation")",
+                    dataType: "json",
+                    data: { dto: obj },
+                    cache: false,
+                         success: function (retval) {
+                        for (var i = 0; i < retval.length; i++) {
+                            var o = new Option(retval[i].cityName, retval[i].locationCode);
+                            /// jquerify the DOM object 'o' so we can use the html method
+                            $(o).html(retval[i].cityName);
+                            $("#"+locations+'').append(o);
+                        }
+                    },
+                    error: function () {
+                        alert("Error figen");
+                    }
+                });
+                }
+</script>
 
