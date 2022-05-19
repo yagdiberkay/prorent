@@ -25,10 +25,6 @@ namespace Umbraco.Web.UI.Controllers
         {
             return View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml");
         }
-        public ActionResult RenderContactForm()
-        {
-            return View(PARTIAL_VIEW_FOLDER + "_ContactForm.cshtml");
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
