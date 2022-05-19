@@ -3485,6 +3485,7 @@
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\Term.cshtml" />
     <Content Include="Views\Partials\Reservation\_ContactForm.cshtml" />
+    <Content Include="Views\Checkout.cshtml" />
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>
