@@ -84,6 +84,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_Plugins\" />
     <Folder Include="Umbraco\asset\img\motors\images\icons\credit-cards\" />
+    <Folder Include="Views\Contact\" />
     <Folder Include="Views\MacroPartials\" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +159,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Dto\AddressDto.cs" />
     <Compile Include="Dto\CampaignsRequestDto.cs" />
@@ -194,6 +196,7 @@
     <Compile Include="Models\CapacitiesResponseModel.cs" />
     <Compile Include="Models\CapacityCountModel.cs" />
     <Compile Include="Models\CitiesResponseModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CountriesResponseModel.cs" />
     <Compile Include="Models\CurrenciesResponseModel.cs" />
     <Compile Include="Models\ExtraProductsRequestModel.cs" />
@@ -3482,6 +3485,7 @@
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\Term.cshtml" />
     <Content Include="Views\Partials\Reservation\_ContactForm.cshtml" />
+    <Content Include="Views\Checkout.cshtml" />
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>
