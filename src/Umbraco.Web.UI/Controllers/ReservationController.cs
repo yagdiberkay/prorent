@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
@@ -38,20 +39,17 @@ namespace Umbraco.Web.UI.Controllers
             }
             return CurrentUmbracoPage();
         }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult GetLocations(LocationsRequestDto dto)
+        public string GetLocations()
         {
-            if (ModelState.IsValid)
-            {
-                var model = dto.Adapt<LocationsRequestModel>();
-                LocationsResponseDto[] resultModel = _prorentService.GetLocations(model).Adapt<LocationsResponseDto[]>();
-                return RedirectToCurrentUmbracoPage();
-            }
-            return CurrentUmbracoPage();
+            LocationsRequestDto dto = new LocationsRequestDto();
+            dto.language = "TR";
+            var model = dto.Adapt<LocationsRequestModel>();
+            LocationsResponseDto[] resultModel = _prorentService.GetLocations(model).Adapt<LocationsResponseDto[]>();
+            return JsonConvert.SerializeObject(resultModel);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult GetCampaigns(CampaignsRequestDto dto)
         {
             if (ModelState.IsValid)
@@ -63,7 +61,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult GetTariffs()
         {
             if (ModelState.IsValid)
@@ -74,7 +71,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult GetCapacities(CapacitiesRequestDto dto)
         {
             if (ModelState.IsValid)
@@ -86,7 +82,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult GetVehicleTypeDetails(VehicleTypeDetailsRequestDto dto)
         {
             if (ModelState.IsValid)
@@ -98,7 +93,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult GetExtraProducts(ExtraProductsRequestDto dto)
         {
             if (ModelState.IsValid)
@@ -110,7 +104,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult GetReservationSources()
         {
             if (ModelState.IsValid)
@@ -121,7 +114,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult GetPaymentTypes(string language)
         {
             if (ModelState.IsValid)
@@ -132,7 +124,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult SendBankTransaction(SendBankTransactionRequestDto dto)
         {
             if (ModelState.IsValid)
@@ -145,7 +136,6 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult SendMailOnReservationInsert(SendMailOnReservationInsertRequestDto dto)
         {
             if (ModelState.IsValid)

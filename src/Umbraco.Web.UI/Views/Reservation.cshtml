@@ -11,47 +11,7 @@
 
 @* the fun starts here *@
 
-<div class="stm-fullwidth-with-parallax-bg">
-    <div class="container">
-        <div class="stm_wizard_title heading-font">
-            Reservation
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-12">
-                @{ Html.RenderAction("RenderReservationDateForm", "Reservation");}
-            </div>
-            <div class="col-md-4 col-sm-12">
-                @{ Html.RenderAction("RenderReservationForm", "Reservation");}
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <div class="stm_nav_wizard_step stm_nav_wizard_step_3">
-
-                    <div class="inner ">
-                        <a href="../checkout/index.html" class="top heading-font external" rel="nofollow">
-                            <div class="number">
-                                <span>3</span>
-                            </div>
-                            <label>Reserve Your Vehicle</label>
-                        </a>
-                        <div class="content">
-                            <div class="first">
-                                <h5>Your information</h5>
-                                <div>--</div>
-                            </div>
-                            <div class="second">
-                                <h5>Payment information</h5>
-                                <div>
-                                    --
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+@{ Html.RenderAction("RenderReservationForm", "Reservation");}
 <div class="stm-reservation-archive">
     <div class="container">
         <div class="row">
