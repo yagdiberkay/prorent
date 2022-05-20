@@ -25,59 +25,56 @@
         <div class="wpb_wrapper">
             <div class="stm_rent_car_form_wrapper style_1 text-right ">
                 <div class="stm_rent_car_form">
-                    <form>
 
-                        <h4>KİRALAMA BİLGİLERİ</h4>
-                        <div class="stm_rent_form_fields">
-                            <h4 class="stm_form_title">Place to pick up the Car*</h4>
-                            <div class="stm_pickup_location">
+                    <h4>KİRALAMA BİLGİLERİ</h4>
+                    <div class="stm_rent_form_fields">
+                        <h4 class="stm_form_title">Place to pick up the Car*</h4>
+                        <div class="stm_pickup_location">
+                            <i class="stm-service-icon-pin"></i>
+                            <select name="pickup_location" data-class="stm_rent_location" id="startLocations">
+                                <option value="">Ofis Seçiniz</option>
+                            </select>
+                        </div>
+                        <label>
+                            <input type="checkbox" name="return_same" checked />
+                            Aynı lokasyona döneceğim
+                        </label>
+                        <div class="stm_date_time_input">
+                            <h4 class="stm_form_title">Kiralama Tarihi*</h4>
+                            <div class="stm_date_input">
+                                <input type="text" value="" class="stm-date-timepicker-start" name="pickup_date" placeholder="Kiralama Tarihi" required readonly />
+                                <i class="stm-icon-date"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>TESLİMAT BİLGİLERİ</h4>
+                    <div class="stm_rent_form_fields stm_rent_form_fields-drop">
+                        <div class="stm_same_return ">
+                            <h4 class="stm_form_title">Teslimat Yeri*</h4>
+                            <div class="stm_pickup_location stm_drop_location">
                                 <i class="stm-service-icon-pin"></i>
-                                <select name="pickup_location" data-class="stm_rent_location" id="startLocations">
-                                    <option value="">Ofis Seçiniz</option>
+                                <select name="drop_location" data-class="stm_rent_location" id="dropLocations">
+                                    <option value="">Teslimat Yeri</option>
                                 </select>
-                            </div>
-                            <label>
-                                <input type="checkbox" name="return_same" checked />
-                                Aynı lokasyona döneceğim
-                            </label>
-                            <div class="stm_date_time_input">
-                                <h4 class="stm_form_title">Kiralama Tarihi*</h4>
-                                <div class="stm_date_input">
-                                    <input type="text" value="" class="stm-date-timepicker-start" name="pickup_date" placeholder="Kiralama Tarihi" required readonly />
-                                    <i class="stm-icon-date"></i>
-                                </div>
+
                             </div>
                         </div>
-
-                        <h4>TESLİMAT BİLGİLERİ</h4>
-                        <div class="stm_rent_form_fields stm_rent_form_fields-drop">
-                            <div class="stm_same_return ">
-                                <h4 class="stm_form_title">Teslimat Yeri*</h4>
-                                <div class="stm_pickup_location stm_drop_location">
-                                    <i class="stm-service-icon-pin"></i>
-                                    <select name="drop_location" data-class="stm_rent_location" id="dropLocations">
-                                        <option value="">Teslimat Yeri</option>
-                                    </select>
-
-                                </div>
-                            </div>
-                            <div class="stm_date_time_input">
-                                <h4 class="stm_form_title">Teslimat Tarihi*</h4>
-                                <div class="stm_date_input">
-                                    <input type="text" class="stm-date-timepicker-end" name="return_date" value="" placeholder="Teslimat Tarihi" required readonly />
-                                    <i class="stm-icon-date"></i>
-                                </div>
+                        <div class="stm_date_time_input">
+                            <h4 class="stm_form_title">Teslimat Tarihi*</h4>
+                            <div class="stm_date_input">
+                                <input type="text" class="stm-date-timepicker-end" name="return_date" value="" placeholder="Teslimat Tarihi" required readonly />
+                                <i class="stm-icon-date"></i>
                             </div>
                         </div>
-                        <input type="hidden" name="order_old_days" value="1" />
-                        <div class="form-btn-wrap">
-                            <button type="submit">
-                                Araçları Lİstele<i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
+                    </div>
+                    <input type="hidden" name="order_old_days" value="1" />
+                    <div class="form-btn-wrap">
+                        <button type="submit" class="redirectSubmit">
+                            Araçları Lİstele<i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
 
-
-                    </form>
                 </div>
             </div>
 
@@ -335,11 +332,8 @@
                         });
 
                         /*Set cookie with order data*/
-                        $('.stm_rent_car_form form').on('submit', function (e) {
+                        $('.redirectSubmit').click(function (e) {
                             var error = false;
-
-
-
                             $('.stm_pickup_location').removeClass('stm_error');
 
                             /*Save in cookies all fields*/
@@ -410,8 +404,8 @@
                                 tariffNos:[380],
                                 language:"TR"
                             };
+                            window.location.href = `umbraco/Surface/Reservation/Reservation?pickupLocNo=${JSON.stringify(obj)}`;
 
-                            GetCapacities(obj);
                         });
 
                         $('.stm-template-car_rental .stm_rent_order_info .image.image-placeholder a').on('click', function (e) {
@@ -475,22 +469,8 @@
                     }
                 });
                 }
-                function GetCapacities(obj) {
-                    $.ajax({
-                    type: "POST",
-                    url: "@Url.Action("GetCapacities", "Reservation")",
-                    dataType: "json",
-                    data: { dto: obj },
-                    cache: false,
-                        success: function (retval) {
-                                window.location.href = "/reservation?"+retval;
-                    },
-                    error: function () {
-                        alert("Error figen");
-                    }
-                });
-                }
-            </script>
+
+            </script>W
         </div>
     </div>
 </div>

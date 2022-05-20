@@ -1,7 +1,5 @@
 ﻿using Mapster;
 using Newtonsoft.Json;
-using System.Linq;
-using System.Net.Mail;
 using System.Web.Mvc;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.UI.Dto;
@@ -22,9 +20,9 @@ namespace Umbraco.Web.UI.Controllers
         {
             return View(PARTIAL_VIEW_FOLDER + "_ReservationDate.cshtml");
         }
-        public ActionResult RenderReservationForm()
+        public  ActionResult RenderReservationForm(CapacitiesResponseDto[] resultModel)
         {
-            return View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml");
+            return  View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml",resultModel);
         }
 
         [HttpPost]
@@ -70,10 +68,17 @@ namespace Umbraco.Web.UI.Controllers
             }
             return CurrentUmbracoPage();
         }
+        [HttpGet]
+        public ActionResult Reservation(string pickupLocNo)
+        {
+            var t = JsonConvert.DeserializeObject<CapacitiesRequestDto>(pickupLocNo);
+            var model = t.Adapt<CapacitiesRequestModel>();
+            CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
+            return View(resultModel);
+        }
         [HttpPost]
         public string GetCapacities(CapacitiesRequestDto dto)
         {
-            ViewBag.CapacitiesModel = dto;
             var model = dto.Adapt<CapacitiesRequestModel>();
             CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
             return JsonConvert.SerializeObject(resultModel);

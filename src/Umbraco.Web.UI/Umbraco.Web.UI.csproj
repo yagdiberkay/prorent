@@ -3419,7 +3419,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Views\Partials\Reservation\_Reservation.cshtml" />
-    <Content Include="Views\Reservation.cshtml" />
+    <Content Include="Views\Reservation\Reservation.cshtml" />
     <Content Include="Views\Partials\Reservation\_ReservationDate.cshtml" />
     <Content Include="Umbraco\asset\img\motors\fonts\vcpb-plugin-icons.eot" />
     <Content Include="Umbraco\asset\img\motors\fonts\vcpb-plugin-icons.ttf" />
@@ -3486,6 +3486,7 @@
     <Content Include="Views\Term.cshtml" />
     <Content Include="Views\Partials\Reservation\_ContactForm.cshtml" />
     <Content Include="Views\Checkout.cshtml" />
+    <Content Include="Views\Reservation\Index.cshtml" />
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>
