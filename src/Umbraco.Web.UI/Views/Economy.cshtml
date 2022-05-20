@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    Layout = "Master.cshtml";
+}
+
+<div class="container">
+    @*@{ Html.RenderAction("RenderForm", "Reservation");}*@
+
+</div>
+
+@* the fun starts here *@
+
+@{ Html.RenderAction("RenderEconomyForm", "Reservation");}

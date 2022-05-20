@@ -1,0 +1,712 @@
+﻿@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+}
+
+<div class="stm-template-car_rental single-product woocommerce">
+    <div class="stm-fullwidth-with-parallax-bg">
+        <div class="container">
+            <div class="stm_wizard_title heading-font">
+                Reservation
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="stm_nav_wizard_step stm_nav_wizard_step_1">
+
+                        <div class="inner ">
+                            <a href="../../date-reservation/index.html" class="top heading-font external" rel="nofollow">
+                                <div class="number">
+                                    <span>1</span>
+                                </div>
+                                <label>Your Itinerary</label>
+                            </a>
+                            <div class="content">
+                                <div class="first">
+                                    <h5>Pick up</h5>
+                                    <div class="stm_filled_pickup_location">--</div>
+                                    <div class="stm_filled_pickup_date">--</div>
+                                </div>
+                                <div class="second">
+                                    <h5 class="second">Drop off</h5>
+                                    <div class="stm_filled_return_location">--</div>
+                                    <div class="stm_filled_return_date">--</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="stm_nav_wizard_step stm_nav_wizard_step_2">
+
+                        <div class="inner current passed">
+                            <a href="../../reservation/index.html" class="top heading-font external" rel="nofollow">
+                                <div class="number">
+                                    <span>2</span>
+                                </div>
+                                <label>Select Vehicle/Add-ons</label>
+                            </a>
+                            <div class="content">
+                                <div class="first">
+                                    <h5>Standart Type</h5>
+                                    <div>BMW 3 Series Sedan or Similar</div>
+                                </div>
+                                <div class="second">
+                                    <a class="h5 external" href="../standart/index.html" rel="nofollow">Addons</a>
+                                    <div>Loss damage waiver, Handicap controls, Super Protective Insurance, Additional Driver, Navigation System, Child Seat</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="stm_nav_wizard_step stm_nav_wizard_step_3">
+
+                        <div class="inner ">
+                            <a href="../../checkout/index.html" class="top heading-font external" rel="nofollow">
+                                <div class="number">
+                                    <span>3</span>
+                                </div>
+                                <label>Reserve Your Vehicle</label>
+                            </a>
+                            <div class="content">
+                                <div class="first">
+                                    <h5>Your information</h5>
+                                    <div>--</div>
+                                </div>
+                                <div class="second">
+                                    <h5>Payment information</h5>
+                                    <div>
+                                        --
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stm-reservation-archive">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div id="rent_notice">
+                    </div>
+                    <div class="row stm_rental_archive_top">
+                        <div class="col-md-7 col-sm-7">
+                            <h2 class="title">
+                                Vehicle Add-ons
+                            </h2>
+                        </div>
+                        <div class="col-md-5 col-sm-5">
+                            <div class="stm_rental_coupon">
+                                <form class="stm_checkout_coupon" method="post">
+
+                                    <p class="form-row form-row-first">
+                                        <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code" id="coupon_code" value="" />
+                                    </p>
+
+                                    <p class="form-row form-row-last">
+                                        <input type="submit" class="button" name="apply_coupon" value="Apply coupon" />
+                                    </p>
+
+                                    <div class="clear"></div>
+                                </form>
+                            </div>
+
+                            <script>
+                                (function ($) {
+                                    $(document).ready(function () {
+                                        var $coupon = $('.stm_checkout_coupon .input-text');
+                                        $coupon.on('focus', function () {
+                                            $('.stm_checkout_coupon').addClass('active');
+                                        });
+
+                                        $coupon.on('focusout', function () {
+                                            $('.stm_checkout_coupon').removeClass('active');
+                                        })
+                                    });
+                                })(jQuery)
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="stm_rental_options_archive">
+                                <div class="stm_rental_option">
+                                    <div class="image">
+                                        <img width="1" height="1" src="assets/img/uploads/waiver.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
+                                    </div>
+                                    <div class="stm_rental_option_content">
+                                        <div class="content">
+                                            <div class="title">
+                                                <h4>Loss damage waiver</h4>
+                                            </div>
+                                            <div class="stm-more">
+                                                <a href="#">
+                                                    <span>More information</span>
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="meta">
+                                            <div class="price">
+                                                <div class="empty_sale_price"></div>
+                                                <div class="current_price heading-font">
+                                                </div>
+                                            </div>
+
+                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
+                                                <a href="index98d0.html?remove-from-cart=208">
+                                                    <span class="add_text">Added</span>
+                                                    <span class="remove_text">Remove</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="more">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
+                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="stm_rental_options_archive">
+                                <div class="stm_rental_option">
+                                    <div class="image">
+                                        <img width="1" height="1" src="assets/img/uploads/handicap.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
+                                    </div>
+                                    <div class="stm_rental_option_content">
+                                        <div class="content">
+                                            <div class="title">
+                                                <h4>Handicap controls</h4>
+                                            </div>
+                                            <div class="stm-more">
+                                                <a href="#">
+                                                    <span>More information</span>
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="meta">
+                                            <div class="price">
+                                                <div class="empty_sale_price"></div>
+                                                <div class="current_price heading-font">
+                                                </div>
+                                            </div>
+
+                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
+                                                <a href="index33d8.html?remove-from-cart=207">
+                                                    <span class="add_text">Added</span>
+                                                    <span class="remove_text">Remove</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="more">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
+                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="stm_rental_options_archive">
+                                <div class="stm_rental_option">
+                                    <div class="image">
+                                        <img width="1" height="1" src="assets/img/uploads/insurance.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
+                                    </div>
+                                    <div class="stm_rental_option_content">
+                                        <div class="content">
+                                            <div class="title">
+                                                <h4>Super Protective Insurance</h4>
+                                            </div>
+                                            <div class="stm-more">
+                                                <a href="#">
+                                                    <span>More information</span>
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="meta">
+                                            <div class="price">
+                                                <div class="sale_price"></div>
+                                                <div class="current_price heading-font">
+                                                </div>
+                                            </div>
+
+                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
+                                                <a href="index9dc4.html?remove-from-cart=204">
+                                                    <span class="add_text">Added</span>
+                                                    <span class="remove_text">Remove</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="more">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
+                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="stm_rental_options_archive">
+                                <div class="stm_rental_option">
+                                    <div class="image">
+                                        <img width="1" height="1" src="assets/img/uploads/driver.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
+                                    </div>
+                                    <div class="stm_rental_option_content">
+                                        <div class="content">
+                                            <div class="title">
+                                                <h4>Additional Driver</h4>
+                                            </div>
+                                            <div class="stm-more">
+                                                <a href="#">
+                                                    <span>More information</span>
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="meta">
+                                            <div class="quantity">
+                                                <input type="text" step="1" min="0" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
+                                                <div class="quantity_actions">
+                                                    <span class="plus">+</span>
+                                                    <span class="minus">-</span>
+                                                </div>
+                                            </div>
+                                            <div class="price">
+                                                <div class="empty_sale_price"></div>
+                                                <div class="current_price heading-font">
+                                                </div>
+                                            </div>
+
+                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-yes">
+                                                <a href="indexd677.html?remove-from-cart=203">
+                                                    <span class="add_text">Added</span>
+                                                    <span class="remove_text">Remove</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="more">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
+                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="stm_rental_options_archive">
+                                <div class="stm_rental_option">
+                                    <div class="image">
+                                        <img width="1" height="1" src="assets/img/uploads/wifi.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
+                                    </div>
+                                    <div class="stm_rental_option_content">
+                                        <div class="content">
+                                            <div class="title">
+                                                <h4>Navigation System</h4>
+                                            </div>
+                                            <div class="stm-more">
+                                                <a href="#">
+                                                    <span>More information</span>
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="meta">
+                                            <div class="price">
+                                                <div class="empty_sale_price"></div>
+                                                <div class="current_price heading-font">
+                                                </div>
+                                            </div>
+
+                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
+                                                <a href="index40cd.html?remove-from-cart=200">
+                                                    <span class="add_text">Added</span>
+                                                    <span class="remove_text">Remove</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="more">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
+                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="stm_rental_options_archive">
+                                <div class="stm_rental_option">
+                                    <div class="image">
+                                        <img width="1" height="1" src="assets/img/uploads/opt.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
+                                    </div>
+                                    <div class="stm_rental_option_content">
+                                        <div class="content">
+                                            <div class="title">
+                                                <h4>Child Seat</h4>
+                                            </div>
+                                            <div class="stm-more">
+                                                <a href="#">
+                                                    <span>More information</span>
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="meta">
+                                            <div class="quantity">
+                                                <input type="text" step="1" min="0" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
+                                                <div class="quantity_actions">
+                                                    <span class="plus">+</span>
+                                                    <span class="minus">-</span>
+                                                </div>
+                                            </div>
+                                            <div class="price">
+                                                <div class="sale_price"></div>
+                                                <div class="current_price heading-font">
+                                                </div>
+                                            </div>
+
+                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-yes">
+                                                <a href="index4411.html?remove-from-cart=191">
+                                                    <span class="add_text">Added</span>
+                                                    <span class="remove_text">Remove</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="more">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
+                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <script>
+                                jQuery(document).ready(function () {
+                                    var $ = jQuery;
+                                    $('.stm-manage-stock-yes a').on('click', function (e) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        var stmHref = $(this).attr('href');
+                                        var quantityValue = $(this).closest('.meta').find('.qty').val();
+                                        var quantity = '&quantity=' + quantityValue;
+                                        stmHref += quantity;
+                                        window.location.href = stmHref;
+                                    });
+                                })
+                            </script>
+                        </div>
+                        <div class="col-md-5">
+
+                            <div class="stm_rent_order_info">
+
+                                <div class="title">
+                                    <h4>Standart</h4>
+                                    <div class="subtitle heading-font">BMW 3 Series Sedan or Similar</div>
+                                </div>
+                                <div class="image">
+                                    <img src="assets/img/uploads/stand-1-300x181.png" />
+                                </div>
+
+                                <!--Car rent-->
+                                <div class="stm_rent_table">
+                                    <div class="heading heading-font">
+                                        <h4>Rate</h4>
+                                    </div>
+                                    <table>
+                                        <thead class="heading-font">
+                                            <tr>
+                                                <td>QTY</td>
+                                                <td>Rate</td>
+                                                <td>Subtotal</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <!--FIXED PRICE-->
+                                            <tr>
+                                                <td>1 Days</td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>280</bdi>
+                                                    </span> <span class="price-date-info-icon">
+                                                        <i class="fas fa-info-circle"></i>
+                                                        <div class="price-date-info-popup">
+                                                            <ul>
+
+
+                                                                <li class="padd-10">Per Hour:</li>
+                                                                <li>
+                                                                    <b>
+                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>34</span>
+                                                                    </b> Per hour
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>280</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="heading-font">
+                                            <tr>
+                                                <td colspan="2">Rental Charges Rate</td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>280</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <!--Add-ons-->
+                                <div class="stm_rent_table">
+                                    <div class="heading heading-font">
+                                        <h4>Add-ons</h4>
+                                    </div>
+                                    <table>
+                                        <thead class="heading-font">
+                                            <tr>
+                                                <td>QTY</td>
+                                                <td>Rate</td>
+                                                <td>Subtotal</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    1 x Loss damage waiver for day(s)
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    1 x Handicap controls for day(s)
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0</bdi>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    1 x Super Protective Insurance for day(s)
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>20</bdi>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>20</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    1 x Additional Driver for day(s)
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>5</bdi>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>5</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    1 x Navigation System for day(s)
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    1 x Child Seat for day(s)
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>6</bdi>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>6</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="heading-font">
+                                            <tr>
+                                                <td colspan="2">Add-ons Charges Rate</td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>53</bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <div class="stm_rent_table stm_rent_tax_table">
+                                    <div class="heading heading-font">
+                                        <h4>
+                                            Taxes &amp; Fees
+                                        </h4>
+                                    </div>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr class="cart-tax tax-car-rental-sales-tax-1-1">
+                                                <td>Car Rental Sales Tax (1%)</td>
+                                                <td>&nbsp;</td>
+                                                <td>&#36;3</td>
+                                            </tr>
+                                            <tr class="cart-tax tax-sales-tax-2-2">
+                                                <td>Sales Tax (2%)</td>
+                                                <td>&nbsp;</td>
+                                                <td>&#36;5</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="stm-rent-total heading-font">
+                                    <table>
+                                        <tr>
+                                            <td>Estimated total</td>
+                                            <td>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>331</bdi>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="stm_rent_accept_wrapper">
+                                    <a href="../../checkout/index.html" class="stm_rent_accept heading-font external" rel="nofollow">Continue</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        jQuery(document).ready(function () {
+                            //window.history.pushState('', '', 'index.html');
+                        });
+                    </script>
+                </div>
+
+            </div>
+            <!--row-->
+        </div>
+        <!--container-->
+
+
+    </div>
