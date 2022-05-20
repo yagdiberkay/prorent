@@ -25,6 +25,16 @@ namespace Umbraco.Web.UI.Controllers
             return  View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml",resultModel);
         }
 
+        public ActionResult RenderEconomyForm()
+        {
+            return View(PARTIAL_VIEW_FOLDER + "_Economy.cshtml");
+        }
+
+        public ActionResult RenderCheckoutForm()
+        {
+            return View(PARTIAL_VIEW_FOLDER + "_Checkout.cshtml");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult InsertReservation(ReservationRequestDto dto)
