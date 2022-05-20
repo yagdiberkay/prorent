@@ -1,8 +1,10 @@
-﻿@inherits UmbracoViewPage<Umbraco.Web.UI.Dto.CapacitiesResponseDto[]>
+﻿@using Umbraco.Web.UI.Controllers;
+@inherits UmbracoViewPage<Umbraco.Web.UI.Dto.CapacitiesResponseDto[]>
 @{
-    Layout = "~/Views/Master.cshtml";
+//Layout = "~/Views/Master.cshtml";
 }
-@if (Model != null) { 
+@if (Model != null)
+{
     foreach (var item in Model)
     {
         <div class="stm-fullwidth-with-parallax-bg">
@@ -84,16 +86,10 @@
                             </div>
                         </div>
                     </div>
-                </div>}
+                </div>
             </div>
         </div>
     }
 }
-<script>
-    (function ($) {
-        "use strict";
-        $(document).ready(function () {
-        });
-    })(jQuery);
-</script>
+
 

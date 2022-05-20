@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using Newtonsoft.Json;
 using System.Web.Mvc;
+using Umbraco.Core.Services;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.UI.Dto;
 using Umbraco.Web.UI.Models;
@@ -20,7 +21,7 @@ namespace Umbraco.Web.UI.Controllers
         {
             return View(PARTIAL_VIEW_FOLDER + "_ReservationDate.cshtml");
         }
-        public  ActionResult RenderReservationForm(CapacitiesResponseDto[] resultModel)
+        public  ActionResult RenderReservationForm(object resultModel)
         {
             return  View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml",resultModel);
         }

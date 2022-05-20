@@ -3486,7 +3486,6 @@
     <Content Include="Views\Term.cshtml" />
     <Content Include="Views\Partials\Reservation\_ContactForm.cshtml" />
     <Content Include="Views\Checkout.cshtml" />
-    <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Economy.cshtml" />
     <Content Include="Views\Partials\Reservation\_Economy.cshtml" />
     <Content Include="Views\Partials\Reservation\_Checkout.cshtml" />
