@@ -1,8 +1,8 @@
-﻿@using ContentModels = Umbraco.Web.PublishedModels;
+﻿@using Umbraco.Web.UI.Controllers;
+@inherits UmbracoViewPage<Umbraco.Web.UI.Dto.ExtraProductsResponseDto[]>
 @{
     Layout = null;
 }
-
 <div class="stm-template-car_rental single-product woocommerce">
     <div class="stm-fullwidth-with-parallax-bg">
         <div class="container">
@@ -134,289 +134,53 @@
                     </div>
                     <div class="row">
                         <div class="col-md-7">
-                            <div class="stm_rental_options_archive">
-                                <div class="stm_rental_option">
-                                    <div class="image">
-                                        <img width="1" height="1" src="assets/img/uploads/waiver.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
-                                    </div>
-                                    <div class="stm_rental_option_content">
-                                        <div class="content">
-                                            <div class="title">
-                                                <h4>Loss damage waiver</h4>
-                                            </div>
-                                            <div class="stm-more">
-                                                <a href="#">
-                                                    <span>More information</span>
-                                                    <i class="fas fa-angle-down"></i>
-                                                </a>
-                                            </div>
+                            @foreach (var item in Model)
+                            {
+                                <div class="stm_rental_options_archive">
+                                    <div class="stm_rental_option">
+                                        <div class="image">
+                                            <img width="1" height="1" src="assets/img/uploads/waiver.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
                                         </div>
-                                        <div class="meta">
-                                            <div class="price">
-                                                <div class="empty_sale_price"></div>
-                                                <div class="current_price heading-font">
+                                        <div class="stm_rental_option_content">
+                                            <div class="content">
+                                                <div class="title" id="@item.productNo">
+                                                    <h4>@item.productName</h4>
+                                                </div>
+                                                <div class="stm-more">
+                                                    <a href="#">
+                                                        <span>More information</span>
+                                                        <i class="fas fa-angle-down"></i>
+                                                    </a>
                                                 </div>
                                             </div>
+                                            <div class="meta">
+                                                <div class="price">
+                                                    <div class="empty_sale_price"></div>
+                                                    <div class="current_price heading-font">
+                                                    </div>
+                                                </div>
 
-                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
-                                                <a href="index98d0.html?remove-from-cart=208">
-                                                    <span class="add_text">Added</span>
-                                                    <span class="remove_text">Remove</span>
-                                                </a>
+                                                <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
+                                                    <a href="index98d0.html?remove-from-cart=208">
+                                                        <span class="add_text">Added</span>
+                                                        <span class="remove_text">Remove</span>
+                                                    </a>
+                                                </div>
+
+
                                             </div>
 
+                                            <div class="clearfix"></div>
 
+                                            <div class="more">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
+                                                Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
+                                            </div>
                                         </div>
 
-                                        <div class="clearfix"></div>
-
-                                        <div class="more">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
-                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
-                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
-
-                            <div class="stm_rental_options_archive">
-                                <div class="stm_rental_option">
-                                    <div class="image">
-                                        <img width="1" height="1" src="assets/img/uploads/handicap.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
-                                    </div>
-                                    <div class="stm_rental_option_content">
-                                        <div class="content">
-                                            <div class="title">
-                                                <h4>Handicap controls</h4>
-                                            </div>
-                                            <div class="stm-more">
-                                                <a href="#">
-                                                    <span>More information</span>
-                                                    <i class="fas fa-angle-down"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="meta">
-                                            <div class="price">
-                                                <div class="empty_sale_price"></div>
-                                                <div class="current_price heading-font">
-                                                </div>
-                                            </div>
-
-                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
-                                                <a href="index33d8.html?remove-from-cart=207">
-                                                    <span class="add_text">Added</span>
-                                                    <span class="remove_text">Remove</span>
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="clearfix"></div>
-
-                                        <div class="more">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
-                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="stm_rental_options_archive">
-                                <div class="stm_rental_option">
-                                    <div class="image">
-                                        <img width="1" height="1" src="assets/img/uploads/insurance.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
-                                    </div>
-                                    <div class="stm_rental_option_content">
-                                        <div class="content">
-                                            <div class="title">
-                                                <h4>Super Protective Insurance</h4>
-                                            </div>
-                                            <div class="stm-more">
-                                                <a href="#">
-                                                    <span>More information</span>
-                                                    <i class="fas fa-angle-down"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="meta">
-                                            <div class="price">
-                                                <div class="sale_price"></div>
-                                                <div class="current_price heading-font">
-                                                </div>
-                                            </div>
-
-                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
-                                                <a href="index9dc4.html?remove-from-cart=204">
-                                                    <span class="add_text">Added</span>
-                                                    <span class="remove_text">Remove</span>
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="clearfix"></div>
-
-                                        <div class="more">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
-                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="stm_rental_options_archive">
-                                <div class="stm_rental_option">
-                                    <div class="image">
-                                        <img width="1" height="1" src="assets/img/uploads/driver.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
-                                    </div>
-                                    <div class="stm_rental_option_content">
-                                        <div class="content">
-                                            <div class="title">
-                                                <h4>Additional Driver</h4>
-                                            </div>
-                                            <div class="stm-more">
-                                                <a href="#">
-                                                    <span>More information</span>
-                                                    <i class="fas fa-angle-down"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="meta">
-                                            <div class="quantity">
-                                                <input type="text" step="1" min="0" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
-                                                <div class="quantity_actions">
-                                                    <span class="plus">+</span>
-                                                    <span class="minus">-</span>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <div class="empty_sale_price"></div>
-                                                <div class="current_price heading-font">
-                                                </div>
-                                            </div>
-
-                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-yes">
-                                                <a href="indexd677.html?remove-from-cart=203">
-                                                    <span class="add_text">Added</span>
-                                                    <span class="remove_text">Remove</span>
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="clearfix"></div>
-
-                                        <div class="more">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
-                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="stm_rental_options_archive">
-                                <div class="stm_rental_option">
-                                    <div class="image">
-                                        <img width="1" height="1" src="assets/img/uploads/wifi.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
-                                    </div>
-                                    <div class="stm_rental_option_content">
-                                        <div class="content">
-                                            <div class="title">
-                                                <h4>Navigation System</h4>
-                                            </div>
-                                            <div class="stm-more">
-                                                <a href="#">
-                                                    <span>More information</span>
-                                                    <i class="fas fa-angle-down"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="meta">
-                                            <div class="price">
-                                                <div class="empty_sale_price"></div>
-                                                <div class="current_price heading-font">
-                                                </div>
-                                            </div>
-
-                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
-                                                <a href="index40cd.html?remove-from-cart=200">
-                                                    <span class="add_text">Added</span>
-                                                    <span class="remove_text">Remove</span>
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="clearfix"></div>
-
-                                        <div class="more">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
-                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="stm_rental_options_archive">
-                                <div class="stm_rental_option">
-                                    <div class="image">
-                                        <img width="1" height="1" src="assets/img/uploads/opt.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
-                                    </div>
-                                    <div class="stm_rental_option_content">
-                                        <div class="content">
-                                            <div class="title">
-                                                <h4>Child Seat</h4>
-                                            </div>
-                                            <div class="stm-more">
-                                                <a href="#">
-                                                    <span>More information</span>
-                                                    <i class="fas fa-angle-down"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="meta">
-                                            <div class="quantity">
-                                                <input type="text" step="1" min="0" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
-                                                <div class="quantity_actions">
-                                                    <span class="plus">+</span>
-                                                    <span class="minus">-</span>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <div class="sale_price"></div>
-                                                <div class="current_price heading-font">
-                                                </div>
-                                            </div>
-
-                                            <div class="stm-add-to-cart added heading-font stm-manage-stock-yes">
-                                                <a href="index4411.html?remove-from-cart=191">
-                                                    <span class="add_text">Added</span>
-                                                    <span class="remove_text">Remove</span>
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="clearfix"></div>
-
-                                        <div class="more">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales tortor est, dictum pharetra lectus facilisis vitae. Proin sodales nec neque sed posuere. Nulla facilisi. Suspendisse tincidunt quisut sagittis. Sed ullamcorper aliquet magna at accumsan.
-                                            Curabitur fringilla, risus a malesuada mattis, diam quam finibus sapien, sit amet ullamcorper arcu neque a metus. Etiam rutrum orci non ex vehicula, sed egestas metus tristique.
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            }
 
                             <script>
                                 jQuery(document).ready(function () {
@@ -710,3 +474,4 @@
 
 
     </div>
+</div>

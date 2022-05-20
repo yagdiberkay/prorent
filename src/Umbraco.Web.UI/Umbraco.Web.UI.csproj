@@ -85,6 +85,7 @@
     <Folder Include="App_Plugins\" />
     <Folder Include="Umbraco\asset\img\motors\images\icons\credit-cards\" />
     <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Economy\" />
     <Folder Include="Views\MacroPartials\" />
   </ItemGroup>
   <ItemGroup>
@@ -3490,6 +3491,7 @@
     <Content Include="Views\Partials\Reservation\_Economy.cshtml" />
     <Content Include="Views\Partials\Reservation\_Checkout.cshtml" />
     <Content Include="Views\Reservation.cshtml" />
+    <Content Include="Views\Reservation\Economy.cshtml" />
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>

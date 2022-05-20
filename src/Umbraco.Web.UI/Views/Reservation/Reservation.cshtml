@@ -193,12 +193,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" href="../product/economy/index8e85.html?add-to-cart=@item1.typeNo&amp;product_id=@item1.typeNo&amp;variation_id=@item1.typeNo&amp;attribute_payment-method=Pay%20now" rel="nofollow">
+                                                        <a class="heading-font external" onclick="redirectFunction()">
                                                             Pay now
                                                         </a>
                                                     </div>
                                                     <div class="stm_discount">
-                                                        Saves you <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>@item1.</span>
+                                                        Saves you <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -233,6 +233,7 @@
                     }
                     <script>
                         (function ($) {
+                            "use strict";
                             $(document).ready(function () {
                                 var stmHash = window.location.hash;
                                 var headerOffset = 0;
@@ -251,29 +252,19 @@
                         /*        GetCapacities(atob(obj));*/
                             })
                         })(jQuery);
-                         function GetCapacities(obj) {
-                    $.ajax({
-                    type: "POST",
-                    url: "@Url.Action("GetCapacities", "Reservation")",
-                        dataType: "json",
-                        data: { dto: JSON.parse(obj) },
-                    cache: false,
-                        success: function (retval) {
-                            for (var i = 0; i < retval.length; i++) {
-                                for (var j = 0; j < retval[i].vehicleTypes.length; j++) {
-                                  var append = $('.container').append(
-                                        '<div id="product-' + retval[i].locNo + '">');
-                                    $('.container stm_single_class_car').append()
-                                    $(".vehicleType").text(retval[i].vehicleTypes[j].typeFullname);
-                                    $(".wp-post-image").attr('src', retval[i].vehicleTypes[j].img1);
-                                }
+
+                    function redirectFunction() {
+
+
+                            var obj = {
+                            rentalDays: 2,
+                            tariffNos:[@item.tariffs.FirstOrDefault().tariffNo],
+                            campaignNo:@item.campaignNo,
+                            classNo:@item.classNo,
+                            language:"TR"
                             }
-                    },
-                    error: function () {
-                        alert("Error figen");
-                    }
-                });
-                }
+                        window.location.href = `/umbraco/Surface/Reservation/Economy?economyObj=${JSON.stringify(obj)}`;
+                        }
                     </script>
 
                 </div>

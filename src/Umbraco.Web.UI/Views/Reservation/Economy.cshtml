@@ -1,0 +1,27 @@
+﻿
+@using Umbraco.Web.UI.Controllers;
+@inherits UmbracoViewPage<Umbraco.Web.UI.Dto.ExtraProductsResponseDto[]>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+<div class="container">
+    @*@{ Html.RenderAction("RenderForm", "Reservation");}*@
+
+</div>
+
+@* the fun starts here *@
+
+@Html.Partial("~/Views/Partials/Reservation/_Economy.cshtml", Model)
+
+<script>
+                        (function ($) {
+                            "use strict";
+                            $(document).ready(function () {
+                                var stmHash = window.location.hash;
+                                console.log(stmHash);
+                                var obj = window.location.search;
+                                obj = obj.replace('?', '');
+                            })
+                        })(jQuery);
+</script>

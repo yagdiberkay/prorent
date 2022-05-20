@@ -21,9 +21,9 @@ namespace Umbraco.Web.UI.Controllers
         {
             return View(PARTIAL_VIEW_FOLDER + "_ReservationDate.cshtml");
         }
-        public  ActionResult RenderReservationForm(object resultModel)
+        public ActionResult RenderReservationForm(object resultModel)
         {
-            return  View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml",resultModel);
+            return View(PARTIAL_VIEW_FOLDER + "_Reservation.cshtml", resultModel);
         }
 
         public ActionResult RenderEconomyForm()
@@ -80,10 +80,10 @@ namespace Umbraco.Web.UI.Controllers
             return CurrentUmbracoPage();
         }
         [HttpGet]
-        public ActionResult Reservation(string pickupLocNo)
+        public ActionResult Reservation(string obj)
         {
-            var t = JsonConvert.DeserializeObject<CapacitiesRequestDto>(pickupLocNo);
-            var model = t.Adapt<CapacitiesRequestModel>();
+            var reservationDto = JsonConvert.DeserializeObject<CapacitiesRequestDto>(obj);
+            var model = reservationDto.Adapt<CapacitiesRequestModel>();
             CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
             return View(resultModel);
         }
@@ -93,6 +93,14 @@ namespace Umbraco.Web.UI.Controllers
             var model = dto.Adapt<CapacitiesRequestModel>();
             CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
             return JsonConvert.SerializeObject(resultModel);
+        }
+        [HttpGet]
+        public ActionResult Economy(string economyObj)
+        {
+            var economyDto = JsonConvert.DeserializeObject<ExtraProductsRequestDto>(economyObj);
+            var model = economyDto.Adapt<ExtraProductsRequestModel>();
+            ExtraProductsResponseDto[] resultModel = _prorentService.GetExtraProducts(model).Adapt<ExtraProductsResponseDto[]>();
+            return View(resultModel);
         }
         [HttpPost]
         public ActionResult GetVehicleTypeDetails(VehicleTypeDetailsRequestDto dto)
