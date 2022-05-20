@@ -1,4 +1,4 @@
-﻿@using ContentModels = Umbraco.Web.PublishedModels;
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
 @{ Layout = null; }
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
@@ -46,8 +46,7 @@
     <meta name="generator" content="WooCommerce 6.2.1" />
     <link rel='shortlink' href='index.html' />
 
-    <script type="text/javascript">
-        var stm_lang_code = 'en';
+    <script type="text/javascript">var stm_lang_code = 'en';
         var ajaxurl = 'wp-admin/admin-ajax.html';
         var stm_site_blog_id = "7";
         var stm_added_to_compare_text = "Added to compare";
@@ -57,8 +56,7 @@
     <script type="text/javascript">var stm_wpcfto_ajaxurl = 'wp-admin/admin-ajax.html';</script>
 
 
-    <script>
-        var stm_wpcfto_nonces = {
+    <script>var stm_wpcfto_nonces = {
             "wpcfto_save_settings": "04cd610408",
             "get_image_url": "d1244e1c61",
             "wpcfto_upload_file": "a72fcb31fa",
@@ -317,7 +315,6 @@
 
                         <ul class="listing-menu clearfix" style="margin-top: 10px; ">
                             <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-14"><a href="/" aria-current="page" class="external" rel="nofollow">Anasayfa</a></li>
-                            <li id="menu-item-429" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-429"><a href="/reservation" class="external" rel="nofollow">Rezervasyon</a></li>
                             <li id="menu-item-428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-428"><a href="/hakkimizda" class="external" rel="nofollow">Hakkımızda</a></li>
                             <li id="menu-item-355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-355"><a href="/iletisim" class="external" rel="nofollow">İletİşİm</a></li>
                         </ul>
@@ -331,7 +328,6 @@
                         </div> -->
                         <ul class="listing-menu-mobile heading-font clearfix">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-14"><a href="/" aria-current="page" class="external" rel="nofollow">Anasayfa</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-429"><a href="/reservation" class="external" rel="nofollow">Rezervasyon</a></li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362"><a href="/hakkimizda" class="external" rel="nofollow">Hakkımızda</a></li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-355"><a href="/iletisim" class="external" rel="nofollow">İletişim</a></li>
 
@@ -483,7 +479,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
-
+                        
                     </div>
                 </div>
             </div>
@@ -507,144 +503,137 @@
             </div>
         </div>
     </footer>
-
+  
 
     <!-- <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
-    <script type="text/javascript">
-        jQuery('document').ready(function () {
-            // var $ = jQuery;
-            //  var api_url = '/api/prices.json';
+    <script type="text/javascript">jQuery('document').ready(function() {
+        // var $ = jQuery;
+        //  var api_url = '/api/prices.json';
 
-            // $.ajax({
-            //     url: api_url,
-            //     dataType: 'json',
-            //     context: this,
-            //     complete: function(data) {
-            //         var r = data.responseJSON;
-            //         $('.stm_price_api').text(r.themes.motors.price);
-            //     }
-            // });
+        // $.ajax({
+        //     url: api_url,
+        //     dataType: 'json',
+        //     context: this,
+        //     complete: function(data) {
+        //         var r = data.responseJSON;
+        //         $('.stm_price_api').text(r.themes.motors.price);
+        //     }
+        // });
 
 
-            // $('#crypterio-demos').on('click', function() {
-            //     $('#demo_popups').addClass('opened');
-            //     $('body').addClass('fancy-lock');
-            // });
+        // $('#crypterio-demos').on('click', function() {
+        //     $('#demo_popups').addClass('opened');
+        //     $('body').addClass('fancy-lock');
+        // });
 
-            // $('.stm_theme_demos__close').on('click', function() {
-            //     $('.stm_theme_demos__popup').removeClass('opened');
-            //     $('body').removeClass('fancy-lock');
-            // });
+        // $('.stm_theme_demos__close').on('click', function() {
+        //     $('.stm_theme_demos__popup').removeClass('opened');
+        //     $('body').removeClass('fancy-lock');
+        // });
 
-            // $('#qr-codes').on('click', function() {
-            //     $('#qr_popup').addClass('opened');
-            //     $('body').addClass('fancy-lock');
-            // });
+        // $('#qr-codes').on('click', function() {
+        //     $('#qr_popup').addClass('opened');
+        //     $('body').addClass('fancy-lock');
+        // });
 
-            // $('.stm_theme_demos__icon--toggle').on('click', function() {
-            //     $(this).closest('.stm_theme_demos').toggleClass('expand');
-            // });
+        // $('.stm_theme_demos__icon--toggle').on('click', function() {
+        //     $(this).closest('.stm_theme_demos').toggleClass('expand');
+        // });
 
-            $('body').on('click', function () {
-                if (!$('.stm_theme_demos:hover').length) {
-                    $('.stm_theme_demos').removeClass('expand');
-                }
-            });
-        });</script>
-    <script>
-        var stm_motors_currentAjaxUrl = 'index.html';
-        var resetAllTxt = 'Reset All';
-        var prevText = 'Previous';
-        var nextText = 'Next';
-        var is_rental = 'true';
-        var file_type = 'file type noimg';
-        var file_size = 'file size big';
-        var max_img_quant = 'max imgs 3';
-        var currentLocale = 'en';
-        var noFoundSelect2 = 'No results found';
-        var stm_login_to_see_plans = 'Please, log in to view your available plans';
-        var allowDealerAddCategory = '';
-        var filterRemoveHidden = '253ef7a0a8';
-        var addToCompare = '9d313e9f4f';
-        var addTestDrive = '59677ae710';
-        var addTradeOffer = '04697ea6df';
-        var loadMoreCars = 'e397bd7d4a';
-        var getCarPrice = '2b79731efa';
-        var addToFav = '146b86f805';
-        var getFav = '33606827ff';
-        var dealerLoadCars = 'c202427585';
-        var dealerLoadReviews = '8be4a34685';
-        var submitReview = 'e813f0cb11';
-        var restorePassword = '64a4b34f59';
-        var reportReview = '8ea875cc49';
-        var loadDealersList = '9e1c8f948a';
-        var addACar = '13125a0c87';
-        var getCarsInvtMap = 'c5f1b5ae1a';
-        var sellerPhone = '9bb9ae2131';
-        var subsChangeStatus = '8d9c8c0b1d';
-        var rentalCheckCar = '6522876a78';
-        var availableCarDate = '1e2f435c02';
-        var stickyPostsMagazn = '33ef38a2f1';
-        var getEvents = 'e5a0ea3eea';
-        var testDriveModal = 'd7f574b947';
-        var clearData = 'e945abf092';
-        var invNoFilter = 'e50c00e909';
-        var valueMyCar = '349abf36e8';
-        var getFileSize = '8fbacc67a9';
-        var sellOnlineNonce = '785805937b';
-        var compare_init_object = {
-            "listings": []
-        };
-        var ajax_url = 'wp-admin/admin-ajax.html';
-        var cc_prefix = 'stm7_compare_';</script>
+        $('body').on('click', function() {
+            if (!$('.stm_theme_demos:hover').length) {
+                $('.stm_theme_demos').removeClass('expand');
+            }
+        });
+    });</script>
+    <script>var stm_motors_currentAjaxUrl = 'index.html';
+    var resetAllTxt = 'Reset All';
+    var prevText = 'Previous';
+    var nextText = 'Next';
+    var is_rental = 'true';
+    var file_type = 'file type noimg';
+    var file_size = 'file size big';
+    var max_img_quant = 'max imgs 3';
+    var currentLocale = 'en';
+    var noFoundSelect2 = 'No results found';
+    var stm_login_to_see_plans = 'Please, log in to view your available plans';
+    var allowDealerAddCategory = '';
+    var filterRemoveHidden = '253ef7a0a8';
+    var addToCompare = '9d313e9f4f';
+    var addTestDrive = '59677ae710';
+    var addTradeOffer = '04697ea6df';
+    var loadMoreCars = 'e397bd7d4a';
+    var getCarPrice = '2b79731efa';
+    var addToFav = '146b86f805';
+    var getFav = '33606827ff';
+    var dealerLoadCars = 'c202427585';
+    var dealerLoadReviews = '8be4a34685';
+    var submitReview = 'e813f0cb11';
+    var restorePassword = '64a4b34f59';
+    var reportReview = '8ea875cc49';
+    var loadDealersList = '9e1c8f948a';
+    var addACar = '13125a0c87';
+    var getCarsInvtMap = 'c5f1b5ae1a';
+    var sellerPhone = '9bb9ae2131';
+    var subsChangeStatus = '8d9c8c0b1d';
+    var rentalCheckCar = '6522876a78';
+    var availableCarDate = '1e2f435c02';
+    var stickyPostsMagazn = '33ef38a2f1';
+    var getEvents = 'e5a0ea3eea';
+    var testDriveModal = 'd7f574b947';
+    var clearData = 'e945abf092';
+    var invNoFilter = 'e50c00e909';
+    var valueMyCar = '349abf36e8';
+    var getFileSize = '8fbacc67a9';
+    var sellOnlineNonce = '785805937b';
+    var compare_init_object = {
+        "listings": []
+    };
+    var ajax_url = 'wp-admin/admin-ajax.html';
+    var cc_prefix = 'stm7_compare_';</script>
     <script type="text/html" id="wpb-modifications">
     </script>
-    <script type="text/javascript">
-        (function () {
-            var c = document.body.className;
-            c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-            document.body.className = c;
-        })();</script>
+    <script type="text/javascript">(function() {
+        var c = document.body.className;
+        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+        document.body.className = c;
+    })();</script>
 
 
 
 
-    <script type='text/javascript' id='contact-form-7-js-extra'>
-        /* <![CDATA[ */
-        var wpcf7 = {
-            "api": {
-                "namespace": "contact-form-7\/v1"
-            },
-            "cached": "1"
-        };
-        /* ]]> */</script>
+    <script type='text/javascript' id='contact-form-7-js-extra'>/* <![CDATA[ */
+    var wpcf7 = {
+        "api": {
+            "namespace": "contact-form-7\/v1"
+        },
+        "cached": "1"
+    };
+    /* ]]> */</script>
 
-    <script type='text/javascript' id='woocommerce-js-extra'>
-        /* <![CDATA[ */
-        var woocommerce_params = {
-            "ajax_url": "\/rent-a-car\/wp-admin\/admin-ajax.php",
-            "wc_ajax_url": "\/rent-a-car\/?wc-ajax=%%endpoint%%"
-        };
-        /* ]]> */</script>
+    <script type='text/javascript' id='woocommerce-js-extra'>/* <![CDATA[ */
+    var woocommerce_params = {
+        "ajax_url": "\/rent-a-car\/wp-admin\/admin-ajax.php",
+        "wc_ajax_url": "\/rent-a-car\/?wc-ajax=%%endpoint%%"
+    };
+    /* ]]> */</script>
 
-    <script type='text/javascript' id='wc-cart-fragments-js-extra'>
-        /* <![CDATA[ */
-        var wc_cart_fragments_params = {
-            "ajax_url": "\/rent-a-car\/wp-admin\/admin-ajax.php",
-            "wc_ajax_url": "\/rent-a-car\/?wc-ajax=%%endpoint%%",
-            "cart_hash_key": "wc_cart_hash_877f070328becfc7a3da67bfadc20708",
-            "fragment_name": "wc_fragments_877f070328becfc7a3da67bfadc20708",
-            "request_timeout": "5000"
-        };
-        /* ]]> */</script>
+    <script type='text/javascript' id='wc-cart-fragments-js-extra'>/* <![CDATA[ */
+    var wc_cart_fragments_params = {
+        "ajax_url": "\/rent-a-car\/wp-admin\/admin-ajax.php",
+        "wc_ajax_url": "\/rent-a-car\/?wc-ajax=%%endpoint%%",
+        "cart_hash_key": "wc_cart_hash_877f070328becfc7a3da67bfadc20708",
+        "fragment_name": "wc_fragments_877f070328becfc7a3da67bfadc20708",
+        "request_timeout": "5000"
+    };
+    /* ]]> */</script>
 
-    <script type='text/javascript' id='stm-theme-scripts-js-extra'>
-        /* <![CDATA[ */
-        var stm_i18n = {
-            "remove_from_compare": "Remove from compare",
-            "remove_from_favorites": "Remove from favorites"
-        };
-        /* ]]> */</script>
+    <script type='text/javascript' id='stm-theme-scripts-js-extra'>/* <![CDATA[ */
+    var stm_i18n = {
+        "remove_from_compare": "Remove from compare",
+        "remove_from_favorites": "Remove from favorites"
+    };
+    /* ]]> */</script>
 
     <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDRiOJcH5jlSFqsAFGOgkGLZ02XvQSMTHo&amp;sensor=false&amp;language=en-US&amp;ver=1.0.3' id='stm_gmap-js'></script>
     <div class="choose-another-class">
@@ -668,13 +657,12 @@
     </div>
     <div class="stm-rental-overlay"></div>
     <div id="stm-overlay"></div>
-    <script type="text/javascript">
-        (function () {
-            window['__CF$cv$params'] = {
-                r: '706c1e901e8a548e',
-                m: '5cR2m14o1r8vpgr7s_C6meNswnFUNjB4ZQUxnVv9_R8-1651781425-0-AbQYWzlKfS2Xz+YN+uRAI6em9mz2bPqoDgm8YQ3A6MSOqcln3xy2Ko+5z23tYN5BG5I8A5tcTcaYuq8R3ozkbSyBu3+oCuymVSUf7Aw3VAC/uAhsJ7XB+loNjZ0+qE/vuw==',
-                s: [0xf5920a4b82, 0x1ec77386a7],
-                u: '/cdn-cgi/challenge-platform/h/g'
-            }
-        })();</script>
+    <script type="text/javascript">(function() {
+        window['__CF$cv$params'] = {
+            r: '706c1e901e8a548e',
+            m: '5cR2m14o1r8vpgr7s_C6meNswnFUNjB4ZQUxnVv9_R8-1651781425-0-AbQYWzlKfS2Xz+YN+uRAI6em9mz2bPqoDgm8YQ3A6MSOqcln3xy2Ko+5z23tYN5BG5I8A5tcTcaYuq8R3ozkbSyBu3+oCuymVSUf7Aw3VAC/uAhsJ7XB+loNjZ0+qE/vuw==',
+            s: [0xf5920a4b82, 0x1ec77386a7],
+            u: '/cdn-cgi/challenge-platform/h/g'
+        }
+    })();</script>
 </body>
