@@ -73,6 +73,7 @@ namespace Umbraco.Web.UI.Controllers
         [HttpPost]
         public string GetCapacities(CapacitiesRequestDto dto)
         {
+            ViewBag.CapacitiesModel = dto;
             var model = dto.Adapt<CapacitiesRequestModel>();
             CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
             return JsonConvert.SerializeObject(resultModel);

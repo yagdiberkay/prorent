@@ -157,14 +157,14 @@
                         var startDate = (stmStartVal != '') ? stmStartVal : false;
                         var endDate = (stmEndVal != '') ? stmEndVal : false;
                         var dateTimeFormat = 'F j, Y H:i';
-                        var dateTimeFormatHide = 'YYYY/MM/DD HH:mm';
+                        var dateTimeFormatHide = 'YYYY-MM-DD HH:mm';
 
 
 
 
                         $('.stm-date-timepicker-start').datetimepicker({
                             formatTime: 'H:i',
-                            formatDate: 'F j, Y',
+                            formatDate: 'Y-m-d',
                             format: dateTimeFormat,
                             dayOfWeekStart: 1,
                             defaultDate: stmToday,
@@ -221,7 +221,7 @@
 
                         $('.stm-date-timepicker-end').datetimepicker({
                             formatTime: 'H:i',
-                            formatDate: 'F j, Y',
+                            formatDate: 'Y-m-d',
                             format: dateTimeFormat,
                             dayOfWeekStart: 1,
                             defaultDate: stmTomorrow,
@@ -403,11 +403,14 @@
                             }
                             var obj = {
                                 pickupLocNo: $('#startLocations option').filter(':selected').val(),
-                                pickupDate: startDate,
-                                returnLocNo: $('input[name="return_same"]').prop('checked') == true ? $('#startLocations option').filter(':selected').val(): $('#dropLocations option').filter(':selected').val(),
-                                returnDate: endDate,
+                                pickupDate: moment(startDate).format(dateTimeFormatHide),
+                                returnLocNo: $('input[name="return_same"]').prop('checked') == true ? $('#startLocations option').filter(':selected').val() : $('#dropLocations option').filter(':selected').val(),
+                                returnDate: moment(endDate).format(dateTimeFormatHide),
+                                classNos: [758],
+                                tariffNos:[380],
                                 language:"TR"
                             };
+
                             GetCapacities(obj);
                         });
 
@@ -427,7 +430,6 @@
                     });
 
                 })(jQuery);
-
                 function checkDate($start, $end) {
 
                     var locationId = jQuery('select[name="pickup_location"]').select2("val");
@@ -473,20 +475,15 @@
                     }
                 });
                 }
-                 function GetCapacities(obj) {
+                function GetCapacities(obj) {
                     $.ajax({
                     type: "POST",
                     url: "@Url.Action("GetCapacities", "Reservation")",
                     dataType: "json",
                     data: { dto: obj },
                     cache: false,
-                         success: function (retval) {
-                        for (var i = 0; i < retval.length; i++) {
-                            var o = new Option(retval[i].cityName, retval[i].locationCode);
-                            /// jquerify the DOM object 'o' so we can use the html method
-                            $(o).html(retval[i].cityName);
-                            $("#"+locations+'').append(o);
-                        }
+                        success: function (retval) {
+                                window.location.href = "/reservation?"+retval;
                     },
                     error: function () {
                         alert("Error figen");
