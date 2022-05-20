@@ -2,7 +2,7 @@
 @inherits UmbracoViewPage<Umbraco.Web.UI.Dto.CapacitiesResponseDto[]>
 @using CapacitiesResponseDto = Umbraco.Web.PublishedModels;
 @{
-//Layout = "~/Views/Master.cshtml";
+    //Layout = "~/Views/Master.cshtml";
 }
 <div class="container">
     @*@{ Html.RenderAction("RenderForm", "Reservation");}*@
@@ -42,25 +42,26 @@
                     </div>
                     <div class="stm_notices">
                     </div>
-                    <div class="stm_single_class_car  " id="product-">
+                    @foreach (var item1 in item.vehicleTypes)
+                    {
+                        <div class="stm_single_class_car  " id="@item1.typeNo">
 
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4 first">
-                                <div class="image">
-                                    <img width="300" height="181" src="" class="img-responsive wp-post-image" alt="" loading="lazy" />
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 first">
+                                    <div class="image">
+                                        <img width="300" height="181" src="@item1.img1" class="img-responsive wp-post-image" alt="" loading="lazy" />
+                                    </div>
                                 </div>
-                            </div>
-                            @foreach (var item1 in item.vehicleTypes)
-                            {
+
                                 <div class="col-md-8 col-sm-8 second">
                                     <div class="row">
 
                                         <div class="col-md-6 col-sm-6">
                                             <div class="top">
                                                 <div class="heading-font">
-                                                    <h3> @item1.typeFullname</h3>
+                                                    <h3> @item1.mark</h3>
                                                     <div class="s_title">
-
+                                                        @item1.model
                                                     </div>
                                                     <div class="infos">
                                                         <div class="single_info stm_single_info_font_stm-rental-seats">
@@ -192,12 +193,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" href="../product/economy/index8e85.html?add-to-cart=141&amp;product_id=141&amp;variation_id=186&amp;attribute_payment-method=Pay%20now" rel="nofollow">
+                                                        <a class="heading-font external" href="../product/economy/index8e85.html?add-to-cart=@item1.typeNo&amp;product_id=@item1.typeNo&amp;variation_id=@item1.typeNo&amp;attribute_payment-method=Pay%20now" rel="nofollow">
                                                             Pay now
                                                         </a>
                                                     </div>
                                                     <div class="stm_discount">
-                                                        Saves you <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>10</span>
+                                                        Saves you <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>@item1.</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,35 +211,26 @@
                                                         eros condimentum. Integer volutpat posuere quam vitae mollis. Proin diam sapien, luctus ut faucibus sit amet, dignissim a arcu.
                                                     </p>
                                                     <ul>
-                                                        <li>Auxiliary heating</li>
-                                                        <li>Bluetooth</li>
-                                                        <li>CD player</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>Head-up display</li>
-                                                        <li>MP3 interface</li>
-                                                        <li>Navigation system</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>Alloy wheels</li>
-                                                        <li>Electric side mirror</li>
-                                                        <li>Sports package</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>MP3 interface</li>
-                                                        <li>Navigation system</li>
-                                                        <li>Panoramic roof</li>
+                                                        @if (item1.features != null)
+                                                        {
+                                                            foreach (var item2 in item1.features)
+                                                            {
+                                                                <li>@item2.featureName</li>
+                                                            }
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            }
 
+
+
+                            </div>
 
                         </div>
-                    </div>
+                    }
                     <script>
                         (function ($) {
                             $(document).ready(function () {
@@ -292,4 +284,3 @@
         <!--container-->
     </div>
 }
-    }
