@@ -1,36 +1,34 @@
-﻿@using Umbraco.Web.UI.Controllers;
-@inherits UmbracoViewPage<Umbraco.Web.UI.Dto.CapacitiesResponseDto[]>
+﻿@inherits UmbracoViewPage<Umbraco.Web.UI.Dto.CapacitiesResponseDto[]>
 @{
     Layout = null;
 }
-@if (Model != null)
-{
+@if (Model != null) { 
     foreach (var item in Model)
     {
         <div class="stm-fullwidth-with-parallax-bg">
             <div class="container">
                 <div class="stm_wizard_title heading-font">
-                    Reservation
+                    Rezervasyon
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
                         <div class="stm_nav_wizard_step stm_nav_wizard_step_1">
 
                             <div class="inner ">
-                                <a href="~/Views/Partials/Reservation/_ReservationDate.cshtml" class="top heading-font external" rel="nofollow">
+                                <a href="#" class="top heading-font external" rel="nofollow">
                                     <div class="number">
                                         <span>1</span>
                                     </div>
-                                    <label>Your Itinerary</label>
+                                    <label>Kiralama Bilgileri</label>
                                 </a>
                                 <div class="content">
                                     <div class="first">
-                                        <h5>Alım</h5>
+                                        <h5>Başlangıç</h5>
                                         <div class="stm_filled_pickup_location">@item.pickupLocName</div>
                                         <div class="stm_filled_pickup_date">@item.pickupDate</div>
                                     </div>
                                     <div class="second">
-                                        <h5 class="second">Teslimat</h5>
+                                        <h5 class="second">TESLİM</h5>
                                         <div class="stm_filled_return_location">@item.returnLocName</div>
                                         <div class="stm_filled_return_date">@item.returnDate</div>
                                     </div>
@@ -42,19 +40,19 @@
                         <div class="stm_nav_wizard_step stm_nav_wizard_step_2">
 
                             <div class="inner current">
-                                <a href="~/Views/Partials/Reservation/_Reservation.cshtml" class="top heading-font external" rel="nofollow">
+                                <a href="#" class="top heading-font external" rel="nofollow">
                                     <div class="number">
                                         <span>2</span>
                                     </div>
-                                    <label>Select Vehicle/Add-ons</label>
+                                    <label>Araç ve Ek Hizmet Seçimi</label>
                                 </a>
                                 <div class="content">
                                     <div class="first">
-                                        <h5>Type</h5>
+                                        <h5>Araç</h5>
                                         <div>--</div>
                                     </div>
                                     <div class="second">
-                                        <h5>Addons</h5>
+                                        <h5>Ek HİZMETLER</h5>
                                         <div>--</div>
                                     </div>
                                 </div>
@@ -65,19 +63,19 @@
                         <div class="stm_nav_wizard_step stm_nav_wizard_step_3">
 
                             <div class="inner ">
-                                <a href="../checkout/index.html" class="top heading-font external" rel="nofollow">
+                                <a href="#" class="top heading-font external" rel="nofollow">
                                     <div class="number">
                                         <span>3</span>
                                     </div>
-                                    <label>Reserve Your Vehicle</label>
+                                    <label>Rezervasyon Bilgileri</label>
                                 </a>
                                 <div class="content">
                                     <div class="first">
-                                        <h5>Your information</h5>
+                                        <h5>Rezervasyon SAHİBİ</h5>
                                         <div>--</div>
                                     </div>
                                     <div class="second">
-                                        <h5>Payment information</h5>
+                                        <h5>Ödeme BİLGİSİ</h5>
                                         <div>
                                             --
                                         </div>
@@ -91,5 +89,4 @@
         </div>
     }
 }
-
 
