@@ -95,11 +95,12 @@ namespace Umbraco.Web.UI.Controllers
             return JsonConvert.SerializeObject(resultModel);
         }
         [HttpGet]
-        public ActionResult Economy(string economyObj)
+        public ActionResult Economy(string economyObj,string capacity)
         {
             var economyDto = JsonConvert.DeserializeObject<ExtraProductsRequestDto>(economyObj);
             var model = economyDto.Adapt<ExtraProductsRequestModel>();
             ExtraProductsResponseDto[] resultModel = _prorentService.GetExtraProducts(model).Adapt<ExtraProductsResponseDto[]>();
+            ViewBag.SelectedVehicle = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             return View(resultModel);
         }
         [HttpPost]

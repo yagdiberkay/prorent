@@ -23,13 +23,13 @@
                             <div class="content">
                                 <div class="first">
                                     <h5>Başlangıç</h5>
-                                    <div class="stm_filled_pickup_location">--</div>
-                                    <div class="stm_filled_pickup_date">--</div>
+                                    <div class="stm_filled_pickup_location">@ViewBag.SelectedVehicle.pickupLocName</div>
+                                    <div class="stm_filled_pickup_date">@ViewBag.SelectedVehicle.pickupDate</div>
                                 </div>
                                 <div class="second">
                                     <h5 class="second">TESLİMAT</h5>
-                                    <div class="stm_filled_return_location">--</div>
-                                    <div class="stm_filled_return_date">--</div>
+                                    <div class="stm_filled_return_location">@ViewBag.SelectedVehicle.returnLocName</div>
+                                    <div class="stm_filled_return_date">@ViewBag.SelectedVehicle.returnDate</div>
                                 </div>
                             </div>
                         </div>
@@ -48,11 +48,13 @@
                             <div class="content">
                                 <div class="first">
                                     <h5>Araç</h5>
-                                    <div>BMW 3 Series Sedan or Similar</div>
+                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
                                 </div>
                                 <div class="second">
                                     <a class="h5 external" href="#" rel="nofollow">Ek HİZMETLER</a>
-                                    <div>Loss damage waiver, Handicap controls, Super Protective Insurance, Additional Driver, Navigation System, Child Seat</div>
+                                    <div>
+                                        <span class="selectedProducts"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -125,11 +127,11 @@
                                 <div class="stm_rental_options_archive">
                                     <div class="stm_rental_option">
                                         <div class="image">
-                                            <img width="1" height="1" src="assets/img/uploads/waiver.svg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
+                                            <img width="1" height="1" src="@item.prodImg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" />
                                         </div>
                                         <div class="stm_rental_option_content">
                                             <div class="content">
-                                                <div class="title" id="@item.productNo">
+                                                <div class="title">
                                                     <h4>@item.productName</h4>
                                                 </div>
                                                 <div class="stm-more">
@@ -147,12 +149,11 @@
                                                 </div>
 
                                                 <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
-                                                    <a href="index98d0.html?remove-from-cart=208">
-                                                        <span class="add_text">Added</span>
-                                                        <span class="remove_text">Remove</span>
+                                                    <a class="productSelection" data-id="@item.productNo" data-value="@item.totalPrice" data-text="@item.productName" style="background-color:white;">
+                                                        <span class="add_text" id="@item.productNo">Ekle</span>
+                                                        @*<span class="remove_text" id="@item.productNo" hidden>Çıkar</span>*@
                                                     </a>
                                                 </div>
-
 
                                             </div>
 
@@ -189,23 +190,23 @@
 
                                 <div class="title">
                                     <h4>Standart</h4>
-                                    <div class="subtitle heading-font">BMW 3 Series Sedan or Similar</div>
+                                    <div class="subtitle heading-font">@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
                                 </div>
                                 <div class="image">
-                                    <img src="assets/img/uploads/stand-1-300x181.png" />
+                                    <img src="@ViewBag.SelectedVehicle.vehicleTypes[0].img1" />
                                 </div>
 
                                 <!--Car rent-->
                                 <div class="stm_rent_table">
                                     <div class="heading heading-font">
-                                        <h4>Rate</h4>
+                                        <h4>Oran</h4>
                                     </div>
                                     <table>
                                         <thead class="heading-font">
                                             <tr>
-                                                <td>QTY</td>
-                                                <td>Rate</td>
-                                                <td>Subtotal</td>
+                                                <td>Ek Hizmet</td>
+                                                <td>Ücret</td>
+                                                <td>Toplam Tutar</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -214,10 +215,10 @@
                                             </tr>
                                             <!--FIXED PRICE-->
                                             <tr>
-                                                <td>1 Days</td>
+                                                <td>@ViewBag.SelectedVehicle.rentalDays</td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>280</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span> <span class="price-date-info-icon">
                                                         <i class="fas fa-info-circle"></i>
                                                         <div class="price-date-info-popup">
@@ -227,8 +228,8 @@
                                                                 <li class="padd-10">Per Hour:</li>
                                                                 <li>
                                                                     <b>
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>34</span>
-                                                                    </b> Per hour
+                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span></span>
+                                                                    </b> Her saat
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -236,7 +237,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>280</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -246,10 +247,10 @@
                                         </tbody>
                                         <tfoot class="heading-font">
                                             <tr>
-                                                <td colspan="2">Rental Charges Rate</td>
+                                                <td colspan="2">Kira Ücreti Oranı</td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>280</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -260,135 +261,40 @@
                                 <!--Add-ons-->
                                 <div class="stm_rent_table">
                                     <div class="heading heading-font">
-                                        <h4>Add-ons</h4>
+                                        <h4>Ek Hizmetler</h4>
                                     </div>
-                                    <table>
+                                    <table id="addOnsTable">
                                         <thead class="heading-font">
                                             <tr>
-                                                <td>QTY</td>
-                                                <td>Rate</td>
-                                                <td>Subtotal</td>
+                                                <td>Ek Hizmet</td>
+                                                <td>Ücret</td>
+                                                <td>Toplam Tutar</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td colspan="3" class="divider"></td>
-                                            </tr>
-                                            <tr>
                                                 <td>
-                                                    1 x Loss damage waiver for day(s)
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
+                                                    <span class="productName" name="productName">
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    1 x Handicap controls for day(s)
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0</bdi>
+                                                    <span class="productPrice">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0</bdi>
+                                                    <span class="productPrice">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    1 x Super Protective Insurance for day(s)
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>20</bdi>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>20</bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    1 x Additional Driver for day(s)
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>5</bdi>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>5</bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    1 x Navigation System for day(s)
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>11</bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    1 x Child Seat for day(s)
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>6</bdi>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>6</bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
                                             </tr>
                                         </tbody>
                                         <tfoot class="heading-font">
                                             <tr>
-                                                <td colspan="2">Add-ons Charges Rate</td>
+                                                <td colspan="2">Ek Hizmet Ücret Oranı</td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>53</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -399,7 +305,7 @@
                                 <div class="stm_rent_table stm_rent_tax_table">
                                     <div class="heading heading-font">
                                         <h4>
-                                            Taxes &amp; Fees
+                                            Vergiler &amp; Ücretler
                                         </h4>
                                     </div>
                                     <table>
@@ -408,12 +314,12 @@
                                                 <td colspan="3" class="divider"></td>
                                             </tr>
                                             <tr class="cart-tax tax-car-rental-sales-tax-1-1">
-                                                <td>Car Rental Sales Tax (1%)</td>
+                                                <td>Araç Kiralama Satış Vergisi (%1)</td>
                                                 <td>&nbsp;</td>
                                                 <td>&#36;3</td>
                                             </tr>
                                             <tr class="cart-tax tax-sales-tax-2-2">
-                                                <td>Sales Tax (2%)</td>
+                                                <td>Satış Vergisi (2%)</td>
                                                 <td>&nbsp;</td>
                                                 <td>&#36;5</td>
                                             </tr>
@@ -428,10 +334,10 @@
                                 <div class="stm-rent-total heading-font">
                                     <table>
                                         <tr>
-                                            <td>Estimated total</td>
+                                            <td>Hesaplanan Tutar</td>
                                             <td>
                                                 <span class="woocommerce-Price-amount amount">
-                                                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>331</bdi>
+                                                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                 </span>
                                             </td>
                                         </tr>
@@ -448,7 +354,80 @@
 
                     <script>
                         jQuery(document).ready(function () {
-                            //window.history.pushState('', '', 'index.html');
+                            var addedProducts = [];
+                            var productNo;
+                            var productPrice;
+                            var productName;
+                            var process;
+                            var rate = 0;
+                            var productNameArray = [];
+                            $(".productSelection").click(function () {
+                                productNo = this.dataset["id"];
+                                productPrice = this.dataset["value"];
+                                productName = this.dataset["text"];
+                                if ($(".productSelection span#" + productNo).text() == "Ekle") {
+                                    addedProducts.push({
+                                        productNo: productNo,
+                                        productPrice: productPrice,
+                                        productName: productName
+                                    });
+                                    productNameArray.push(productName);
+                                    process = "Ekle";
+                                    $(".productSelection span#" + this.dataset["id"]).text("Çıkar");
+                                    this.style.backgroundColor = "#f0c540";
+                                    rate = rate + parseFloat(productPrice);
+                                    $(".woocommerce-Price-currencySymbol").text(rate);
+                                    $(".selectedProducts").text(productNameArray.join());
+                                }
+                                else {
+                                    addedProducts = jQuery.grep(addedProducts, function (value) {
+                                        return value.productNo != productNo;
+                                    });
+                                    productNameArray = jQuery.grep(productNameArray, function (value) {
+                                        return value != productName;
+                                    });
+                                    $(".selectedProducts").text(productNameArray.join());
+                                    process = "Çıkar";
+                                    $(".productSelection span#" + productNo).text("Ekle");
+                                    this.style.backgroundColor = "white";
+                                    rate = rate - parseFloat(productPrice);
+                                    $(".woocommerce-Price-currencySymbol").text(rate);
+                                }
+                                AppendTBody(productName, productPrice, process, addedProducts.length);
+                            });
+
+
+                            //set the data in row
+                            function setDataOnRow(rowObject, productName, productPrice, process) {
+                                if (process == "Ekle") {
+                                    $(rowObject).find(".productName").html(productName);
+                                    $(rowObject).find(".productPrice").html(productPrice);
+                                }
+                                else {
+                                    $("#addOnsTable tbody").find('span[name="productName"]').each(function () {
+                                        if ($(this).html() == productName) {
+                                            $(this).parents("tr").remove();
+                                        }
+                                    });
+                                }
+                            }
+
+                            function AppendTBody(productName, productPrice, process, i) {
+                                if (i == 1) {
+                                    //setting the data in first row itself
+                                    setDataOnRow($("#addOnsTable tbody").find("tr").first(), productName, productPrice, process);
+
+                                } else {
+
+                                    //clonning the first row and setting data over it and then appending in tbody
+                                    var clonnedRow = $($("#addOnsTable tbody").find("tr").first()).clone();
+                                    setDataOnRow(clonnedRow, productName, productPrice, process);
+
+                                    $("#addOnsTable tbody").append(clonnedRow);
+
+                                }
+
+                            }
                         });
                     </script>
                 </div>

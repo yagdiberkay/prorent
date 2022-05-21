@@ -190,7 +190,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" onclick="redirectFunction()">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
                                                             Pay now
                                                         </a>
                                                     </div>
@@ -228,7 +228,7 @@
 
                         </div>
                     }
-                    <script>
+                <script>
                         (function ($) {
                             "use strict";
                             $(document).ready(function () {
@@ -250,19 +250,29 @@
                             })
                         })(jQuery);
 
-                    function redirectFunction() {
-
+                        function redirectFunction(fullTypeName,img) {
 
                             var obj = {
-                            rentalDays: 2,
-                            tariffNos:[@item.tariffs.FirstOrDefault().tariffNo],
-                            campaignNo:@item.campaignNo,
-                            classNo:@item.classNo,
-                            language:"TR"
-                            }
-                        window.location.href = `/umbraco/Surface/Reservation/Economy?economyObj=${JSON.stringify(obj)}`;
+                                rentalDays: @item.rentalDays,
+                                tariffNos: [@item.tariffs.FirstOrDefault().tariffNo],
+                                campaignNo:@item.campaignNo,
+                                classNo:@item.classNo,
+                                language: "TR"
+                            };
+                            var capacity = {
+                                pickupLocName: '@item.pickupLocName',
+                                pickupDate: '@item.pickupDate',
+                                returnLocName:'@item.returnLocName',
+                                returnDate: '@item.returnDate',
+                                 rentalDays: @item.rentalDays,
+                                vehicleTypes: [{
+                                    typeFullname: fullTypeName,
+                                    img1: img,
+                                }]
+                            };
+                            window.location.href = `/umbraco/Surface/Reservation/Economy?economyObj=${JSON.stringify(obj)}&capacity=${JSON.stringify(capacity)}`;
                         }
-                    </script>
+                </script>
 
                 </div>
 
