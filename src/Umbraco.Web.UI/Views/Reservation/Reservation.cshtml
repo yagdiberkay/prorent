@@ -29,12 +29,9 @@
                             </p>
                             <form class="woocommerce-ordering" method="get">
                                 <select name="orderby" class="orderby" aria-label="Shop order">
-                                    <option value="menu_order" selected='selected'>Default sorting</option>
-                                    <option value="popularity">Sort by popularity</option>
-                                    <option value="rating">Sort by average rating</option>
-                                    <option value="date">Sort by latest</option>
-                                    <option value="price">Sort by price: low to high</option>
-                                    <option value="price-desc">Sort by price: high to low</option>
+                                    <option value="default" selected='selected'>Varsayılan</option>
+                                    <option value="pricedesc">Artan Fiyat</option>
+                                    <option value="price">Azalan Fiyat</option>
                                 </select>
                                 <input type="hidden" name="paged" value="1" />
                             </form>
@@ -204,7 +201,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-sm-12">
-                                            <div class="more">
+                                            <div class="more" style="display:block;">
                                                 <div class="lists-inline">
                                                     <p>
                                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae mollis velit. Nullam interdum auctor turpis, at eleifend tortor pellentesque nec. Fusce pretium nulla ut risus egestas, quis dapibus
