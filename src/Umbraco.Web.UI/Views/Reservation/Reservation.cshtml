@@ -27,14 +27,14 @@
                             <p class="woocommerce-result-count">
                                 Showing all 6 results
                             </p>
-                            <form class="woocommerce-ordering" method="get">
-                                <select name="orderby" class="orderby" aria-label="Shop order">
+                            <div class="woocommerce-ordering">
+                                <select onchange="recylepage(this.value)" name="orderby" class="orderby" id="sortdp">
                                     <option value="default" selected='selected'>Varsayılan</option>
-                                    <option value="pricedesc">Artan Fiyat</option>
-                                    <option value="price">Azalan Fiyat</option>
+                                    <option value="pricedesc">Azalan Fiyat</option>
+                                    <option value="priceasc">Artan Fiyat</option>
                                 </select>
                                 <input type="hidden" name="paged" value="1" />
-                            </form>
+                            </div>
                         </div>
                     </div>
                     <div class="stm_notices">
@@ -246,9 +246,40 @@
                                 }
                                 var obj = window.location.search;
                                 obj = obj.replace('?', '');
-                        /*        GetCapacities(atob(obj));*/
+                                /*        GetCapacities(atob(obj));*/
+
+                                setdefaultDropdown();
                             })
                         })(jQuery);
+
+                    function setdefaultDropdown() {
+                        if (window.location.href.includes('default')) {
+                            $("#sortdp option[value='default']").attr("selected", "selected");
+                            $('#select2-sortdp-container').html('Varsayılan');
+                        }
+                        if (window.location.href.includes('priceasc')) {
+                            $("#sortdp option[value='priceasc']").attr("selected", "selected");
+                            $('#select2-sortdp-container').html('Artan Fiyat');
+                        }
+                        if (window.location.href.includes('pricedesc')) {
+                            $("#sortdp option[value='pricedesc']").attr("selected", "selected");
+                            $('#select2-sortdp-container').html('Azalan Fiyat');
+                        }
+                    }
+                    function recylepage(dropdownValue) {
+                        if (dropdownValue == 'priceasc') {
+                            var first = window.location.href.replace('default', dropdownValue);
+                            window.location.href = first.replace('pricedesc', dropdownValue);
+                        }
+                        if (dropdownValue == 'pricedesc') {
+                            var first = window.location.href.replace('default', dropdownValue);
+                            window.location.href = first.replace('priceasc', dropdownValue);
+                        }
+                        if (dropdownValue == 'default') {
+                            var first = window.location.href.replace('priceasc', dropdownValue);
+                            window.location.href = first.replace('pricedesc', dropdownValue);
+                        }
+                    }
 
                         function redirectFunction(fullTypeName,img) {
 
@@ -257,14 +288,14 @@
                                 tariffNos: [@item.tariffs.FirstOrDefault().tariffNo],
                                 campaignNo:@item.campaignNo,
                                 classNo:@item.classNo,
-                                language: "TR"
+                                language: "TR",
                             };
                             var capacity = {
                                 pickupLocName: '@item.pickupLocName',
                                 pickupDate: '@item.pickupDate',
                                 returnLocName:'@item.returnLocName',
                                 returnDate: '@item.returnDate',
-                                 rentalDays: @item.rentalDays,
+                                rentalDays: @item.rentalDays,
                                 vehicleTypes: [{
                                     typeFullname: fullTypeName,
                                     img1: img,

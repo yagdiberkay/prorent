@@ -402,7 +402,8 @@
                                 returnDate: moment(endDate).format(dateTimeFormatHide),
                                 classNos: [758],
                                 tariffNos:[380],
-                                language:"TR"
+                                language: "TR",
+                                orderby: "default"
                             };
                             window.location.href = `umbraco/Surface/Reservation/Reservation?obj=${JSON.stringify(obj)}`;
                         });

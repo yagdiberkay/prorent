@@ -11,5 +11,6 @@
         public long[] tariffNos { get; set; }
         public long campaignNo { get; set; }
         public string language { get; set; }
+        public string orderby { get; set; }
     }
 }

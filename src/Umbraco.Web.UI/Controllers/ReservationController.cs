@@ -98,6 +98,10 @@ namespace Umbraco.Web.UI.Controllers
             var reservationDto = JsonConvert.DeserializeObject<CapacitiesRequestDto>(obj);
             var model = reservationDto.Adapt<CapacitiesRequestModel>();
             CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
+            if(model.orderby == "priceasc")
+                resultModel = resultModel.OrderBy(x => x.onewayPrice).ToArray();
+            else if (reservationDto.orderby == "pricedesc")
+                resultModel = resultModel.OrderByDescending(x => x.onewayPrice).ToArray();
             return View(resultModel);
         }
         [HttpPost]
