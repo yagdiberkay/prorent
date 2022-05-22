@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Web.Mvc;
 using Umbraco.Core.Services;
 using Umbraco.Web.Mvc;
@@ -59,6 +60,18 @@ namespace Umbraco.Web.UI.Controllers
             return JsonConvert.SerializeObject(resultModel);
         }
         [HttpPost]
+        public string GetCountries()
+        {
+            CountriesResponseDto[] resultModel = _prorentService.GetCountries("TR").Adapt<CountriesResponseDto[]>();
+            return JsonConvert.SerializeObject(resultModel);
+        }
+        [HttpPost]
+        public string GetCities(string countryCode)
+        {
+            CitiesResponseDto[] resultModel = _prorentService.GetCities(countryCode).Adapt<CitiesResponseDto[]>();
+            return JsonConvert.SerializeObject(resultModel);
+        }
+        [HttpPost]
         public ActionResult GetCampaigns(CampaignsRequestDto dto)
         {
             if (ModelState.IsValid)
@@ -95,13 +108,23 @@ namespace Umbraco.Web.UI.Controllers
             return JsonConvert.SerializeObject(resultModel);
         }
         [HttpGet]
-        public ActionResult Economy(string economyObj,string capacity)
+        public ActionResult Economy(string economyObj, string capacity)
         {
             var economyDto = JsonConvert.DeserializeObject<ExtraProductsRequestDto>(economyObj);
             var model = economyDto.Adapt<ExtraProductsRequestModel>();
             ExtraProductsResponseDto[] resultModel = _prorentService.GetExtraProducts(model).Adapt<ExtraProductsResponseDto[]>();
             ViewBag.SelectedVehicle = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             return View(resultModel);
+        }
+        [HttpGet]
+        public ActionResult Checkout(string capacity, string economy)
+        {
+            var economyDto = JsonConvert.DeserializeObject<ProductsDto[]>(economy);
+            var capacityDto = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            ViewBag.Capacity = capacityDto;
+            ViewBag.Economy = economyDto;
+            ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
+            return View();
         }
         [HttpPost]
         public ActionResult GetVehicleTypeDetails(VehicleTypeDetailsRequestDto dto)

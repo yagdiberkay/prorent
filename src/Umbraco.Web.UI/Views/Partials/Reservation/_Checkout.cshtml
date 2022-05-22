@@ -42,13 +42,13 @@
                             <div class="content">
                                 <div class="first">
                                     <h5>Başlangıç</h5>
-                                    <div class="stm_filled_pickup_location">--</div>
-                                    <div class="stm_filled_pickup_date">--</div>
+                                    <div class="stm_filled_pickup_location">@ViewBag.Capacity.pickupLocName</div>
+                                    <div class="stm_filled_pickup_date">@ViewBag.Capacity.pickupDate</div>
                                 </div>
                                 <div class="second">
                                     <h5 class="second">TESLİMAT</h5>
-                                    <div class="stm_filled_return_location">--</div>
-                                    <div class="stm_filled_return_date">--</div>
+                                    <div class="stm_filled_return_location">@ViewBag.Capacity.returnLocName</div>
+                                    <div class="stm_filled_return_date">@ViewBag.Capacity.returnDate</div>
                                 </div>
                             </div>
                         </div>
@@ -67,11 +67,13 @@
                             <div class="content">
                                 <div class="first">
                                     <h5>Araç</h5>
-                                    <div>--</div>
+                                    <div>@ViewBag.Capacity.vehicleTypes[0].typeFullname</div>
                                 </div>
                                 <div class="second">
                                     <h5>Ek HİZMETLER</h5>
-                                    <div>--</div>
+                                    <div>
+                                        @ViewBag.ProductName
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +129,7 @@
 
                                 <div class="title">
                                     <h4>Economy</h4>
-                                    <div class="subtitle heading-font">Mini Cooper 3 or Similar</div>
+                                    <div class="subtitle heading-font">@ViewBag.Capacity.vehicleTypes[0].typeFullname</div>
                                 </div>
                                 <div class="image">
                                     <img src="assets/img/uploads/economy-300x181.png" />
@@ -141,9 +143,9 @@
                                     <table>
                                         <thead class="heading-font">
                                             <tr>
-                                                <td>QTY</td>
-                                                <td>Rate</td>
-                                                <td>Subtotal</td>
+                                                <td>Miktar</td>
+                                                <td>Oran</td>
+                                                <td>Toplam Tutar</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -152,10 +154,10 @@
                                             </tr>
                                             <!--FIXED PRICE-->
                                             <tr>
-                                                <td>1 Days</td>
+                                                <td>@ViewBag.Capacity.rentalDays<span>Gün</span></td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>110</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span> <span class="price-date-info-icon">
                                                         <i class="fas fa-info-circle"></i>
                                                         <div class="price-date-info-popup">
@@ -166,7 +168,7 @@
                                                                 <li>
                                                                     <b>
                                                                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>7</span>
-                                                                    </b> Per hour
+                                                                    </b> Her saat
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -174,25 +176,9 @@
                                                 </td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>271</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@ViewBag.Capacity.onewayPrice</bdi>
                                                     </span>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td>23 Hours</td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>7</bdi>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>161</bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
                                             </tr>
                                         </tbody>
                                         <tfoot class="heading-font">
@@ -200,7 +186,7 @@
                                                 <td colspan="2">Rental Charges Rate</td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>271</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@ViewBag.Capacity.onewayPrice</bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -210,15 +196,90 @@
 
                                 <!--Add-ons-->
 
+                                <div class="stm_rent_table">
+                                    <div class="heading heading-font">
+                                        <h4>Ek Hizmetler</h4>
+                                    </div>
+                                    <table id="addOnsTable">
+                                        <thead class="heading-font">
+                                            <tr>
+                                                <td>Ek Hizmet</td>
+                                                <td>Ücret</td>
+                                                <td>Toplam Tutar</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.Economy)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <span class="productName" name="productName">
+                                                            @item.productName
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="productPrice">
+                                                            <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@item.totalPrice</bdi>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="productPrice">
+                                                            <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@item.totalPrice</bdi>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                        <tfoot class="heading-font">
+                                            <tr>
+                                                <td colspan="2">Ek Hizmet Ücret Oranı</td>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <div class="stm_rent_table stm_rent_tax_table">
+                                    <div class="heading heading-font">
+                                        <h4>
+                                            Vergiler &amp; Ücretler
+                                        </h4>
+                                    </div>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                            <tr class="cart-tax tax-car-rental-sales-tax-1-1">
+                                                <td>Araç Kiralama Satış Vergisi (%1)</td>
+                                                <td>&nbsp;</td>
+                                                <td>&#36;3</td>
+                                            </tr>
+                                            <tr class="cart-tax tax-sales-tax-2-2">
+                                                <td>Satış Vergisi (2%)</td>
+                                                <td>&nbsp;</td>
+                                                <td>&#36;5</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="divider"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
 
                                 <div class="stm-rent-total heading-font">
                                     <table>
                                         <tr>
-                                            <td>Toplam Tutar</td>
+                                            <td>Hesaplanan Tutar</td>
                                             <td>
                                                 <span class="woocommerce-Price-amount amount">
-                                                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>271</bdi>
+                                                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                 </span>
                                             </td>
                                         </tr>
@@ -258,255 +319,6 @@
                                                             <label for="billing_country" class="heading-font">Ülke&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
                                                                 <select name="billing_country" id="billing_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Ülke Seçiniz&hellip;" data-label="Country / Region">
                                                                     <option value="">Ülke Seçiniz&hellip;</option>
-                                                                    <option value="AF">Afghanistan</option>
-                                                                    <option value="AX">Åland Islands</option>
-                                                                    <option value="AL">Albania</option>
-                                                                    <option value="DZ">Algeria</option>
-                                                                    <option value="AS">American Samoa</option>
-                                                                    <option value="AD">Andorra</option>
-                                                                    <option value="AO">Angola</option>
-                                                                    <option value="AI">Anguilla</option>
-                                                                    <option value="AQ">Antarctica</option>
-                                                                    <option value="AG">Antigua and Barbuda</option>
-                                                                    <option value="AR">Argentina</option>
-                                                                    <option value="AM">Armenia</option>
-                                                                    <option value="AW">Aruba</option>
-                                                                    <option value="AU">Australia</option>
-                                                                    <option value="AT">Austria</option>
-                                                                    <option value="AZ">Azerbaijan</option>
-                                                                    <option value="BS">Bahamas</option>
-                                                                    <option value="BH">Bahrain</option>
-                                                                    <option value="BD">Bangladesh</option>
-                                                                    <option value="BB">Barbados</option>
-                                                                    <option value="BY">Belarus</option>
-                                                                    <option value="PW">Belau</option>
-                                                                    <option value="BE">Belgium</option>
-                                                                    <option value="BZ">Belize</option>
-                                                                    <option value="BJ">Benin</option>
-                                                                    <option value="BM">Bermuda</option>
-                                                                    <option value="BT">Bhutan</option>
-                                                                    <option value="BO">Bolivia</option>
-                                                                    <option value="BQ">Bonaire, Saint Eustatius and Saba</option>
-                                                                    <option value="BA">Bosnia and Herzegovina</option>
-                                                                    <option value="BW">Botswana</option>
-                                                                    <option value="BV">Bouvet Island</option>
-                                                                    <option value="BR">Brazil</option>
-                                                                    <option value="IO">British Indian Ocean Territory</option>
-                                                                    <option value="BN">Brunei</option>
-                                                                    <option value="BG">Bulgaria</option>
-                                                                    <option value="BF">Burkina Faso</option>
-                                                                    <option value="BI">Burundi</option>
-                                                                    <option value="KH">Cambodia</option>
-                                                                    <option value="CM">Cameroon</option>
-                                                                    <option value="CA">Canada</option>
-                                                                    <option value="CV">Cape Verde</option>
-                                                                    <option value="KY">Cayman Islands</option>
-                                                                    <option value="CF">Central African Republic</option>
-                                                                    <option value="TD">Chad</option>
-                                                                    <option value="CL">Chile</option>
-                                                                    <option value="CN">China</option>
-                                                                    <option value="CX">Christmas Island</option>
-                                                                    <option value="CC">Cocos (Keeling) Islands</option>
-                                                                    <option value="CO">Colombia</option>
-                                                                    <option value="KM">Comoros</option>
-                                                                    <option value="CG">Congo (Brazzaville)</option>
-                                                                    <option value="CD">Congo (Kinshasa)</option>
-                                                                    <option value="CK">Cook Islands</option>
-                                                                    <option value="CR">Costa Rica</option>
-                                                                    <option value="HR">Croatia</option>
-                                                                    <option value="CU">Cuba</option>
-                                                                    <option value="CW">Cura&ccedil;ao</option>
-                                                                    <option value="CY">Cyprus</option>
-                                                                    <option value="CZ">Czech Republic</option>
-                                                                    <option value="DK">Denmark</option>
-                                                                    <option value="DJ">Djibouti</option>
-                                                                    <option value="DM">Dominica</option>
-                                                                    <option value="DO">Dominican Republic</option>
-                                                                    <option value="EC">Ecuador</option>
-                                                                    <option value="EG">Egypt</option>
-                                                                    <option value="SV">El Salvador</option>
-                                                                    <option value="GQ">Equatorial Guinea</option>
-                                                                    <option value="ER">Eritrea</option>
-                                                                    <option value="EE">Estonia</option>
-                                                                    <option value="ET">Ethiopia</option>
-                                                                    <option value="FK">Falkland Islands</option>
-                                                                    <option value="FO">Faroe Islands</option>
-                                                                    <option value="FJ">Fiji</option>
-                                                                    <option value="FI">Finland</option>
-                                                                    <option value="FR">France</option>
-                                                                    <option value="GF">French Guiana</option>
-                                                                    <option value="PF">French Polynesia</option>
-                                                                    <option value="TF">French Southern Territories</option>
-                                                                    <option value="GA">Gabon</option>
-                                                                    <option value="GM">Gambia</option>
-                                                                    <option value="GE">Georgia</option>
-                                                                    <option value="DE">Germany</option>
-                                                                    <option value="GH">Ghana</option>
-                                                                    <option value="GI">Gibraltar</option>
-                                                                    <option value="GR">Greece</option>
-                                                                    <option value="GL">Greenland</option>
-                                                                    <option value="GD">Grenada</option>
-                                                                    <option value="GP">Guadeloupe</option>
-                                                                    <option value="GU">Guam</option>
-                                                                    <option value="GT">Guatemala</option>
-                                                                    <option value="GG">Guernsey</option>
-                                                                    <option value="GN">Guinea</option>
-                                                                    <option value="GW">Guinea-Bissau</option>
-                                                                    <option value="GY">Guyana</option>
-                                                                    <option value="HT">Haiti</option>
-                                                                    <option value="HM">Heard Island and McDonald Islands</option>
-                                                                    <option value="HN">Honduras</option>
-                                                                    <option value="HK">Hong Kong</option>
-                                                                    <option value="HU">Hungary</option>
-                                                                    <option value="IS">Iceland</option>
-                                                                    <option value="IN">India</option>
-                                                                    <option value="ID">Indonesia</option>
-                                                                    <option value="IR">Iran</option>
-                                                                    <option value="IQ">Iraq</option>
-                                                                    <option value="IE">Ireland</option>
-                                                                    <option value="IM">Isle of Man</option>
-                                                                    <option value="IL">Israel</option>
-                                                                    <option value="IT">Italy</option>
-                                                                    <option value="CI">Ivory Coast</option>
-                                                                    <option value="JM">Jamaica</option>
-                                                                    <option value="JP">Japan</option>
-                                                                    <option value="JE">Jersey</option>
-                                                                    <option value="JO">Jordan</option>
-                                                                    <option value="KZ">Kazakhstan</option>
-                                                                    <option value="KE">Kenya</option>
-                                                                    <option value="KI">Kiribati</option>
-                                                                    <option value="KW">Kuwait</option>
-                                                                    <option value="KG">Kyrgyzstan</option>
-                                                                    <option value="LA">Laos</option>
-                                                                    <option value="LV">Latvia</option>
-                                                                    <option value="LB">Lebanon</option>
-                                                                    <option value="LS">Lesotho</option>
-                                                                    <option value="LR">Liberia</option>
-                                                                    <option value="LY">Libya</option>
-                                                                    <option value="LI">Liechtenstein</option>
-                                                                    <option value="LT">Lithuania</option>
-                                                                    <option value="LU">Luxembourg</option>
-                                                                    <option value="MO">Macao</option>
-                                                                    <option value="MG">Madagascar</option>
-                                                                    <option value="MW">Malawi</option>
-                                                                    <option value="MY">Malaysia</option>
-                                                                    <option value="MV">Maldives</option>
-                                                                    <option value="ML">Mali</option>
-                                                                    <option value="MT">Malta</option>
-                                                                    <option value="MH">Marshall Islands</option>
-                                                                    <option value="MQ">Martinique</option>
-                                                                    <option value="MR">Mauritania</option>
-                                                                    <option value="MU">Mauritius</option>
-                                                                    <option value="YT">Mayotte</option>
-                                                                    <option value="MX">Mexico</option>
-                                                                    <option value="FM">Micronesia</option>
-                                                                    <option value="MD">Moldova</option>
-                                                                    <option value="MC">Monaco</option>
-                                                                    <option value="MN">Mongolia</option>
-                                                                    <option value="ME">Montenegro</option>
-                                                                    <option value="MS">Montserrat</option>
-                                                                    <option value="MA">Morocco</option>
-                                                                    <option value="MZ">Mozambique</option>
-                                                                    <option value="MM">Myanmar</option>
-                                                                    <option value="NA">Namibia</option>
-                                                                    <option value="NR">Nauru</option>
-                                                                    <option value="NP">Nepal</option>
-                                                                    <option value="NL">Netherlands</option>
-                                                                    <option value="NC">New Caledonia</option>
-                                                                    <option value="NZ">New Zealand</option>
-                                                                    <option value="NI">Nicaragua</option>
-                                                                    <option value="NE">Niger</option>
-                                                                    <option value="NG">Nigeria</option>
-                                                                    <option value="NU">Niue</option>
-                                                                    <option value="NF">Norfolk Island</option>
-                                                                    <option value="KP">North Korea</option>
-                                                                    <option value="MK">North Macedonia</option>
-                                                                    <option value="MP">Northern Mariana Islands</option>
-                                                                    <option value="NO">Norway</option>
-                                                                    <option value="OM">Oman</option>
-                                                                    <option value="PK">Pakistan</option>
-                                                                    <option value="PS">Palestinian Territory</option>
-                                                                    <option value="PA">Panama</option>
-                                                                    <option value="PG">Papua New Guinea</option>
-                                                                    <option value="PY">Paraguay</option>
-                                                                    <option value="PE">Peru</option>
-                                                                    <option value="PH">Philippines</option>
-                                                                    <option value="PN">Pitcairn</option>
-                                                                    <option value="PL">Poland</option>
-                                                                    <option value="PT">Portugal</option>
-                                                                    <option value="PR">Puerto Rico</option>
-                                                                    <option value="QA">Qatar</option>
-                                                                    <option value="RE">Reunion</option>
-                                                                    <option value="RO">Romania</option>
-                                                                    <option value="RU">Russia</option>
-                                                                    <option value="RW">Rwanda</option>
-                                                                    <option value="ST">S&atilde;o Tom&eacute; and Pr&iacute;ncipe</option>
-                                                                    <option value="BL">Saint Barth&eacute;lemy</option>
-                                                                    <option value="SH">Saint Helena</option>
-                                                                    <option value="KN">Saint Kitts and Nevis</option>
-                                                                    <option value="LC">Saint Lucia</option>
-                                                                    <option value="SX">Saint Martin (Dutch part)</option>
-                                                                    <option value="MF">Saint Martin (French part)</option>
-                                                                    <option value="PM">Saint Pierre and Miquelon</option>
-                                                                    <option value="VC">Saint Vincent and the Grenadines</option>
-                                                                    <option value="WS">Samoa</option>
-                                                                    <option value="SM">San Marino</option>
-                                                                    <option value="SA">Saudi Arabia</option>
-                                                                    <option value="SN">Senegal</option>
-                                                                    <option value="RS">Serbia</option>
-                                                                    <option value="SC">Seychelles</option>
-                                                                    <option value="SL">Sierra Leone</option>
-                                                                    <option value="SG">Singapore</option>
-                                                                    <option value="SK">Slovakia</option>
-                                                                    <option value="SI">Slovenia</option>
-                                                                    <option value="SB">Solomon Islands</option>
-                                                                    <option value="SO">Somalia</option>
-                                                                    <option value="ZA">South Africa</option>
-                                                                    <option value="GS">South Georgia/Sandwich Islands</option>
-                                                                    <option value="KR">South Korea</option>
-                                                                    <option value="SS">South Sudan</option>
-                                                                    <option value="ES">Spain</option>
-                                                                    <option value="LK">Sri Lanka</option>
-                                                                    <option value="SD">Sudan</option>
-                                                                    <option value="SR">Suriname</option>
-                                                                    <option value="SJ">Svalbard and Jan Mayen</option>
-                                                                    <option value="SZ">Swaziland</option>
-                                                                    <option value="SE">Sweden</option>
-                                                                    <option value="CH">Switzerland</option>
-                                                                    <option value="SY">Syria</option>
-                                                                    <option value="TW">Taiwan</option>
-                                                                    <option value="TJ">Tajikistan</option>
-                                                                    <option value="TZ">Tanzania</option>
-                                                                    <option value="TH">Thailand</option>
-                                                                    <option value="TL">Timor-Leste</option>
-                                                                    <option value="TG">Togo</option>
-                                                                    <option value="TK">Tokelau</option>
-                                                                    <option value="TO">Tonga</option>
-                                                                    <option value="TT">Trinidad and Tobago</option>
-                                                                    <option value="TN">Tunisia</option>
-                                                                    <option value="TR" selected='selected'>Turkey</option>
-                                                                    <option value="TM">Turkmenistan</option>
-                                                                    <option value="TC">Turks and Caicos Islands</option>
-                                                                    <option value="TV">Tuvalu</option>
-                                                                    <option value="UG">Uganda</option>
-                                                                    <option value="UA">Ukraine</option>
-                                                                    <option value="AE">United Arab Emirates</option>
-                                                                    <option value="GB">United Kingdom (UK)</option>
-                                                                    <option value="US">United States (US)</option>
-                                                                    <option value="UM">United States (US) Minor Outlying Islands</option>
-                                                                    <option value="UY">Uruguay</option>
-                                                                    <option value="UZ">Uzbekistan</option>
-                                                                    <option value="VU">Vanuatu</option>
-                                                                    <option value="VA">Vatican</option>
-                                                                    <option value="VE">Venezuela</option>
-                                                                    <option value="VN">Vietnam</option>
-                                                                    <option value="VG">Virgin Islands (British)</option>
-                                                                    <option value="VI">Virgin Islands (US)</option>
-                                                                    <option value="WF">Wallis and Futuna</option>
-                                                                    <option value="EH">Western Sahara</option>
-                                                                    <option value="YE">Yemen</option>
-                                                                    <option value="ZM">Zambia</option>
-                                                                    <option value="ZW">Zimbabwe</option>
                                                                 </select><noscript><button type="submit" name="woocommerce_checkout_update_totals" value="Update country / region">Update country / region</button></noscript>
                                                             </span>
                                                         </p>
@@ -516,87 +328,6 @@
                                                             <label for="billing_state" class="heading-font">İl&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
                                                                 <select name="billing_state" id="billing_state" class="state_select " autocomplete="address-level1" data-placeholder="İl Seçiniz&hellip;" data-input-classes="" data-label="Province">
                                                                     <option value="">İl Seçiniz&hellip;</option>
-                                                                    <option value="TR01">Adana</option>
-                                                                    <option value="TR02">Adıyaman</option>
-                                                                    <option value="TR03">Afyon</option>
-                                                                    <option value="TR04">Ağrı</option>
-                                                                    <option value="TR05">Amasya</option>
-                                                                    <option value="TR06">Ankara</option>
-                                                                    <option value="TR07">Antalya</option>
-                                                                    <option value="TR08">Artvin</option>
-                                                                    <option value="TR09">Aydın</option>
-                                                                    <option value="TR10">Balıkesir</option>
-                                                                    <option value="TR11">Bilecik</option>
-                                                                    <option value="TR12">Bingöl</option>
-                                                                    <option value="TR13">Bitlis</option>
-                                                                    <option value="TR14">Bolu</option>
-                                                                    <option value="TR15">Burdur</option>
-                                                                    <option value="TR16">Bursa</option>
-                                                                    <option value="TR17">Çanakkale</option>
-                                                                    <option value="TR18">Çankırı</option>
-                                                                    <option value="TR19">Çorum</option>
-                                                                    <option value="TR20">Denizli</option>
-                                                                    <option value="TR21">Diyarbakır</option>
-                                                                    <option value="TR22">Edirne</option>
-                                                                    <option value="TR23">Elazığ</option>
-                                                                    <option value="TR24">Erzincan</option>
-                                                                    <option value="TR25">Erzurum</option>
-                                                                    <option value="TR26">Eskişehir</option>
-                                                                    <option value="TR27">Gaziantep</option>
-                                                                    <option value="TR28">Giresun</option>
-                                                                    <option value="TR29">Gümüşhane</option>
-                                                                    <option value="TR30">Hakkari</option>
-                                                                    <option value="TR31">Hatay</option>
-                                                                    <option value="TR32">Isparta</option>
-                                                                    <option value="TR33">İçel</option>
-                                                                    <option value="TR34">İstanbul</option>
-                                                                    <option value="TR35">İzmir</option>
-                                                                    <option value="TR36">Kars</option>
-                                                                    <option value="TR37">Kastamonu</option>
-                                                                    <option value="TR38">Kayseri</option>
-                                                                    <option value="TR39">Kırklareli</option>
-                                                                    <option value="TR40">Kırşehir</option>
-                                                                    <option value="TR41">Kocaeli</option>
-                                                                    <option value="TR42">Konya</option>
-                                                                    <option value="TR43">Kütahya</option>
-                                                                    <option value="TR44">Malatya</option>
-                                                                    <option value="TR45">Manisa</option>
-                                                                    <option value="TR46">Kahramanmaraş</option>
-                                                                    <option value="TR47">Mardin</option>
-                                                                    <option value="TR48">Muğla</option>
-                                                                    <option value="TR49">Muş</option>
-                                                                    <option value="TR50">Nevşehir</option>
-                                                                    <option value="TR51">Niğde</option>
-                                                                    <option value="TR52">Ordu</option>
-                                                                    <option value="TR53">Rize</option>
-                                                                    <option value="TR54">Sakarya</option>
-                                                                    <option value="TR55">Samsun</option>
-                                                                    <option value="TR56">Siirt</option>
-                                                                    <option value="TR57">Sinop</option>
-                                                                    <option value="TR58">Sivas</option>
-                                                                    <option value="TR59">Tekirdağ</option>
-                                                                    <option value="TR60">Tokat</option>
-                                                                    <option value="TR61">Trabzon</option>
-                                                                    <option value="TR62">Tunceli</option>
-                                                                    <option value="TR63">Şanlıurfa</option>
-                                                                    <option value="TR64">Uşak</option>
-                                                                    <option value="TR65">Van</option>
-                                                                    <option value="TR66">Yozgat</option>
-                                                                    <option value="TR67">Zonguldak</option>
-                                                                    <option value="TR68">Aksaray</option>
-                                                                    <option value="TR69">Bayburt</option>
-                                                                    <option value="TR70">Karaman</option>
-                                                                    <option value="TR71">Kırıkkale</option>
-                                                                    <option value="TR72">Batman</option>
-                                                                    <option value="TR73">Şırnak</option>
-                                                                    <option value="TR74">Bartın</option>
-                                                                    <option value="TR75">Ardahan</option>
-                                                                    <option value="TR76">Iğdır</option>
-                                                                    <option value="TR77">Yalova</option>
-                                                                    <option value="TR78">Karabük</option>
-                                                                    <option value="TR79">Kilis</option>
-                                                                    <option value="TR80">Osmaniye</option>
-                                                                    <option value="TR81">Düzce</option>
                                                                 </select>
                                                             </span>
                                                         </p>
@@ -628,255 +359,7 @@
                                                                 <label for="shipping_country" class="heading-font">Country / Region&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
                                                                     <select name="shipping_country" id="shipping_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Ülke Seçiniz&hellip;" data-label="Country / Region">
                                                                         <option value="">Ülke Seçiniz&hellip;</option>
-                                                                        <option value="AF">Afghanistan</option>
-                                                                        <option value="AX">Åland Islands</option>
-                                                                        <option value="AL">Albania</option>
-                                                                        <option value="DZ">Algeria</option>
-                                                                        <option value="AS">American Samoa</option>
-                                                                        <option value="AD">Andorra</option>
-                                                                        <option value="AO">Angola</option>
-                                                                        <option value="AI">Anguilla</option>
-                                                                        <option value="AQ">Antarctica</option>
-                                                                        <option value="AG">Antigua and Barbuda</option>
-                                                                        <option value="AR">Argentina</option>
-                                                                        <option value="AM">Armenia</option>
-                                                                        <option value="AW">Aruba</option>
-                                                                        <option value="AU">Australia</option>
-                                                                        <option value="AT">Austria</option>
-                                                                        <option value="AZ">Azerbaijan</option>
-                                                                        <option value="BS">Bahamas</option>
-                                                                        <option value="BH">Bahrain</option>
-                                                                        <option value="BD">Bangladesh</option>
-                                                                        <option value="BB">Barbados</option>
-                                                                        <option value="BY">Belarus</option>
-                                                                        <option value="PW">Belau</option>
-                                                                        <option value="BE">Belgium</option>
-                                                                        <option value="BZ">Belize</option>
-                                                                        <option value="BJ">Benin</option>
-                                                                        <option value="BM">Bermuda</option>
-                                                                        <option value="BT">Bhutan</option>
-                                                                        <option value="BO">Bolivia</option>
-                                                                        <option value="BQ">Bonaire, Saint Eustatius and Saba</option>
-                                                                        <option value="BA">Bosnia and Herzegovina</option>
-                                                                        <option value="BW">Botswana</option>
-                                                                        <option value="BV">Bouvet Island</option>
-                                                                        <option value="BR">Brazil</option>
-                                                                        <option value="IO">British Indian Ocean Territory</option>
-                                                                        <option value="BN">Brunei</option>
-                                                                        <option value="BG">Bulgaria</option>
-                                                                        <option value="BF">Burkina Faso</option>
-                                                                        <option value="BI">Burundi</option>
-                                                                        <option value="KH">Cambodia</option>
-                                                                        <option value="CM">Cameroon</option>
-                                                                        <option value="CA">Canada</option>
-                                                                        <option value="CV">Cape Verde</option>
-                                                                        <option value="KY">Cayman Islands</option>
-                                                                        <option value="CF">Central African Republic</option>
-                                                                        <option value="TD">Chad</option>
-                                                                        <option value="CL">Chile</option>
-                                                                        <option value="CN">China</option>
-                                                                        <option value="CX">Christmas Island</option>
-                                                                        <option value="CC">Cocos (Keeling) Islands</option>
-                                                                        <option value="CO">Colombia</option>
-                                                                        <option value="KM">Comoros</option>
-                                                                        <option value="CG">Congo (Brazzaville)</option>
-                                                                        <option value="CD">Congo (Kinshasa)</option>
-                                                                        <option value="CK">Cook Islands</option>
-                                                                        <option value="CR">Costa Rica</option>
-                                                                        <option value="HR">Croatia</option>
-                                                                        <option value="CU">Cuba</option>
-                                                                        <option value="CW">Cura&ccedil;ao</option>
-                                                                        <option value="CY">Cyprus</option>
-                                                                        <option value="CZ">Czech Republic</option>
-                                                                        <option value="DK">Denmark</option>
-                                                                        <option value="DJ">Djibouti</option>
-                                                                        <option value="DM">Dominica</option>
-                                                                        <option value="DO">Dominican Republic</option>
-                                                                        <option value="EC">Ecuador</option>
-                                                                        <option value="EG">Egypt</option>
-                                                                        <option value="SV">El Salvador</option>
-                                                                        <option value="GQ">Equatorial Guinea</option>
-                                                                        <option value="ER">Eritrea</option>
-                                                                        <option value="EE">Estonia</option>
-                                                                        <option value="ET">Ethiopia</option>
-                                                                        <option value="FK">Falkland Islands</option>
-                                                                        <option value="FO">Faroe Islands</option>
-                                                                        <option value="FJ">Fiji</option>
-                                                                        <option value="FI">Finland</option>
-                                                                        <option value="FR">France</option>
-                                                                        <option value="GF">French Guiana</option>
-                                                                        <option value="PF">French Polynesia</option>
-                                                                        <option value="TF">French Southern Territories</option>
-                                                                        <option value="GA">Gabon</option>
-                                                                        <option value="GM">Gambia</option>
-                                                                        <option value="GE">Georgia</option>
-                                                                        <option value="DE">Germany</option>
-                                                                        <option value="GH">Ghana</option>
-                                                                        <option value="GI">Gibraltar</option>
-                                                                        <option value="GR">Greece</option>
-                                                                        <option value="GL">Greenland</option>
-                                                                        <option value="GD">Grenada</option>
-                                                                        <option value="GP">Guadeloupe</option>
-                                                                        <option value="GU">Guam</option>
-                                                                        <option value="GT">Guatemala</option>
-                                                                        <option value="GG">Guernsey</option>
-                                                                        <option value="GN">Guinea</option>
-                                                                        <option value="GW">Guinea-Bissau</option>
-                                                                        <option value="GY">Guyana</option>
-                                                                        <option value="HT">Haiti</option>
-                                                                        <option value="HM">Heard Island and McDonald Islands</option>
-                                                                        <option value="HN">Honduras</option>
-                                                                        <option value="HK">Hong Kong</option>
-                                                                        <option value="HU">Hungary</option>
-                                                                        <option value="IS">Iceland</option>
-                                                                        <option value="IN">India</option>
-                                                                        <option value="ID">Indonesia</option>
-                                                                        <option value="IR">Iran</option>
-                                                                        <option value="IQ">Iraq</option>
-                                                                        <option value="IE">Ireland</option>
-                                                                        <option value="IM">Isle of Man</option>
-                                                                        <option value="IL">Israel</option>
-                                                                        <option value="IT">Italy</option>
-                                                                        <option value="CI">Ivory Coast</option>
-                                                                        <option value="JM">Jamaica</option>
-                                                                        <option value="JP">Japan</option>
-                                                                        <option value="JE">Jersey</option>
-                                                                        <option value="JO">Jordan</option>
-                                                                        <option value="KZ">Kazakhstan</option>
-                                                                        <option value="KE">Kenya</option>
-                                                                        <option value="KI">Kiribati</option>
-                                                                        <option value="KW">Kuwait</option>
-                                                                        <option value="KG">Kyrgyzstan</option>
-                                                                        <option value="LA">Laos</option>
-                                                                        <option value="LV">Latvia</option>
-                                                                        <option value="LB">Lebanon</option>
-                                                                        <option value="LS">Lesotho</option>
-                                                                        <option value="LR">Liberia</option>
-                                                                        <option value="LY">Libya</option>
-                                                                        <option value="LI">Liechtenstein</option>
-                                                                        <option value="LT">Lithuania</option>
-                                                                        <option value="LU">Luxembourg</option>
-                                                                        <option value="MO">Macao</option>
-                                                                        <option value="MG">Madagascar</option>
-                                                                        <option value="MW">Malawi</option>
-                                                                        <option value="MY">Malaysia</option>
-                                                                        <option value="MV">Maldives</option>
-                                                                        <option value="ML">Mali</option>
-                                                                        <option value="MT">Malta</option>
-                                                                        <option value="MH">Marshall Islands</option>
-                                                                        <option value="MQ">Martinique</option>
-                                                                        <option value="MR">Mauritania</option>
-                                                                        <option value="MU">Mauritius</option>
-                                                                        <option value="YT">Mayotte</option>
-                                                                        <option value="MX">Mexico</option>
-                                                                        <option value="FM">Micronesia</option>
-                                                                        <option value="MD">Moldova</option>
-                                                                        <option value="MC">Monaco</option>
-                                                                        <option value="MN">Mongolia</option>
-                                                                        <option value="ME">Montenegro</option>
-                                                                        <option value="MS">Montserrat</option>
-                                                                        <option value="MA">Morocco</option>
-                                                                        <option value="MZ">Mozambique</option>
-                                                                        <option value="MM">Myanmar</option>
-                                                                        <option value="NA">Namibia</option>
-                                                                        <option value="NR">Nauru</option>
-                                                                        <option value="NP">Nepal</option>
-                                                                        <option value="NL">Netherlands</option>
-                                                                        <option value="NC">New Caledonia</option>
-                                                                        <option value="NZ">New Zealand</option>
-                                                                        <option value="NI">Nicaragua</option>
-                                                                        <option value="NE">Niger</option>
-                                                                        <option value="NG">Nigeria</option>
-                                                                        <option value="NU">Niue</option>
-                                                                        <option value="NF">Norfolk Island</option>
-                                                                        <option value="KP">North Korea</option>
-                                                                        <option value="MK">North Macedonia</option>
-                                                                        <option value="MP">Northern Mariana Islands</option>
-                                                                        <option value="NO">Norway</option>
-                                                                        <option value="OM">Oman</option>
-                                                                        <option value="PK">Pakistan</option>
-                                                                        <option value="PS">Palestinian Territory</option>
-                                                                        <option value="PA">Panama</option>
-                                                                        <option value="PG">Papua New Guinea</option>
-                                                                        <option value="PY">Paraguay</option>
-                                                                        <option value="PE">Peru</option>
-                                                                        <option value="PH">Philippines</option>
-                                                                        <option value="PN">Pitcairn</option>
-                                                                        <option value="PL">Poland</option>
-                                                                        <option value="PT">Portugal</option>
-                                                                        <option value="PR">Puerto Rico</option>
-                                                                        <option value="QA">Qatar</option>
-                                                                        <option value="RE">Reunion</option>
-                                                                        <option value="RO">Romania</option>
-                                                                        <option value="RU">Russia</option>
-                                                                        <option value="RW">Rwanda</option>
-                                                                        <option value="ST">S&atilde;o Tom&eacute; and Pr&iacute;ncipe</option>
-                                                                        <option value="BL">Saint Barth&eacute;lemy</option>
-                                                                        <option value="SH">Saint Helena</option>
-                                                                        <option value="KN">Saint Kitts and Nevis</option>
-                                                                        <option value="LC">Saint Lucia</option>
-                                                                        <option value="SX">Saint Martin (Dutch part)</option>
-                                                                        <option value="MF">Saint Martin (French part)</option>
-                                                                        <option value="PM">Saint Pierre and Miquelon</option>
-                                                                        <option value="VC">Saint Vincent and the Grenadines</option>
-                                                                        <option value="WS">Samoa</option>
-                                                                        <option value="SM">San Marino</option>
-                                                                        <option value="SA">Saudi Arabia</option>
-                                                                        <option value="SN">Senegal</option>
-                                                                        <option value="RS">Serbia</option>
-                                                                        <option value="SC">Seychelles</option>
-                                                                        <option value="SL">Sierra Leone</option>
-                                                                        <option value="SG">Singapore</option>
-                                                                        <option value="SK">Slovakia</option>
-                                                                        <option value="SI">Slovenia</option>
-                                                                        <option value="SB">Solomon Islands</option>
-                                                                        <option value="SO">Somalia</option>
-                                                                        <option value="ZA">South Africa</option>
-                                                                        <option value="GS">South Georgia/Sandwich Islands</option>
-                                                                        <option value="KR">South Korea</option>
-                                                                        <option value="SS">South Sudan</option>
-                                                                        <option value="ES">Spain</option>
-                                                                        <option value="LK">Sri Lanka</option>
-                                                                        <option value="SD">Sudan</option>
-                                                                        <option value="SR">Suriname</option>
-                                                                        <option value="SJ">Svalbard and Jan Mayen</option>
-                                                                        <option value="SZ">Swaziland</option>
-                                                                        <option value="SE">Sweden</option>
-                                                                        <option value="CH">Switzerland</option>
-                                                                        <option value="SY">Syria</option>
-                                                                        <option value="TW">Taiwan</option>
-                                                                        <option value="TJ">Tajikistan</option>
-                                                                        <option value="TZ">Tanzania</option>
-                                                                        <option value="TH">Thailand</option>
-                                                                        <option value="TL">Timor-Leste</option>
-                                                                        <option value="TG">Togo</option>
-                                                                        <option value="TK">Tokelau</option>
-                                                                        <option value="TO">Tonga</option>
-                                                                        <option value="TT">Trinidad and Tobago</option>
-                                                                        <option value="TN">Tunisia</option>
-                                                                        <option value="TR" selected='selected'>Turkey</option>
-                                                                        <option value="TM">Turkmenistan</option>
-                                                                        <option value="TC">Turks and Caicos Islands</option>
-                                                                        <option value="TV">Tuvalu</option>
-                                                                        <option value="UG">Uganda</option>
-                                                                        <option value="UA">Ukraine</option>
-                                                                        <option value="AE">United Arab Emirates</option>
-                                                                        <option value="GB">United Kingdom (UK)</option>
-                                                                        <option value="US">United States (US)</option>
-                                                                        <option value="UM">United States (US) Minor Outlying Islands</option>
-                                                                        <option value="UY">Uruguay</option>
-                                                                        <option value="UZ">Uzbekistan</option>
-                                                                        <option value="VU">Vanuatu</option>
-                                                                        <option value="VA">Vatican</option>
-                                                                        <option value="VE">Venezuela</option>
-                                                                        <option value="VN">Vietnam</option>
-                                                                        <option value="VG">Virgin Islands (British)</option>
-                                                                        <option value="VI">Virgin Islands (US)</option>
-                                                                        <option value="WF">Wallis and Futuna</option>
-                                                                        <option value="EH">Western Sahara</option>
-                                                                        <option value="YE">Yemen</option>
-                                                                        <option value="ZM">Zambia</option>
-                                                                        <option value="ZW">Zimbabwe</option>
+
                                                                     </select><noscript><button type="submit" name="woocommerce_checkout_update_totals" value="Update country / region">Update country / region</button></noscript>
                                                                 </span>
                                                             </p>
@@ -888,87 +371,6 @@
                                                                 <label for="shipping_state" class="heading-font">İl&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
                                                                     <select name="shipping_state" id="shipping_state" class="state_select " autocomplete="address-level1" data-placeholder="İl Seçiniz&hellip;" data-input-classes="" data-label="Province">
                                                                         <option value="">İl Seçiniz&hellip;</option>
-                                                                        <option value="TR01">Adana</option>
-                                                                        <option value="TR02">Adıyaman</option>
-                                                                        <option value="TR03">Afyon</option>
-                                                                        <option value="TR04">Ağrı</option>
-                                                                        <option value="TR05">Amasya</option>
-                                                                        <option value="TR06">Ankara</option>
-                                                                        <option value="TR07">Antalya</option>
-                                                                        <option value="TR08">Artvin</option>
-                                                                        <option value="TR09">Aydın</option>
-                                                                        <option value="TR10">Balıkesir</option>
-                                                                        <option value="TR11">Bilecik</option>
-                                                                        <option value="TR12">Bingöl</option>
-                                                                        <option value="TR13">Bitlis</option>
-                                                                        <option value="TR14">Bolu</option>
-                                                                        <option value="TR15">Burdur</option>
-                                                                        <option value="TR16">Bursa</option>
-                                                                        <option value="TR17">Çanakkale</option>
-                                                                        <option value="TR18">Çankırı</option>
-                                                                        <option value="TR19">Çorum</option>
-                                                                        <option value="TR20">Denizli</option>
-                                                                        <option value="TR21">Diyarbakır</option>
-                                                                        <option value="TR22">Edirne</option>
-                                                                        <option value="TR23">Elazığ</option>
-                                                                        <option value="TR24">Erzincan</option>
-                                                                        <option value="TR25">Erzurum</option>
-                                                                        <option value="TR26">Eskişehir</option>
-                                                                        <option value="TR27">Gaziantep</option>
-                                                                        <option value="TR28">Giresun</option>
-                                                                        <option value="TR29">Gümüşhane</option>
-                                                                        <option value="TR30">Hakkari</option>
-                                                                        <option value="TR31">Hatay</option>
-                                                                        <option value="TR32">Isparta</option>
-                                                                        <option value="TR33">İçel</option>
-                                                                        <option value="TR34">İstanbul</option>
-                                                                        <option value="TR35">İzmir</option>
-                                                                        <option value="TR36">Kars</option>
-                                                                        <option value="TR37">Kastamonu</option>
-                                                                        <option value="TR38">Kayseri</option>
-                                                                        <option value="TR39">Kırklareli</option>
-                                                                        <option value="TR40">Kırşehir</option>
-                                                                        <option value="TR41">Kocaeli</option>
-                                                                        <option value="TR42">Konya</option>
-                                                                        <option value="TR43">Kütahya</option>
-                                                                        <option value="TR44">Malatya</option>
-                                                                        <option value="TR45">Manisa</option>
-                                                                        <option value="TR46">Kahramanmaraş</option>
-                                                                        <option value="TR47">Mardin</option>
-                                                                        <option value="TR48">Muğla</option>
-                                                                        <option value="TR49">Muş</option>
-                                                                        <option value="TR50">Nevşehir</option>
-                                                                        <option value="TR51">Niğde</option>
-                                                                        <option value="TR52">Ordu</option>
-                                                                        <option value="TR53">Rize</option>
-                                                                        <option value="TR54">Sakarya</option>
-                                                                        <option value="TR55">Samsun</option>
-                                                                        <option value="TR56">Siirt</option>
-                                                                        <option value="TR57">Sinop</option>
-                                                                        <option value="TR58">Sivas</option>
-                                                                        <option value="TR59">Tekirdağ</option>
-                                                                        <option value="TR60">Tokat</option>
-                                                                        <option value="TR61">Trabzon</option>
-                                                                        <option value="TR62">Tunceli</option>
-                                                                        <option value="TR63">Şanlıurfa</option>
-                                                                        <option value="TR64">Uşak</option>
-                                                                        <option value="TR65">Van</option>
-                                                                        <option value="TR66">Yozgat</option>
-                                                                        <option value="TR67">Zonguldak</option>
-                                                                        <option value="TR68">Aksaray</option>
-                                                                        <option value="TR69">Bayburt</option>
-                                                                        <option value="TR70">Karaman</option>
-                                                                        <option value="TR71">Kırıkkale</option>
-                                                                        <option value="TR72">Batman</option>
-                                                                        <option value="TR73">Şırnak</option>
-                                                                        <option value="TR74">Bartın</option>
-                                                                        <option value="TR75">Ardahan</option>
-                                                                        <option value="TR76">Iğdır</option>
-                                                                        <option value="TR77">Yalova</option>
-                                                                        <option value="TR78">Karabük</option>
-                                                                        <option value="TR79">Kilis</option>
-                                                                        <option value="TR80">Osmaniye</option>
-                                                                        <option value="TR81">Düzce</option>
                                                                     </select>
                                                                 </span>
                                                             </p>
@@ -1422,8 +824,56 @@
                                     event.preventDefault();
                                     $('.stm_terms_popup_dismiss, .stm_terms_popup').removeClass('active');
                                 });
+                                GetCountries();
+                                $('#billing_country').on('change', function () {
+                                    $('#billing_state')
+                                        .find('option')
+                                        .remove()
+                                        .end()
+                                        .append('<option value="">İl Seçiniz</option>')
+                                        .val('')
+                                    GetCities(this.value);
+                                });
+
                             })
                         })(jQuery);
+                        function GetCountries() {
+                           $.ajax({
+                            type: "POST",
+                            url: "@Url.Action("GetCountries", "Reservation")",
+                            dataType: "json",
+                            cache: false,
+                                 success: function (retval) {
+                                for (var i = 0; i < retval.length; i++) {
+                                    var o = new Option(retval[i].countryName, retval[i].countryCode);
+                                    /// jquerify the DOM object 'o' so we can use the html method
+                                    $(o).html(retval[i].countryName);
+                                    $("#billing_country").append(o);
+                                }
+                            },
+                            error: function () {
+                            }
+                });
+                        }
+                        function GetCities(countryCode) {
+                           $.ajax({
+                            type: "POST",
+                            url: "@Url.Action("GetCities", "Reservation")",
+                            dataType: "json",
+                            data: { "countryCode": countryCode},
+                            cache: false,
+                                 success: function (retval) {
+                                for (var i = 0; i < retval.length; i++) {
+                                    var o = new Option(retval[i].cityName, retval[i].cityNo);
+                                    /// jquerify the DOM object 'o' so we can use the html method
+                                    $(o).html(retval[i].cityName);
+                                    $("#billing_state").append(o);
+                                }
+                            },
+                            error: function () {
+                            }
+                });
+                }
                     </script>
                 </div>
 

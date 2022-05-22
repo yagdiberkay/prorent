@@ -204,8 +204,8 @@
                                     <table>
                                         <thead class="heading-font">
                                             <tr>
-                                                <td>Ek Hizmet</td>
-                                                <td>Ücret</td>
+                                                <td>Miktar</td>
+                                                <td>Oran</td>
                                                 <td>Toplam Tutar</td>
                                             </tr>
                                         </thead>
@@ -215,7 +215,7 @@
                                             </tr>
                                             <!--FIXED PRICE-->
                                             <tr>
-                                                <td>@ViewBag.SelectedVehicle.rentalDays</td>
+                                                <td>@ViewBag.SelectedVehicle.rentalDays <span>Gün</span></td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
                                                         <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
@@ -345,7 +345,7 @@
                                 </div>
 
                                 <div class="stm_rent_accept_wrapper">
-                                    <a href="../../checkout/index.html" class="stm_rent_accept heading-font external" rel="nofollow">Continue</a>
+                                    <a onclick="redirectFunction()" class="stm_rent_accept heading-font external">Devam Et</a>
                                 </div>
 
                             </div>
@@ -353,14 +353,14 @@
                     </div>
 
                     <script>
+                        var addedProducts = [];
+                        var productNo;
+                        var productPrice;
+                        var productName;
+                        var process;
+                        var rate = 0;
+                        var productNameArray = [];
                         jQuery(document).ready(function () {
-                            var addedProducts = [];
-                            var productNo;
-                            var productPrice;
-                            var productName;
-                            var process;
-                            var rate = 0;
-                            var productNameArray = [];
                             $(".productSelection").click(function () {
                                 productNo = this.dataset["id"];
                                 productPrice = this.dataset["value"];
@@ -368,7 +368,7 @@
                                 if ($(".productSelection span#" + productNo).text() == "Ekle") {
                                     addedProducts.push({
                                         productNo: productNo,
-                                        productPrice: productPrice,
+                                        totalPrice: productPrice,
                                         productName: productName
                                     });
                                     productNameArray.push(productName);
@@ -397,38 +397,45 @@
                             });
 
 
-                            //set the data in row
-                            function setDataOnRow(rowObject, productName, productPrice, process) {
-                                if (process == "Ekle") {
-                                    $(rowObject).find(".productName").html(productName);
-                                    $(rowObject).find(".productPrice").html(productPrice);
-                                }
-                                else {
-                                    $("#addOnsTable tbody").find('span[name="productName"]').each(function () {
-                                        if ($(this).html() == productName) {
-                                            $(this).parents("tr").remove();
-                                        }
-                                    });
-                                }
-                            }
 
-                            function AppendTBody(productName, productPrice, process, i) {
-                                if (i == 1) {
-                                    //setting the data in first row itself
-                                    setDataOnRow($("#addOnsTable tbody").find("tr").first(), productName, productPrice, process);
-
-                                } else {
-
-                                    //clonning the first row and setting data over it and then appending in tbody
-                                    var clonnedRow = $($("#addOnsTable tbody").find("tr").first()).clone();
-                                    setDataOnRow(clonnedRow, productName, productPrice, process);
-
-                                    $("#addOnsTable tbody").append(clonnedRow);
-
-                                }
-
-                            }
                         });
+                        //set the data in row
+                        function setDataOnRow(rowObject, productName, productPrice, process) {
+                            if (process == "Ekle") {
+                                $(rowObject).find(".productName").html(productName);
+                                $(rowObject).find(".productPrice").html(productPrice);
+                            }
+                            else {
+                                $("#addOnsTable tbody").find('span[name="productName"]').each(function () {
+                                    if ($(this).html() == productName) {
+                                        $(this).parents("tr").remove();
+                                    }
+                                });
+                            }
+                        }
+
+                        function AppendTBody(productName, productPrice, process, i) {
+                            if (i == 1) {
+                                //setting the data in first row itself
+                                setDataOnRow($("#addOnsTable tbody").find("tr").first(), productName, productPrice, process);
+
+                            } else {
+
+                                //clonning the first row and setting data over it and then appending in tbody
+                                var clonnedRow = $($("#addOnsTable tbody").find("tr").first()).clone();
+                                setDataOnRow(clonnedRow, productName, productPrice, process);
+
+                                $("#addOnsTable tbody").append(clonnedRow);
+
+                            }
+
+                        }
+
+                        function redirectFunction(fullTypeName, img) {
+                            var capacity = @Html.Raw(Json.Encode(@ViewBag.SelectedVehicle));
+                            var economy = addedProducts;
+                            window.location.href = `/umbraco/Surface/Reservation/Checkout?capacity=${JSON.stringify(capacity)}&economy=${JSON.stringify(economy)}`;
+                        }
                     </script>
                 </div>
 
