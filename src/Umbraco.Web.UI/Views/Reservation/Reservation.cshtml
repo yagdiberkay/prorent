@@ -12,8 +12,7 @@
 @* the fun starts here *@
 @Html.Partial("~/Views/Partials/Reservation/_Reservation.cshtml", Model)
 
-@foreach (var item in Model)
-{
+
     <div class="stm-reservation-archive">
         <div class="container">
             <div class="row">
@@ -39,196 +38,117 @@
                     </div>
                     <div class="stm_notices">
                     </div>
-                    @foreach (var item1 in item.vehicleTypes)
+                    @foreach (var item in Model)
                     {
-                        <div class="stm_single_class_car  " id="@item1.typeNo">
+                        foreach (var item1 in item.vehicleTypes)
+                        {
+                            <div class="stm_single_class_car  " id="@item1.typeNo">
 
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4 first">
-                                    <div class="image">
-                                        <img width="300" height="181" src="@item1.img1" class="img-responsive wp-post-image" alt="" loading="lazy" />
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 first">
+                                        <div class="image">
+                                            <img width="300" height="181" src="https://jupicar.cloud:2028//image/@item1.img5" class="img-responsive wp-post-image" alt="" loading="lazy" />
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-8 col-sm-8 second">
-                                    <div class="row">
+                                    <div class="col-md-8 col-sm-8 second">
+                                        <div class="row">
 
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="top">
-                                                <div class="heading-font">
-                                                    <h3> @item1.mark</h3>
-                                                    <div class="s_title">
-                                                        @item1.model
-                                                    </div>
-                                                    <div class="infos">
-                                                        <div class="single_info stm_single_info_font_stm-rental-seats">
-                                                            <i class="stm-rental-seats"></i>
-                                                            <span>@item1.seats</span>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="top">
+                                                    <div class="heading-font">
+                                                        <h3> @item1.mark</h3>
+                                                        <div class="s_title">
+                                                            @item1.model
                                                         </div>
-                                                        <div class="single_info stm_single_info_font_stm-rental-door">
-                                                            <i class="stm-rental-door"></i>
-                                                            <span>@item1.doors</span>
-                                                        </div>
-                                                        <div class="single_info stm_single_info_font_stm-rental-ac">
-                                                            <i class="stm-rental-ac"></i>
-                                                            <span>A/C</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="stm-more">
-                                                    <a href="#">
-                                                        <span>More information</span>
-                                                        <i class="fas fa-angle-down"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="stm_rent_prices">
-                                                <div class="stm_rent_price">
-                                                    <div class="total heading-font">
-                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>110</span>/Total
-                                                    </div>
-                                                    <div class="period">
-                                                        <div class="stm-show-rent-promo-info" data-popup-id="stm-promo-popup-wrap-185-141">1 Days / 0 Hours</div>
-                                                        <div id="stm-promo-popup-wrap-185-141" class="stm-promo-popup-wrap">
-                                                            <div class="stm-promo-popup">
-                                                                <div class="stm-table stm-pp-head">
-                                                                    <div class="stm-pp-row stm-pp-qty heading-font">QTY</div>
-                                                                    <div class="stm-pp-row stm-pp-rate heading-font">RATE</div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal heading-font">SUBTOTAL</div>
-                                                                </div>
-                                                                <!--PRICES BY DAYS PERIOD-->
-                                                                <!--PRICE PER HOUR-->
-                                                                <div class="stm-table stm-pp-per-hour">
-                                                                    <div class="stm-pp-row stm-pp-qty"> Hours</div>
-                                                                    <div class="stm-pp-row stm-pp-rate">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>7</span>
-                                                                    </div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <!--TAX && FEES RATES-->
-                                                                <div class="stm-pp-tax-margin"></div>
-                                                                <div class="stm-table stm-pp-tax">
-                                                                    <div class="stm-pp-row stm-pp-qty heading-font">Car Rental Sales Tax (1%)</div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal heading-font">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="stm-table stm-pp-tax">
-                                                                    <div class="stm-pp-row stm-pp-qty heading-font">Sales Tax (2%)</div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal heading-font">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="stm-table-total">
-                                                                    <div class="stm-pp-total-label heading-font">Rental Charges Rate</div>
-                                                                    <div class="stm-pp-total-price heading-font">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="stm-rental-ico-close" data-close-id="stm-promo-popup-wrap-185-141"></div>
+                                                        <div class="infos">
+                                                            <div class="single_info stm_single_info_font_stm-rental-fuel">
+                                                                <i class="stm-icon-fuel"></i>
+                                                                @if (item1.fuelType == "O") { <span>Benzİn</span> } else { <span>Dİzel</span> }
+                                                            </div>
+                                                            <div class="single_info stm_single_info_font_stm-rental-transmission">
+                                                                <i class="stm-icon-transmission"></i>
+                                                                @if (item1.transmission == "AUT")
+                                                                {<span>OTOMATİK</span> }
+                                                                else
+                                                                { <span>MANUEL</span>}
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="pay">
-                                                        <a class="heading-font external" href="../product/economy/index9a3c.html?add-to-cart=141&amp;product_id=141&amp;variation_id=185&amp;attribute_payment-method=Pay%20later" rel="nofollow">
-                                                            Pay later
+
+                                                    <div class="stm-more">
+                                                        <a href="#">
+                                                            <span>Daha Fazla</span>
+                                                            <i class="fas fa-angle-down"></i>
                                                         </a>
-                                                    </div>
-                                                </div>
-                                                <div class="stm_rent_price">
-                                                    <div class="total heading-font">
-                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>100</span>/Total
-                                                    </div>
-                                                    <div class="period">
-                                                        <div class="stm-show-rent-promo-info" data-popup-id="stm-promo-popup-wrap-186-141">1 Days / 0 Hours</div>
-                                                        <div id="stm-promo-popup-wrap-186-141" class="stm-promo-popup-wrap">
-                                                            <div class="stm-promo-popup">
-                                                                <div class="stm-table stm-pp-head">
-                                                                    <div class="stm-pp-row stm-pp-qty heading-font">QTY</div>
-                                                                    <div class="stm-pp-row stm-pp-rate heading-font">RATE</div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal heading-font">SUBTOTAL</div>
-                                                                </div>
-                                                                <!--PRICES BY DAYS PERIOD-->
-                                                                <!--PRICE PER HOUR-->
-                                                                <div class="stm-table stm-pp-per-hour">
-                                                                    <div class="stm-pp-row stm-pp-qty"> Hours</div>
-                                                                    <div class="stm-pp-row stm-pp-rate">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>7</span>
-                                                                    </div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <!--TAX && FEES RATES-->
-                                                                <div class="stm-pp-tax-margin"></div>
-                                                                <div class="stm-table stm-pp-tax">
-                                                                    <div class="stm-pp-row stm-pp-qty heading-font">Car Rental Sales Tax (1%)</div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal heading-font">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="stm-table stm-pp-tax">
-                                                                    <div class="stm-pp-row stm-pp-qty heading-font">Sales Tax (2%)</div>
-                                                                    <div class="stm-pp-row stm-pp-subtotal heading-font">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="stm-table-total">
-                                                                    <div class="stm-pp-total-label heading-font">Rental Charges Rate</div>
-                                                                    <div class="stm-pp-total-price heading-font">
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span>0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="stm-rental-ico-close" data-close-id="stm-promo-popup-wrap-186-141"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pay">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
-                                                            Pay now
-                                                        </a>
-                                                    </div>
-                                                    <div class="stm_discount">
-                                                        Saves you <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="more" style="display:block;">
-                                                <div class="lists-inline">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae mollis velit. Nullam interdum auctor turpis, at eleifend tortor pellentesque nec. Fusce pretium nulla ut risus egestas, quis dapibus
-                                                        eros condimentum. Integer volutpat posuere quam vitae mollis. Proin diam sapien, luctus ut faucibus sit amet, dignissim a arcu.
-                                                    </p>
-                                                    <ul>
-                                                        @if (item1.features != null)
-                                                        {
-                                                            foreach (var item2 in item1.features)
+
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="stm_rent_prices">
+                                                    <div class="stm_rent_price">
+                                                        <div class="total heading-font">
+                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>@item.tariffs[0].totalRentalPrice</span> TL
+                                                        </div>
+                                                        <div class="period">
+                                                            <div class="stm-show-rent-promo-info">@item.rentalDays Gün / @item.extraHours Saat</div>
+                                                           
+                                                        </div>
+                                                        <div class="pay">
+                                                            <a class="heading-font external" href="../product/economy/index9a3c.html?add-to-cart=141&amp;product_id=141&amp;variation_id=185&amp;attribute_payment-method=Pay%20later" rel="nofollow">
+                                                                Sonra Öde
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="stm_rent_price">
+                                                        <div class="total heading-font">
+                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>@item.tariffs[1].totalRentalPrice</span> TL
+                                                        </div>
+                                                        <div class="period">
+                                                            <div class="stm-show-rent-promo-info">@item.rentalDays Gün / @item.extraHours Saat</div>
+                                                            
+                                                        </div>
+                                                        <div class="pay">
+                                                            <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
+                                                                ŞİMDİ Öde
+                                                            </a>
+                                                        </div>
+                                                        <div class="stm_discount">
+                                                            @(item.tariffs[0].totalRentalPrice - item.tariffs[1].totalRentalPrice) <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">TL İndirim</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="more" style="display:block;">
+                                                    <div class="lists-inline">
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae mollis velit. Nullam interdum auctor turpis, at eleifend tortor pellentesque nec. Fusce pretium nulla ut risus egestas, quis dapibus
+                                                            eros condimentum. Integer volutpat posuere quam vitae mollis. Proin diam sapien, luctus ut faucibus sit amet, dignissim a arcu.
+                                                        </p>
+                                                        <ul>
+                                                            @if (item1.features != null)
                                                             {
-                                                                <li>@item2.featureName</li>
+                                                                foreach (var item2 in item1.features)
+                                                                {
+                                                                    <li>@item2.featureName</li>
+                                                                }
                                                             }
-                                                        }
-                                                    </ul>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
+
                                 </div>
-
-
 
                             </div>
-
-                        </div>
-                    }
-                <script>
+                        }
+                        <script>
                         (function ($) {
                             "use strict";
                             $(document).ready(function () {
@@ -303,13 +223,13 @@
                             };
                             window.location.href = `/umbraco/Surface/Reservation/Economy?economyObj=${JSON.stringify(obj)}&capacity=${JSON.stringify(capacity)}`;
                         }
-                </script>
-
-                </div>
+                        </script>
+                    }
+                    </div>
 
             </div>
             <!--row-->
         </div>
         <!--container-->
     </div>
-}
+

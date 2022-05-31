@@ -2,9 +2,8 @@
 @{
     Layout = null;
 }
-@if (Model != null) { 
-    foreach (var item in Model)
-    {
+@if (Model != null) {
+                var item = Model[0];
         <div class="stm-fullwidth-with-parallax-bg">
             <div class="container">
                 <div class="stm_wizard_title heading-font">
@@ -87,6 +86,5 @@
                 </div>
             </div>
         </div>
-    }
 }
 
