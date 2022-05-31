@@ -3493,6 +3493,7 @@
     <Content Include="Views\Reservation.cshtml" />
     <Content Include="Views\Reservation\Economy.cshtml" />
     <Content Include="Views\Reservation\Checkout.cshtml" />
+    <Content Include="Views\Partials\Reservation\_Summary.cshtml" />
     <None Include="Web.Debug.config.transformed" />
     <None Include="web.Template.Debug.config">
       <DependentUpon>Web.Template.config</DependentUpon>
