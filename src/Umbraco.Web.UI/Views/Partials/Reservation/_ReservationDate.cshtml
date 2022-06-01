@@ -333,8 +333,11 @@
 
                         /*Set cookie with order data*/
                         $('.redirectSubmit').click(function (e) {
+                           
                             var error = false;
                             $('.stm_pickup_location').removeClass('stm_error');
+                            $('input[name="pickup_date"]').removeClass('stm_error');
+                            $('input[name="return_date"]').removeClass('stm_error');
 
                             /*Save in cookies all fields*/
                             if ($.cookie('stm_pickup_date_' + stm_site_blog_id) != null) {
@@ -353,9 +356,11 @@
                                     expires: 7,
                                     path: '/'
                                 });
-
+                                
                                 if (field.name == 'pickup_date' || field.name == 'return_date') {
+                                    
                                     if (typeof $('input[name="' + field.name + '"]').attr('data-dt-hide') == 'undefined' || $('input[name="' + field.name + '"]').attr('data-dt-hide') == '') {
+                                        
                                         $('input[name="' + field.name + '"]').addClass('stm_error');
                                         error = true;
                                     } else {
@@ -381,7 +386,6 @@
                             var stm_pickup_location = $('.stm_pickup_location select').val();
                             var return_same = $('input[name="return_same"]').prop('checked');
                             var stm_drop_location = $('.stm_drop_location select').val();
-
                             if (stm_pickup_location == '') {
                                 $('.stm_pickup_location:not(".stm_drop_location")').addClass('stm_error');
                                 error = true;
@@ -392,8 +396,26 @@
                                 error = true;
                             }
 
+                            if (return_same == '' && stm_drop_location == '') {
+                                $('.stm_drop_location').addClass('stm_error');
+                                error = true;
+                            }
+
+                            if ($('input[name="pickup_date"]').attr('data-dt-hide') == undefined || $('input[name="pickup_date"]').attr('data-dt-hide') == '') {
+
+                                $('input[name="pickup_date"]').addClass('stm_error');
+                                error = true;
+                            }
+
+                            if ($('input[name="return_date"]').attr('data-dt-hide') == undefined || $('input[name="return_date"]').attr('data-dt-hide') == '') {
+
+                                $('input[name="return_date"]').addClass('stm_error');
+                                error = true;
+                            }
+
                             if (error) {
                                 e.preventDefault();
+                                return;
                             }
                             var obj = {
                                 pickupLocNo: $('#startLocations option').filter(':selected').val(),
