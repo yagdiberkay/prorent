@@ -7,29 +7,29 @@
     <div class="stm-fullwidth-with-parallax-bg">
         <div class="container">
             <div class="stm_wizard_title heading-font">
-                Reservation
+                Rezervasyon
             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <div class="stm_nav_wizard_step stm_nav_wizard_step_1">
 
                         <div class="inner ">
-                            <a href="date-reservation.php" class="top heading-font external" rel="nofollow">
+                            <a href="../../date-reservation/index.html" class="top heading-font external" rel="nofollow">
                                 <div class="number">
                                     <span>1</span>
                                 </div>
-                                <label>Your Itinerary</label>
+                                <label>Kiralama Bilgileri</label>
                             </a>
                             <div class="content">
                                 <div class="first">
-                                    <h5>Pick up</h5>
-                                    <div class="stm_filled_pickup_location">--</div>
-                                    <div class="stm_filled_pickup_date">--</div>
+                                    <h5>Başlangıç</h5>
+                                    <div class="stm_filled_pickup_location">@ViewBag.SelectedVehicle.pickupLocName</div>
+                                    <div class="stm_filled_pickup_date">@ViewBag.SelectedVehicle.pickupDate</div>
                                 </div>
                                 <div class="second">
-                                    <h5 class="second">Drop off</h5>
-                                    <div class="stm_filled_return_location">--</div>
-                                    <div class="stm_filled_return_date">--</div>
+                                    <h5 class="second">TESLİMAT</h5>
+                                    <div class="stm_filled_return_location">@ViewBag.SelectedVehicle.returnLocName</div>
+                                    <div class="stm_filled_return_date">@ViewBag.SelectedVehicle.returnDate</div>
                                 </div>
                             </div>
                         </div>
@@ -38,21 +38,23 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="stm_nav_wizard_step stm_nav_wizard_step_2">
 
-                        <div class="inner current">
-                            <a href="reservation.php" class="top heading-font external" rel="nofollow">
+                        <div class="inner current passed">
+                            <a href="#" class="top heading-font external" rel="nofollow">
                                 <div class="number">
                                     <span>2</span>
                                 </div>
-                                <label>Select Vehicle/Add-ons</label>
+                                <label>Araç ve Ek Hizmet Seçimi</label>
                             </a>
                             <div class="content">
                                 <div class="first">
-                                    <h5>Type</h5>
-                                    <div>--</div>
+                                    <h5>Araç</h5>
+                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
                                 </div>
                                 <div class="second">
-                                    <h5>Addons</h5>
-                                    <div>--</div>
+                                    <a class="h5 external" href="#" rel="nofollow">Ek HİZMETLER</a>
+                                    <div>
+                                        <span class="selectedProducts"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,19 +64,19 @@
                     <div class="stm_nav_wizard_step stm_nav_wizard_step_3">
 
                         <div class="inner ">
-                            <a href="../../checkout/index.html" class="top heading-font external" rel="nofollow">
+                            <a href="#" class="top heading-font external" rel="nofollow">
                                 <div class="number">
                                     <span>3</span>
                                 </div>
-                                <label>Reserve Your Vehicle</label>
+                                <label>Rezervasyon Bilgileri</label>
                             </a>
                             <div class="content">
                                 <div class="first">
-                                    <h5>Your information</h5>
+                                    <h5>Rezervasyon SAHİBİ</h5>
                                     <div>--</div>
                                 </div>
                                 <div class="second">
-                                    <h5>Payment information</h5>
+                                    <h5>Ödeme BİLGİSİ</h5>
                                     <div>
                                         --
                                     </div>
@@ -94,7 +96,7 @@
                 <div class="col-md-12">
                     <div class="row stm_rental_archive_top">
                         <div class="col-md-7 col-sm-7">
-                            <h2 class="title">Checkout</h2>
+                            <h2 class="title">Sonuç</h2>
                         </div>
                     </div>
 
@@ -323,19 +325,19 @@
                     </div>
 
                     <script>
-                        (function($) {
+                        (function ($) {
 
-                            $(window).on('load', function() {
+                            $(window).on('load', function () {
                                 var fields = '.stm_woocommerce_checkout_billing .form-row input, ' +
                                     '.stm_woocommerce_checkout_billing .form-row select';
 
-                                $(fields).each(function() {
+                                $(fields).each(function () {
                                     if ($(this).val() == '') {
                                         $(this).closest('.form-row').removeClass('woocommerce-validated');
                                     }
                                 });
 
-                                $(document).on('focusout', fields, function() {
+                                $(document).on('focusout', fields, function () {
                                     if ($(this).val() == '') {
                                         $(this).closest('.form-row').removeClass('woocommerce-validated');
                                     }
@@ -474,21 +476,21 @@
                     </div>
 
                     <script>
-                        (function($) {
+                        (function ($) {
                             "use strict";
 
                             var stm_single_filter_link = false;
                             var stmIsotope;
                             var $container = $('.stm-isotope-sorting');
 
-                            $(document).ready(function() {
+                            $(document).ready(function () {
                                 /*Terms and conditions rental*/
-                                $(document).on("click", '.stm-template-car_rental .form-row.terms a', function(event) {
+                                $(document).on("click", '.stm-template-car_rental .form-row.terms a', function (event) {
                                     event.preventDefault();
                                     $('.stm_terms_popup_dismiss, .stm_terms_popup').addClass('active');
                                 });
 
-                                $(document).on("click", '.stm_terms_popup_dismiss, .stm_terms_popup .fa-times', function(event) {
+                                $(document).on("click", '.stm_terms_popup_dismiss, .stm_terms_popup .fa-times', function (event) {
                                     event.preventDefault();
                                     $('.stm_terms_popup_dismiss, .stm_terms_popup').removeClass('active');
                                 });
