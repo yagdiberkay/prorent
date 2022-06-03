@@ -217,6 +217,7 @@
                                             <tr>
                                                 <td>@ViewBag.SelectedVehicle.rentalDays <span>Gün</span></td>
                                                 <td>
+
                                                     <span class="woocommerce-Price-amount amount">
                                                         <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span> <span class="price-date-info-icon">
@@ -236,6 +237,7 @@
                                                     </span>
                                                 </td>
                                                 <td>
+                                                    @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice
                                                     <span class="woocommerce-Price-amount amount">
                                                         <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span>

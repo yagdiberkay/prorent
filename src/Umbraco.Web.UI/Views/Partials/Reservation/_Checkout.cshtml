@@ -43,11 +43,13 @@
                                 <div class="first">
                                     <h5>Başlangıç</h5>
                                     <div class="stm_filled_pickup_location">@ViewBag.Capacity.pickupLocName</div>
+                                    <div class="stm_filled_pickup_locationNo" hidden>@ViewBag.Capacity.pickupLocNo</div>
                                     <div class="stm_filled_pickup_date">@ViewBag.Capacity.pickupDate</div>
                                 </div>
                                 <div class="second">
                                     <h5 class="second">TESLİMAT</h5>
                                     <div class="stm_filled_return_location">@ViewBag.Capacity.returnLocName</div>
+                                    <div class="stm_filled_return_locationNo" hidden>@ViewBag.Capacity.returnLocNo</div>
                                     <div class="stm_filled_return_date">@ViewBag.Capacity.returnDate</div>
                                 </div>
                             </div>
@@ -175,8 +177,9 @@
                                                     </span>
                                                 </td>
                                                 <td>
+                                                    @ViewBag.Capacity.tariffs[0].totalRentalPrice
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@ViewBag.Capacity.onewayPrice</bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -636,7 +639,7 @@
                                                                 </p>
                                                             </div>
 
-                                                            <span class="wc-place-order-btn"><input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Rezervasyonu Tamamla" /></span>
+                                                            <span class="wc-place-order-btn"><input type="button" class="button alt" onclick="redirectFunction();" name="woocommerce_checkout_place_order" id="place_order" value="Rezervasyonu Tamamla" /></span>
 
                                                         </div>
 
@@ -873,7 +876,45 @@
                             error: function () {
                             }
                 });
-                }
+                        }
+                        function redirectFunction() {
+                            var address = {
+                                addressNo: 0,
+                                addressCorpNo: 0,
+                                addressType: 1,
+                                billingAddress: true,
+                                shippinAddress: true,
+                                name: $("#billing_first_name").val(),
+                                lastname: $("#billing_last_name").val(),
+                                corpName: $("#billing_driver_license").val(),
+                                corpStyle: $("#billing_company").val(),
+                                address: $("#billing_address_1").val(),
+                                districtName: $("#billing_city").val(),
+                                cityNo: $("#billing_state").val(),
+                                countryCode: $("#billing_country").val(),
+                                phone11: $("#billing_phone").val(),
+                                phone22: $("#billing_phone").val(),
+                                mobPhone1: $("#billing_phone").val(),
+                                mobPhone2: $("#billing_phone").val(),
+                                phoneHome: $("#billing_phone").val(),
+                                email: $("#billing_email").val()
+                            };
+
+                            var capacitiy = @Html.Raw(Json.Encode(@ViewBag.Capacity));
+                            var products = @Html.Raw(Json.Encode(@ViewBag.Economy));
+                   $.ajax({
+                    type: "POST",
+                       url: "@Url.Action("InsertReservation", "Reservation")",
+                       data: { capacity: JSON.stringify(capacitiy), address: JSON.stringify(address), products: JSON.stringify(products) },
+                    cache: false,
+                        success: function (retval) {
+
+                    },
+                    error: function () {
+                        alert("Error figen");
+                    }
+                });
+                        }
                     </script>
                 </div>
 

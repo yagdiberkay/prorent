@@ -1,5 +1,7 @@
 ﻿using Mapster;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Umbraco.Core.Services;
@@ -38,16 +40,76 @@ namespace Umbraco.Web.UI.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult InsertReservation(ReservationRequestDto dto)
+        public string InsertReservation(string capacity, string address, string products)
         {
-            if (ModelState.IsValid)
+            JObject capacitiesObj = JObject.Parse(capacity);
+            JObject addressObj = JObject.Parse(address);
+            var productsDto = JsonConvert.DeserializeObject<List<ProductsDto>>(products);
+            var productsModel = productsDto.Adapt<List<ProductsModel>>();
+            ReservationRequestModel reservationRequestModel = new ReservationRequestModel();
+            reservationRequestModel.resNo = 0;
+            reservationRequestModel.resCorpNo = 0;
+
+            reservationRequestModel.pickupDate = capacitiesObj["pickupDate"].ToString();
+            reservationRequestModel.returnDate = capacitiesObj["returnDate"].ToString();
+            reservationRequestModel.pickupLocNo = long.Parse(capacitiesObj["pickupLocNo"].ToString());
+            reservationRequestModel.returnLocNo = long.Parse(capacitiesObj["returnLocNo"].ToString());
+            reservationRequestModel.classNo = long.Parse(capacitiesObj["classNo"].ToString());
+            reservationRequestModel.typeNo = long.Parse(capacitiesObj["vehicleTypes"][0]["typeNo"].ToString());
+            reservationRequestModel.rentalDays = int.Parse(capacitiesObj["rentalDays"].ToString());
+            reservationRequestModel.extraHours = int.Parse(capacitiesObj["extraHours"].ToString());
+            reservationRequestModel.onewayPrice = double.Parse(capacitiesObj["onewayPrice"].ToString());
+            reservationRequestModel.onewayCurrency = capacitiesObj["onewayCurrency"].ToString();
+            reservationRequestModel.totalRentalPrice =double.Parse(capacitiesObj["tariffs"][0]["totalRentalPrice"].ToString());
+            reservationRequestModel.rentalPriceCurrency = capacitiesObj["onewayCurrency"].ToString();
+            reservationRequestModel.addresses = new List<AddressModel>();
+            reservationRequestModel.addresses.Add(new AddressModel
             {
-                var model = dto.Adapt<ReservationRequestModel>();
-                OperationResultDto resultModel = _prorentService.InsertReservation(model).Adapt<OperationResultDto>();
-                return RedirectToCurrentUmbracoPage();
-            }
-            return CurrentUmbracoPage();
+                addressNo = long.Parse(addressObj["addressNo"].ToString()),
+                addressCorpNo = long.Parse(addressObj["addressCorpNo"].ToString()),
+                addressType = addressObj["addressType"].ToString(),
+                billingAddress = bool.Parse(addressObj["billingAddress"].ToString()),
+                shippingAddress = bool.Parse(addressObj["shippinAddress"].ToString()),
+                name = addressObj["name"].ToString(),
+                lastname = addressObj["lastname"].ToString(),
+                corpName = addressObj["corpName"].ToString(),
+                corpStyle = addressObj["corpStyle"].ToString(),
+                address = addressObj["address"].ToString(),
+                districtName = addressObj["districtName"].ToString(),
+                cityNo = long.Parse(addressObj["cityNo"].ToString()),
+                countryCode = addressObj["countryCode"].ToString(),
+                phone11 = addressObj["phone11"].ToString(),
+                phone22 = addressObj["phone22"].ToString(),
+                mobPhone1 = addressObj["mobPhone1"].ToString(),
+                mobPhone2 = addressObj["mobPhone2"].ToString(),
+                phoneHome = addressObj["phoneHome"].ToString(),
+                email = addressObj["email"].ToString()
+
+            });
+             reservationRequestModel.products = productsModel;
+
+            reservationRequestModel.landingFlight = new FlightModel();
+            reservationRequestModel.takeoffFlight = new FlightModel();
+            reservationRequestModel.referenceNo = string.Empty;
+            reservationRequestModel.voucherNo = string.Empty;
+            reservationRequestModel.fullCredit = false;
+            reservationRequestModel.deliveryPlace = capacitiesObj["pickupLocName"].ToString();
+            reservationRequestModel.dropPlace = capacitiesObj["returnLocName"].ToString();
+            reservationRequestModel.pickupFromAirport = false;
+            reservationRequestModel.returnToAirport = false;
+            reservationRequestModel.resSourceNo = 188;//“ReservationSources” metodundan dönen değerlerden biri 188 dönmekte sadece
+            reservationRequestModel.paymentTypeNo = 353;//Nakit
+            reservationRequestModel.tariffNo = 381; //Şimdi öde
+            reservationRequestModel.campaignNo = long.Parse(capacitiesObj["campaignNo"].ToString());
+            reservationRequestModel.note = string.Empty;
+            reservationRequestModel.webSource = string.Empty;
+            reservationRequestModel.requireConfirmation = false;//Araç kiralama firmasından ayrıca rezervasyon onayı istenecekse “true
+            reservationRequestModel.brokerUserNo = 0;
+            reservationRequestModel.promotionCode = string.Empty;
+            reservationRequestModel.resStatus = string.Empty;
+
+            _prorentService.InsertReservation(reservationRequestModel);
+            return JsonConvert.SerializeObject(reservationRequestModel);
         }
 
         [HttpPost]
@@ -98,7 +160,7 @@ namespace Umbraco.Web.UI.Controllers
             var reservationDto = JsonConvert.DeserializeObject<CapacitiesRequestDto>(obj);
             var model = reservationDto.Adapt<CapacitiesRequestModel>();
             CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
-            if(model.orderby == "priceasc")
+            if (model.orderby == "priceasc")
                 resultModel = resultModel.OrderBy(x => x.onewayPrice).ToArray();
             else if (reservationDto.orderby == "pricedesc")
                 resultModel = resultModel.OrderByDescending(x => x.onewayPrice).ToArray();
@@ -117,7 +179,9 @@ namespace Umbraco.Web.UI.Controllers
             var economyDto = JsonConvert.DeserializeObject<ExtraProductsRequestDto>(economyObj);
             var model = economyDto.Adapt<ExtraProductsRequestModel>();
             ExtraProductsResponseDto[] resultModel = _prorentService.GetExtraProducts(model).Adapt<ExtraProductsResponseDto[]>();
-            ViewBag.SelectedVehicle = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            var capacityModel= JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            capacityModel.classNo = economyDto.classNo;
+            ViewBag.SelectedVehicle = capacityModel;
             return View(resultModel);
         }
         [HttpGet]

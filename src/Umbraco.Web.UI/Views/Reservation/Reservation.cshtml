@@ -13,142 +13,145 @@
 @Html.Partial("~/Views/Partials/Reservation/_Reservation.cshtml", Model)
 
 
-    <div class="stm-reservation-archive">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row stm_rental_archive_top">
-                        <div class="col-md-7 col-sm-7">
-                            <h2 class="title">Araç ve Ek HİZMET SEÇİMİ</h2>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-                            <div class="woocommerce-notices-wrapper"></div>
-                            <p class="woocommerce-result-count">
-                                Showing all 6 results
-                            </p>
-                            <div class="woocommerce-ordering">
-                                <select onchange="recylepage(this.value)" name="orderby" class="orderby" id="sortdp">
-                                    <option value="default" selected='selected'>Varsayılan</option>
-                                    <option value="pricedesc">Azalan Fiyat</option>
-                                    <option value="priceasc">Artan Fiyat</option>
-                                </select>
-                                <input type="hidden" name="paged" value="1" />
-                            </div>
+<div class="stm-reservation-archive">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row stm_rental_archive_top">
+                    <div class="col-md-7 col-sm-7">
+                        <h2 class="title">Araç ve Ek HİZMET SEÇİMİ</h2>
+                    </div>
+                    <div class="col-md-5 col-sm-5">
+                        <div class="woocommerce-notices-wrapper"></div>
+                        <p class="woocommerce-result-count">
+                            Showing all 6 results
+                        </p>
+                        <div class="woocommerce-ordering">
+                            <select onchange="recylepage(this.value)" name="orderby" class="orderby" id="sortdp">
+                                <option value="default" selected='selected'>Varsayılan</option>
+                                <option value="pricedesc">Azalan Fiyat</option>
+                                <option value="priceasc">Artan Fiyat</option>
+                            </select>
+                            <input type="hidden" name="paged" value="1" />
                         </div>
                     </div>
-                    <div class="stm_notices">
-                    </div>
-                    @foreach (var item in Model)
+                </div>
+                <div class="stm_notices">
+                </div>
+                @foreach (var item in Model)
+                {
+                    foreach (var item1 in item.vehicleTypes)
                     {
-                        foreach (var item1 in item.vehicleTypes)
-                        {
-                            <div class="stm_single_class_car  " id="@item1.typeNo">
+                        <div class="stm_single_class_car  " id="@item1.typeNo">
 
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-4 first">
-                                        <div class="image">
-                                            <img width="300" height="181" src="https://jupicar.cloud:2028//image/@item1.img5" class="img-responsive wp-post-image" alt="" loading="lazy" />
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 first">
+                                    <div class="image">
+                                        <img width="300" height="181" src="https://jupicar.cloud:2028//image/@item1.img5" class="img-responsive wp-post-image" alt="" loading="lazy" />
                                     </div>
+                                </div>
 
-                                    <div class="col-md-8 col-sm-8 second">
-                                        <div class="row">
+                                <div class="col-md-8 col-sm-8 second">
+                                    <div class="row">
 
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="top">
-                                                    <div class="heading-font">
-                                                        <h3> @item1.mark</h3>
-                                                        <div class="s_title">
-                                                            @item1.model
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="top">
+                                                <div class="heading-font">
+                                                    <h3> @item1.mark</h3>
+                                                    <div class="s_title">
+                                                        @item1.model
+                                                    </div>
+                                                    <div class="infos">
+                                                        <div class="single_info stm_single_info_font_stm-rental-fuel">
+                                                            <i class="stm-icon-fuel"></i>
+                                                            @if (item1.fuelType == "O")
+                                                            {<span>Benzİn</span> }
+                                                            else
+                                                            { <span>Dİzel</span>}
                                                         </div>
-                                                        <div class="infos">
-                                                            <div class="single_info stm_single_info_font_stm-rental-fuel">
-                                                                <i class="stm-icon-fuel"></i>
-                                                                @if (item1.fuelType == "O") { <span>Benzİn</span> } else { <span>Dİzel</span> }
-                                                            </div>
-                                                            <div class="single_info stm_single_info_font_stm-rental-transmission">
-                                                                <i class="stm-icon-transmission"></i>
-                                                                @if (item1.transmission == "AUT")
-                                                                {<span>OTOMATİK</span> }
-                                                                else
-                                                                { <span>MANUEL</span>}
-                                                            </div>
+                                                        <div class="single_info stm_single_info_font_stm-rental-transmission">
+                                                            <i class="stm-icon-transmission"></i>
+                                                            @if (item1.transmission == "AUT")
+                                                            {<span>OTOMATİK</span> }
+                                                            else
+                                                            { <span>MANUEL</span>}
                                                         </div>
                                                     </div>
+                                                </div>
 
-                                                    <div class="stm-more">
-                                                        <a href="#">
-                                                            <span>Daha Fazla</span>
-                                                            <i class="fas fa-angle-down"></i>
+                                                <div class="stm-more">
+                                                    <a href="#">
+                                                        <span>Daha Fazla</span>
+                                                        <i class="fas fa-angle-down"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="stm_rent_prices">
+                                                <div class="stm_rent_price">
+                                                    <div class="total heading-font">
+                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>@item.tariffs[0].totalRentalPrice</span> TL
+                                                    </div>
+                                                    <div class="period">
+                                                        <div class="stm-show-rent-promo-info">@item.rentalDays Gün / @item.extraHours Saat</div>
+
+                                                    </div>
+                                                    <div class="pay">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
+                                                            Sonra Öde
                                                         </a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <div class="stm_rent_price">
+                                                    <div class="total heading-font">
+                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>@item.tariffs[1].totalRentalPrice</span> TL
+                                                    </div>
+                                                    <div class="period">
+                                                        <div class="stm-show-rent-promo-info">@item.rentalDays Gün / @item.extraHours Saat</div>
 
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="stm_rent_prices">
-                                                    <div class="stm_rent_price">
-                                                        <div class="total heading-font">
-                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>@item.tariffs[0].totalRentalPrice</span> TL
-                                                        </div>
-                                                        <div class="period">
-                                                            <div class="stm-show-rent-promo-info">@item.rentalDays Gün / @item.extraHours Saat</div>
-                                                           
-                                                        </div>
-                                                        <div class="pay">
-                                                            <a class="heading-font external" href="../product/economy/index9a3c.html?add-to-cart=141&amp;product_id=141&amp;variation_id=185&amp;attribute_payment-method=Pay%20later" rel="nofollow">
-                                                                Sonra Öde
-                                                            </a>
-                                                        </div>
                                                     </div>
-                                                    <div class="stm_rent_price">
-                                                        <div class="total heading-font">
-                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>@item.tariffs[1].totalRentalPrice</span> TL
-                                                        </div>
-                                                        <div class="period">
-                                                            <div class="stm-show-rent-promo-info">@item.rentalDays Gün / @item.extraHours Saat</div>
-                                                            
-                                                        </div>
-                                                        <div class="pay">
-                                                            <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
-                                                                ŞİMDİ Öde
-                                                            </a>
-                                                        </div>
-                                                        <div class="stm_discount">
-                                                            @(item.tariffs[0].totalRentalPrice - item.tariffs[1].totalRentalPrice) <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">TL İndirim</span></span>
-                                                        </div>
+                                                    <div class="pay">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
+                                                            ŞİMDİ Öde
+                                                        </a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 col-sm-12">
-                                                <div class="more" style="display:block;">
-                                                    <div class="lists-inline">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae mollis velit. Nullam interdum auctor turpis, at eleifend tortor pellentesque nec. Fusce pretium nulla ut risus egestas, quis dapibus
-                                                            eros condimentum. Integer volutpat posuere quam vitae mollis. Proin diam sapien, luctus ut faucibus sit amet, dignissim a arcu.
-                                                        </p>
-                                                        <ul>
-                                                            @if (item1.features != null)
-                                                            {
-                                                                foreach (var item2 in item1.features)
-                                                                {
-                                                                    <li>@item2.featureName</li>
-                                                                }
-                                                            }
-                                                        </ul>
+                                                    <div class="stm_discount">
+                                                        @(item.tariffs[0].totalRentalPrice - item.tariffs[1].totalRentalPrice) <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">TL İndirim</span></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="more" style="display:block;">
+                                                <div class="lists-inline">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae mollis velit. Nullam interdum auctor turpis, at eleifend tortor pellentesque nec. Fusce pretium nulla ut risus egestas, quis dapibus
+                                                        eros condimentum. Integer volutpat posuere quam vitae mollis. Proin diam sapien, luctus ut faucibus sit amet, dignissim a arcu.
+                                                    </p>
+                                                    <ul>
+                                                        @if (item1.features != null)
+                                                        {
+                                                            foreach (var item2 in item1.features)
+                                                            {
+                                                                <li>@item2.featureName</li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
-
-
                                 </div>
 
+
+
                             </div>
-                        }
-                        <script>
+
+                        </div>
+                    }
+                    <script>
                         (function ($) {
                             "use strict";
                             $(document).ready(function () {
@@ -212,10 +215,15 @@
                             };
                             var capacity = {
                                 pickupLocName: '@item.pickupLocName',
+                                pickupLocNo:'@item.pickupLocNo',
                                 pickupDate: '@item.pickupDate',
                                 returnLocName:'@item.returnLocName',
+                                returnLocNo:'@item.returnLocNo',
                                 returnDate: '@item.returnDate',
                                 rentalDays: @item.rentalDays,
+                                tariffs: [{
+                                    totalRentalPrice:'@item.tariffs[0].totalRentalPrice'
+                                }],
                                 vehicleTypes: [{
                                     typeFullname: fullTypeName,
                                     img1: img,
@@ -223,13 +231,13 @@
                             };
                             window.location.href = `/umbraco/Surface/Reservation/Economy?economyObj=${JSON.stringify(obj)}&capacity=${JSON.stringify(capacity)}`;
                         }
-                        </script>
-                    }
-                    </div>
-
+                    </script>
+                }
             </div>
-            <!--row-->
+
         </div>
-        <!--container-->
+        <!--row-->
     </div>
+    <!--container-->
+</div>
 
