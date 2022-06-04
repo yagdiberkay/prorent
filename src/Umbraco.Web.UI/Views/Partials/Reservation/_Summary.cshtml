@@ -53,7 +53,7 @@
                                 <div class="second">
                                     <a class="h5 external" href="#" rel="nofollow">Ek HİZMETLER</a>
                                     <div>
-                                        <span class="selectedProducts"></span>
+                                        @ViewBag.ProductName<span class="selectedProducts"></span>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                             <div class="content">
                                 <div class="first">
                                     <h5>Rezervasyon SAHİBİ</h5>
-                                    <div>--</div>
+                                    <div>@ViewBag.ReservationOwner.name @ViewBag.ReservationOwner.lastname</div>
                                 </div>
                                 <div class="second">
                                     <h5>Ödeme BİLGİSİ</h5>
@@ -107,7 +107,7 @@
 
                                 <div class="title">
                                     <h4>Economy</h4>
-                                    <div class="subtitle heading-font">Mini Cooper 3 or Similar</div>
+                                    <div class="subtitle heading-font">@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
                                 </div>
                                 <div class="image">
                                     <img src="assets/img/uploads/economy-300x181.png" />
@@ -248,20 +248,22 @@
                                         <h4 class="rental_title">Summary</h4>
                                         <div class="stm_rental_order_success">
                                             <div class="single_order_info">
-                                                <h4 class="title">Pick Up</h4>
-                                                <div class="content">45 W. Lincoln St. Arlington, NC 28655 May 23, 2022 04:00</div>
+                                                <h4 class="title">Başlangıç</h4>
+                                                <div class="content">@ViewBag.SelectedVehicle.pickupLocName, @ViewBag.SelectedVehicle.pickupDate</div>
                                             </div>
                                             <div class="single_order_info">
-                                                <h4 class="title">Drop off</h4>
-                                                <div class="content">45 W. Lincoln St. Arlington, NC 28655 May 25, 2022 04:00</div>
+                                                <h4 class="title">Teslimat</h4>
+                                                <div class="content">@ViewBag.SelectedVehicle.returnLocName, @ViewBag.SelectedVehicle.returnDate</div>
                                             </div>
                                             <div class="single_order_info">
-                                                <h4 class="title">Vehicle Type</h4>
-                                                <div class="content">Economy Mini Cooper 3 or Similar</div>
+                                                <h4 class="title">Araç</h4>
+                                                <div class="content">@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
                                             </div>
                                             <div class="single_order_info">
-                                                <h4 class="title">Your Information</h4>
-                                                <div class="content">test test</div>
+                                                <h4 class="title">Bilgileriniz</h4>
+                                                <div class="content">@ViewBag.ReservationOwner.name @ViewBag.ReservationOwner.lastname </div>
+                                                <div class="content">Telefon: @ViewBag.ReservationOwner.phone11 </div>
+                                                <div class="content">Email: @ViewBag.ReservationOwner.email </div>
                                             </div>
                                             <div class="single_order_info">
                                                 <h4 class="title">Payment information</h4>

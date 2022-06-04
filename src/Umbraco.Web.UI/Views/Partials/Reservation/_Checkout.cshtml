@@ -899,15 +899,24 @@
                                 phoneHome: $("#billing_phone").val(),
                                 email: $("#billing_email").val()
                             };
+                            var reservationOwner = {
+                                name: address.name,
+                                lastname: address.lastname,
+                                phone11: address.phone11,
+                                email: address.email
+                            };
 
-                            var capacitiy = @Html.Raw(Json.Encode(@ViewBag.Capacity));
+                            var capacity = @Html.Raw(Json.Encode(@ViewBag.Capacity));
                             var products = @Html.Raw(Json.Encode(@ViewBag.Economy));
+                            var economy =@Html.Raw(Json.Encode(@ViewBag.ProductName));
                    $.ajax({
                     type: "POST",
                        url: "@Url.Action("InsertReservation", "Reservation")",
-                       data: { capacity: JSON.stringify(capacitiy), address: JSON.stringify(address), products: JSON.stringify(products) },
+                       data: { capacity: JSON.stringify(capacity), address: JSON.stringify(address), products: JSON.stringify(products) },
                     cache: false,
-                        success: function (retval) {
+                       success: function (capacityModel) {
+                           console.log(capacityModel);
+                           window.location.href = `/umbraco/Surface/Reservation/Summary?capacity=${capacityModel}&economy=${economy}&reservationOwner=${JSON.stringify(reservationOwner)}`;
 
                     },
                     error: function () {

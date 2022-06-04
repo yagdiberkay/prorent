@@ -44,7 +44,7 @@ namespace Umbraco.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertReservation(string capacity, string address, string products)
+        public string InsertReservation(string capacity, string address, string products)
         {
             JObject capacitiesObj = JObject.Parse(capacity);
             JObject addressObj = JObject.Parse(address);
@@ -115,7 +115,7 @@ namespace Umbraco.Web.UI.Controllers
             _prorentService.InsertReservation(reservationRequestModel);
             var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.SelectedVehicle = capacityModel;
-            return View("Summary.cshtml");
+            return JsonConvert.SerializeObject(capacityModel);
         }
 
         [HttpPost]
@@ -182,23 +182,24 @@ namespace Umbraco.Web.UI.Controllers
         [HttpGet]
         public ActionResult Economy(string economyObj, string capacity)
         {
-            var economyDto = JsonConvert.DeserializeObject<ProductsDto[]>(economyObj);
-            var capacityDto = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
-            ViewBag.Capacity = capacityDto;
-            ViewBag.Economy = economyDto;
-            ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Summary(string economyObj, string capacity)
-        {
             var economyDto = JsonConvert.DeserializeObject<ExtraProductsRequestDto>(economyObj);
             var model = economyDto.Adapt<ExtraProductsRequestModel>();
             ExtraProductsResponseDto[] resultModel = _prorentService.GetExtraProducts(model).Adapt<ExtraProductsResponseDto[]>();
-            var capacityModel= JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             capacityModel.classNo = economyDto.classNo;
             ViewBag.SelectedVehicle = capacityModel;
             return View(resultModel);
+        }
+        [HttpGet]
+        public ActionResult Summary(string capacity,string economy,string reservationOwner)
+        {
+            var reservationOwnerDto = JsonConvert.DeserializeObject<AddressDto>(reservationOwner);
+            var reservationOwnerModel = reservationOwnerDto.Adapt<AddressModel>();
+            ViewBag.ReservationOwner = reservationOwnerModel;
+            ViewBag.ProductName = economy;
+            var capacityModel= JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            ViewBag.SelectedVehicle = capacityModel;
+            return View();
         }
         [HttpGet]
         public ActionResult Checkout(string capacity, string economy)
