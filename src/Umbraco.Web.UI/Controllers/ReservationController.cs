@@ -38,9 +38,13 @@ namespace Umbraco.Web.UI.Controllers
         {
             return View(PARTIAL_VIEW_FOLDER + "_Checkout.cshtml");
         }
+        public ActionResult RenderSummaryForm()
+        {
+            return View(PARTIAL_VIEW_FOLDER + "_Summary.cshtml");
+        }
 
         [HttpPost]
-        public string InsertReservation(string capacity, string address, string products)
+        public ActionResult InsertReservation(string capacity, string address, string products)
         {
             JObject capacitiesObj = JObject.Parse(capacity);
             JObject addressObj = JObject.Parse(address);
@@ -109,7 +113,9 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.resStatus = string.Empty;
 
             _prorentService.InsertReservation(reservationRequestModel);
-            return JsonConvert.SerializeObject(reservationRequestModel);
+            var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            ViewBag.SelectedVehicle = capacityModel;
+            return View("Summary.cshtml");
         }
 
         [HttpPost]
@@ -175,6 +181,16 @@ namespace Umbraco.Web.UI.Controllers
         }
         [HttpGet]
         public ActionResult Economy(string economyObj, string capacity)
+        {
+            var economyDto = JsonConvert.DeserializeObject<ProductsDto[]>(economyObj);
+            var capacityDto = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            ViewBag.Capacity = capacityDto;
+            ViewBag.Economy = economyDto;
+            ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Summary(string economyObj, string capacity)
         {
             var economyDto = JsonConvert.DeserializeObject<ExtraProductsRequestDto>(economyObj);
             var model = economyDto.Adapt<ExtraProductsRequestModel>();
