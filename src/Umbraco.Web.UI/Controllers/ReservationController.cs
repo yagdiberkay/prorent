@@ -69,6 +69,7 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.addresses = new List<AddressModel>();
             reservationRequestModel.addresses.Add(new AddressModel
             {
+                idNo = "34290",
                 addressNo = long.Parse(addressObj["addressNo"].ToString()),
                 addressCorpNo = long.Parse(addressObj["addressCorpNo"].ToString()),
                 addressType = addressObj["addressType"].ToString(),
@@ -103,7 +104,7 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.returnToAirport = false;
             reservationRequestModel.resSourceNo = 188;//“ReservationSources” metodundan dönen değerlerden biri 188 dönmekte sadece
             reservationRequestModel.paymentTypeNo = 353;//Nakit
-            reservationRequestModel.tariffNo = 381; //Şimdi öde
+            reservationRequestModel.tariffNo = 380; //Şimdi öde
             reservationRequestModel.campaignNo = long.Parse(capacitiesObj["campaignNo"].ToString());
             reservationRequestModel.note = string.Empty;
             reservationRequestModel.webSource = string.Empty;
