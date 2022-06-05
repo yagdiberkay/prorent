@@ -193,7 +193,7 @@
                                         <h4>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</h4>
                                     </div>
                                     <div class="image">
-                                        <img src="@ViewBag.SelectedVehicle.vehicleTypes[0].img5" />
+                                        <img src="https://jupicar.cloud:2028//image/@ViewBag.SelectedVehicle.vehicleTypes[0].img1" />
                                     </div>
                                     <table>
                                         <thead class="heading-font">
@@ -297,7 +297,7 @@
                                     $(".productSelection span#" + this.dataset["id"]).text("Çıkar");
                                     this.style.backgroundColor = "#f0c540";
                                     totalPrice = totalPrice + parseFloat(productPrice);
-                                    $(".totalRentalPrice").text(totalPrice);
+                                    $(".totalRentalPrice").text(totalPrice + " TL");
                                     $(".selectedProducts").text(productNameArray.join());
                                 }
                                 else {
@@ -312,9 +312,9 @@
                                     $(".productSelection span#" + productNo).text("Ekle");
                                     this.style.backgroundColor = "white";
                                     totalPrice = totalPrice - parseFloat(productPrice);
-                                    $(".totalRentalPrice").text(totalPrice);
+                                    $(".totalRentalPrice").text(totalPrice + " TL");
                                 }
-                                AppendTBody(productName, productPrice, process, addedProducts.length);
+                                AppendTBody(productName, productPrice + " TL", process, addedProducts.length);
                             });
 
 

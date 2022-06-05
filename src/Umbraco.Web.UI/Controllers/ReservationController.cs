@@ -67,6 +67,7 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.totalRentalPrice =double.Parse(capacitiesObj["tariffs"][0]["totalRentalPrice"].ToString());
             reservationRequestModel.rentalPriceCurrency = capacitiesObj["onewayCurrency"].ToString();
             reservationRequestModel.addresses = new List<AddressModel>();
+            long cityy = 0;
             reservationRequestModel.addresses.Add(new AddressModel
             {
                 idNo = "34290",
@@ -81,7 +82,7 @@ namespace Umbraco.Web.UI.Controllers
                 corpStyle = addressObj["corpStyle"].ToString(),
                 address = addressObj["address"].ToString(),
                 districtName = addressObj["districtName"].ToString(),
-                cityNo = long.Parse(addressObj["cityNo"].ToString()),
+                cityNo = long.TryParse(addressObj["cityNo"].ToString(), out cityy) == false ? 0 : long.Parse(addressObj["cityNo"].ToString()),
                 countryCode = addressObj["countryCode"].ToString(),
                 phone11 = addressObj["phone11"].ToString(),
                 phone22 = addressObj["phone22"].ToString(),
