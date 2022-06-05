@@ -99,7 +99,7 @@
 
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1','@item.tariffs[0].totalRentalPrice');">
                                                             Sonra Öde
                                                         </a>
                                                     </div>
@@ -113,7 +113,7 @@
 
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1');">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img1','@item.tariffs[1].totalRentalPrice');">
                                                             ŞİMDİ Öde
                                                         </a>
                                                     </div>
@@ -204,7 +204,7 @@
                         }
                     }
 
-                        function redirectFunction(fullTypeName,img) {
+                        function redirectFunction(fullTypeName,img,price) {
 
                             var obj = {
                                 rentalDays: @item.rentalDays,
@@ -222,7 +222,7 @@
                                 returnDate: '@item.returnDate',
                                 rentalDays: @item.rentalDays,
                                 tariffs: [{
-                                    totalRentalPrice:'@item.tariffs[0].totalRentalPrice'
+                                    totalRentalPrice:price
                                 }],
                                 vehicleTypes: [{
                                     typeFullname: fullTypeName,

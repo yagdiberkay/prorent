@@ -194,6 +194,7 @@ namespace Umbraco.Web.UI.Controllers
         [HttpGet]
         public ActionResult Summary(string capacity,string economy,string reservationOwner)
         {
+            
             var reservationOwnerDto = JsonConvert.DeserializeObject<AddressDto>(reservationOwner);
             var reservationOwnerModel = reservationOwnerDto.Adapt<AddressModel>();
             ViewBag.ReservationOwner = reservationOwnerModel;
@@ -209,6 +210,7 @@ namespace Umbraco.Web.UI.Controllers
             var capacityDto = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.Capacity = capacityDto;
             ViewBag.Economy = economyDto;
+            ViewBag.TotalPrice = economyDto.Sum(s => s.totalPrice) + capacityDto.tariffs[0].totalRentalPrice;
             ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
             return View();
         }

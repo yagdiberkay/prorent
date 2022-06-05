@@ -151,7 +151,6 @@
                                                 <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
                                                     <a class="productSelection" data-id="@item.productNo" data-value="@item.totalPrice" data-text="@item.productName" style="background-color:white;">
                                                         <span class="add_text" id="@item.productNo">Ekle</span>
-                                                        @*<span class="remove_text" id="@item.productNo" hidden>Çıkar</span>*@
                                                     </a>
                                                 </div>
 
@@ -258,7 +257,7 @@
                                         <tr>
                                             <td>Hesaplanan Tutar</td>
                                             <td>
-                                                <span class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-amount amount totalRentalPrice">
                                                     <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                 </span>
                                             </td>
@@ -280,7 +279,7 @@
                         var productPrice;
                         var productName;
                         var process;
-                        var rate = 0;
+                        var totalPrice = parseFloat('@ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice');
                         var productNameArray = [];
                         jQuery(document).ready(function () {
                             $(".productSelection").click(function () {
@@ -297,8 +296,8 @@
                                     process = "Ekle";
                                     $(".productSelection span#" + this.dataset["id"]).text("Çıkar");
                                     this.style.backgroundColor = "#f0c540";
-                                    rate = rate + parseFloat(productPrice);
-                                    $(".woocommerce-Price-currencySymbol").text(rate);
+                                    totalPrice = totalPrice + parseFloat(productPrice);
+                                    $(".totalRentalPrice").text(totalPrice);
                                     $(".selectedProducts").text(productNameArray.join());
                                 }
                                 else {
@@ -312,8 +311,8 @@
                                     process = "Çıkar";
                                     $(".productSelection span#" + productNo).text("Ekle");
                                     this.style.backgroundColor = "white";
-                                    rate = rate - parseFloat(productPrice);
-                                    $(".woocommerce-Price-currencySymbol").text(rate);
+                                    totalPrice = totalPrice - parseFloat(productPrice);
+                                    $(".totalRentalPrice").text(totalPrice);
                                 }
                                 AppendTBody(productName, productPrice, process, addedProducts.length);
                             });
@@ -331,6 +330,7 @@
                                 $("#addOnsTable tbody").find('span[name="productName"]').each(function () {
                                     if ($(this).html() == productName) {
                                         $(this).parents("tr").remove();
+                                        $(this).deleteRow(this);
                                     }
                                 });
                             }
