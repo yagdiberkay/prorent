@@ -114,7 +114,21 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.promotionCode = string.Empty;
             reservationRequestModel.resStatus = string.Empty;
 
-            _prorentService.InsertReservation(reservationRequestModel);
+            OperationResultModel result = _prorentService.InsertReservation(reservationRequestModel);
+
+            if (result.success)
+            {
+                //credit card
+                //SendBankTransactionRequestModel model = new SendBankTransactionRequestModel();
+                //OperationResultDto resultModel = _prorentService.SendBankTransaction(model).Adapt<OperationResultDto>();
+
+                SendMailOnReservationInsertRequestModel mailModel = new SendMailOnReservationInsertRequestModel();
+                mailModel.resNo = result.resNo;
+                mailModel.toCustomer = true;
+                
+                SendMailOnReservationInsertRequestDto mailResultModel = _prorentService.SendMailOnReservationInsert(mailModel).Adapt<SendMailOnReservationInsertRequestDto>();
+            }
+
             var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.SelectedVehicle = capacityModel;
             return JsonConvert.SerializeObject(capacityModel);
