@@ -136,7 +136,7 @@
                                                 </div>
                                                 <div class="stm-more">
                                                     <a href="#">
-                                                        <span>More information</span>
+                                                        <span>DAHA FAZLA</span>
                                                         <i class="fas fa-angle-down"></i>
                                                     </a>
                                                 </div>
@@ -188,24 +188,18 @@
 
                             <div class="stm_rent_order_info">
 
-                                <div class="title">
-                                    <h4>Standart</h4>
-                                    <div class="subtitle heading-font">@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
-                                </div>
-                                <div class="image">
-                                    <img src="@ViewBag.SelectedVehicle.vehicleTypes[0].img1" />
-                                </div>
-
                                 <!--Car rent-->
                                 <div class="stm_rent_table">
                                     <div class="heading heading-font">
-                                        <h4>Oran</h4>
+                                        <h4>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</h4>
+                                    </div>
+                                    <div class="image">
+                                        <img src="@ViewBag.SelectedVehicle.vehicleTypes[0].img5" />
                                     </div>
                                     <table>
                                         <thead class="heading-font">
                                             <tr>
-                                                <td>Miktar</td>
-                                                <td>Oran</td>
+                                                <td>KİRALAMA Süresi</td>
                                                 <td>Toplam Tutar</td>
                                             </tr>
                                         </thead>
@@ -217,29 +211,9 @@
                                             <tr>
                                                 <td>@ViewBag.SelectedVehicle.rentalDays <span>Gün</span></td>
                                                 <td>
-
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
-                                                    </span> <span class="price-date-info-icon">
-                                                        <i class="fas fa-info-circle"></i>
-                                                        <div class="price-date-info-popup">
-                                                            <ul>
-
-
-                                                                <li class="padd-10">Per Hour:</li>
-                                                                <li>
-                                                                    <b>
-                                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#036;</span></span>
-                                                                    </b> Her saat
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </span>
-                                                </td>
-                                                <td>
                                                     @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -247,29 +221,18 @@
                                                 <td colspan="3" class="divider"></td>
                                             </tr>
                                         </tbody>
-                                        <tfoot class="heading-font">
-                                            <tr>
-                                                <td colspan="2">Kira Ücreti Oranı</td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
 
                                 <!--Add-ons-->
                                 <div class="stm_rent_table">
                                     <div class="heading heading-font">
-                                        <h4>Ek Hizmetler</h4>
+                                        <h4>Ek HİZLETLER</h4>
                                     </div>
                                     <table id="addOnsTable">
                                         <thead class="heading-font">
                                             <tr>
-                                                <td>Ek Hizmet</td>
-                                                <td>Ücret</td>
+                                                <td>Ek HİZMET</td>
                                                 <td>Toplam Tutar</td>
                                             </tr>
                                         </thead>
@@ -281,52 +244,9 @@
                                                 </td>
                                                 <td>
                                                     <span class="productPrice">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                     </span>
                                                 </td>
-                                                <td>
-                                                    <span class="productPrice">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot class="heading-font">
-                                            <tr>
-                                                <td colspan="2">Ek Hizmet Ücret Oranı</td>
-                                                <td>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-
-                                <div class="stm_rent_table stm_rent_tax_table">
-                                    <div class="heading heading-font">
-                                        <h4>
-                                            Vergiler &amp; Ücretler
-                                        </h4>
-                                    </div>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
-                                            </tr>
-                                            <tr class="cart-tax tax-car-rental-sales-tax-1-1">
-                                                <td>Araç Kiralama Satış Vergisi (%1)</td>
-                                                <td>&nbsp;</td>
-                                                <td>&#36;3</td>
-                                            </tr>
-                                            <tr class="cart-tax tax-sales-tax-2-2">
-                                                <td>Satış Vergisi (2%)</td>
-                                                <td>&nbsp;</td>
-                                                <td>&#36;5</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="divider"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -339,7 +259,7 @@
                                             <td>Hesaplanan Tutar</td>
                                             <td>
                                                 <span class="woocommerce-Price-amount amount">
-                                                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span></bdi>
+                                                    <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                 </span>
                                             </td>
                                         </tr>
