@@ -94,8 +94,8 @@ namespace Umbraco.Web.UI.Controllers
             });
              reservationRequestModel.products = productsModel;
 
-            reservationRequestModel.landingFlight = new FlightModel();
-            reservationRequestModel.takeoffFlight = new FlightModel();
+            //reservationRequestModel.landingFlight = new FlightModel();
+            //reservationRequestModel.takeoffFlight = new FlightModel();
             reservationRequestModel.referenceNo = string.Empty;
             reservationRequestModel.voucherNo = string.Empty;
             reservationRequestModel.fullCredit = false;
@@ -103,13 +103,13 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.dropPlace = capacitiesObj["returnLocName"].ToString();
             reservationRequestModel.pickupFromAirport = false;
             reservationRequestModel.returnToAirport = false;
-            reservationRequestModel.resSourceNo = 188;//“ReservationSources” metodundan dönen değerlerden biri 188 dönmekte sadece
+            reservationRequestModel.resSourceNo = 187;//“ReservationSources” metodundan dönen değerlerden biri 188 dönmekte sadece
             reservationRequestModel.paymentTypeNo = 353;//Nakit
             reservationRequestModel.tariffNo = 380; //Şimdi öde
             reservationRequestModel.campaignNo = long.Parse(capacitiesObj["campaignNo"].ToString());
             reservationRequestModel.note = string.Empty;
-            reservationRequestModel.webSource = string.Empty;
-            reservationRequestModel.requireConfirmation = false;//Araç kiralama firmasından ayrıca rezervasyon onayı istenecekse “true
+            reservationRequestModel.webSource = "TR";
+            reservationRequestModel.requireConfirmation = true;//Araç kiralama firmasından ayrıca rezervasyon onayı istenecekse “true
             reservationRequestModel.brokerUserNo = 0;
             reservationRequestModel.promotionCode = string.Empty;
             reservationRequestModel.resStatus = string.Empty;
