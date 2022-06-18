@@ -99,7 +99,7 @@
 
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5','@item.tariffs[0].totalRentalPrice');" style="cursor:pointer">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5', '@item.tariffs[0].totalRentalPrice', '@item1.typeNo');" style="cursor:pointer">
                                                             Sonra Öde
                                                         </a>
                                                     </div>
@@ -113,7 +113,7 @@
 
                                                     </div>
                                                     <div class="pay" style="pointer-events: none;">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5','@item.tariffs[1].totalRentalPrice');">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5','@item.tariffs[1].totalRentalPrice','@item1.typeNo');">
                                                             ŞİMDİ Öde
                                                         </a>
                                                     </div>
@@ -127,8 +127,7 @@
                                             <div class="more" style="display:block;">
                                                 <div class="lists-inline">
                                                     <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae mollis velit. Nullam interdum auctor turpis, at eleifend tortor pellentesque nec. Fusce pretium nulla ut risus egestas, quis dapibus
-                                                        eros condimentum. Integer volutpat posuere quam vitae mollis. Proin diam sapien, luctus ut faucibus sit amet, dignissim a arcu.
+                                                        @item1.description
                                                     </p>
                                                     <ul>
                                                         @if (item1.features != null)
@@ -204,7 +203,7 @@
                         }
                     }
 
-                        function redirectFunction(fullTypeName,img,price) {
+                        function redirectFunction(fullTypeName,img,price,typeNo) {
 
                             var obj = {
                                 rentalDays: @item.rentalDays,
@@ -226,6 +225,7 @@
                                 }],
                                 vehicleTypes: [{
                                     typeFullname: fullTypeName,
+                                    typeNo: typeNo,
                                     img1: img,
                                 }]
                             };

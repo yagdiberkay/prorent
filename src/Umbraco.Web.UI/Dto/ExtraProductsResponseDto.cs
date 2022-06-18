@@ -16,5 +16,6 @@
         public bool insurance { get; set; }
         public string order { get; set; }
         public string prodImg { get; set; }
+        public string currency { get; set; }
     }
 }

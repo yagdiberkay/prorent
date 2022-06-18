@@ -333,7 +333,7 @@
 
                         /*Set cookie with order data*/
                         $('.redirectSubmit').click(function (e) {
-                           
+
                             var error = false;
                             $('.stm_pickup_location').removeClass('stm_error');
                             $('input[name="pickup_date"]').removeClass('stm_error');
@@ -356,11 +356,11 @@
                                     expires: 7,
                                     path: '/'
                                 });
-                                
+
                                 if (field.name == 'pickup_date' || field.name == 'return_date') {
-                                    
+
                                     if (typeof $('input[name="' + field.name + '"]').attr('data-dt-hide') == 'undefined' || $('input[name="' + field.name + '"]').attr('data-dt-hide') == '') {
-                                        
+
                                         $('input[name="' + field.name + '"]').addClass('stm_error');
                                         error = true;
                                     } else {
@@ -486,8 +486,8 @@
                             $("#"+locations+'').append(o);
                         }
                     },
-                    error: function () {
-                        alert("Error figen");
+                               error: function () {
+                                   console.log("ReservatinDate_Hata");
                     }
                 });
                 }

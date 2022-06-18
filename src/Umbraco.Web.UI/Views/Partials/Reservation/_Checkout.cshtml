@@ -6,7 +6,6 @@
     input.stm_error {
         border-color: red;
     }
-
 </style>
 <div class="stm-template-car_rental single-product woocommerce">
 
@@ -744,6 +743,15 @@
                             var $container = $('.stm-isotope-sorting');
 
                             $(document).ready(function () {
+                                $("#place_order").addClass("hidden", "hidden");
+                                $("#terms").on('change', function () {
+                                    if ($(this).prop('checked')) {
+                                        $("#place_order").removeClass("hidden");
+                                    }
+                                    else {
+                                        $("#place_order").addClass("hidden", "hidden");
+                                    }
+                                });
                                 /*Terms and conditions rental*/
                                 $(document).on("click", '.stm-template-car_rental .form-row.terms a', function (event) {
                                     event.preventDefault();
@@ -804,6 +812,7 @@
                             }
                 });
                         }
+
                         function redirectFunction() {
 
                             var error = false;
@@ -813,7 +822,7 @@
                             $('input[name="billing_address_1"]').removeClass('stm_error');
                             $('input[name="billing_phone"]').removeClass('stm_error');
                             $('input[name="billing_email"]').removeClass('stm_error');
-                            
+
 
                             if ($('input[name="billing_first_name"]').val() == '') {
 
@@ -885,19 +894,29 @@
 
                             var capacity = @Html.Raw(Json.Encode(@ViewBag.Capacity));
                             var products = @Html.Raw(Json.Encode(@ViewBag.Economy));
-                            var economy =@Html.Raw(Json.Encode(@ViewBag.ProductName));
+                            var economy = [];
+                            for (var i = 0; i < products.length; i++) {
+                                var economyItem = {
+                                    productName: products[i].productName,
+                                    productNo: products[i].productNo,
+                                    totalPrice: products[i].totalPrice
+                                }
+                                economy.push(economyItem);
+                            }
+
+
                    $.ajax({
                     type: "POST",
                        url: "@Url.Action("InsertReservation", "Reservation")",
                        data: { capacity: JSON.stringify(capacity), address: JSON.stringify(address), products: JSON.stringify(products) },
                     cache: false,
                        success: function (capacityModel) {
-                           console.log(capacityModel);
-                           window.location.href = `/umbraco/Surface/Reservation/Summary?capacity=${capacityModel}&economy=${economy}&reservationOwner=${JSON.stringify(reservationOwner)}`;
+                           var orderNumber=@Html.Raw(Json.Encode(@ViewBag.OrderNumber));
+                           window.location.href = `/umbraco/Surface/Reservation/Summary?capacity=${capacityModel}&economy=${JSON.stringify(economy)}&reservationOwner=${JSON.stringify(reservationOwner)}&orderNumber=${JSON.stringify(orderNumber)}`;
 
                     },
-                    error: function () {
-                        alert("Error figen");
+                       error: function () {
+                           console.log("Checkout_Hata");
                     }
                 });
                         }

@@ -54,6 +54,11 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.resNo = 0;
             reservationRequestModel.resCorpNo = 0;
 
+            foreach (var item in productsModel)
+            {
+                item.currency = "TRY";
+                item.salesType = "1";
+            }
             reservationRequestModel.pickupDate = capacitiesObj["pickupDate"].ToString();
             reservationRequestModel.returnDate = capacitiesObj["returnDate"].ToString();
             reservationRequestModel.pickupLocNo = long.Parse(capacitiesObj["pickupLocNo"].ToString());
@@ -63,9 +68,10 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.rentalDays = int.Parse(capacitiesObj["rentalDays"].ToString());
             reservationRequestModel.extraHours = int.Parse(capacitiesObj["extraHours"].ToString());
             reservationRequestModel.onewayPrice = double.Parse(capacitiesObj["onewayPrice"].ToString());
-            reservationRequestModel.onewayCurrency = capacitiesObj["onewayCurrency"].ToString();
-            reservationRequestModel.totalRentalPrice =double.Parse(capacitiesObj["tariffs"][0]["totalRentalPrice"].ToString());
-            reservationRequestModel.rentalPriceCurrency = capacitiesObj["onewayCurrency"].ToString();
+            reservationRequestModel.onewayCurrency = "TRY";// capacitiesObj["onewayCurrency"].ToString();
+            reservationRequestModel.totalRentalPrice = 600; //double.Parse(capacitiesObj["tariffs"][0]["totalRentalPrice"].ToString());
+            reservationRequestModel.rentalPriceCurrency = "TRY";//capacitiesObj["onewayCurrency"].ToString();
+            reservationRequestModel.typeNo = long.Parse(capacitiesObj["vehicleTypes"][0]["typeNo"].ToString());
             reservationRequestModel.addresses = new List<AddressModel>();
             long cityy = 0;
             reservationRequestModel.addresses.Add(new AddressModel
@@ -92,7 +98,7 @@ namespace Umbraco.Web.UI.Controllers
                 email = addressObj["email"].ToString()
 
             });
-             reservationRequestModel.products = productsModel;
+            reservationRequestModel.products = productsModel;
 
             //reservationRequestModel.landingFlight = new FlightModel();
             //reservationRequestModel.takeoffFlight = new FlightModel();
@@ -118,20 +124,17 @@ namespace Umbraco.Web.UI.Controllers
 
             if (result.success)
             {
-                //credit card
-                //SendBankTransactionRequestModel model = new SendBankTransactionRequestModel();
-                //OperationResultDto resultModel = _prorentService.SendBankTransaction(model).Adapt<OperationResultDto>();
-
+                ViewBag.OrderNumber = result.resNo;
                 SendMailOnReservationInsertRequestModel mailModel = new SendMailOnReservationInsertRequestModel();
                 mailModel.resNo = result.resNo;
                 mailModel.toCustomer = true;
-                
+
                 SendMailOnReservationInsertRequestDto mailResultModel = _prorentService.SendMailOnReservationInsert(mailModel).Adapt<SendMailOnReservationInsertRequestDto>();
             }
-
             var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.SelectedVehicle = capacityModel;
             return JsonConvert.SerializeObject(capacityModel);
+
         }
 
         [HttpPost]
@@ -207,15 +210,18 @@ namespace Umbraco.Web.UI.Controllers
             return View(resultModel);
         }
         [HttpGet]
-        public ActionResult Summary(string capacity,string economy,string reservationOwner)
+        public ActionResult Summary(string capacity, string economy, string reservationOwner,string orderNumber)
         {
-            
+
             var reservationOwnerDto = JsonConvert.DeserializeObject<AddressDto>(reservationOwner);
             var reservationOwnerModel = reservationOwnerDto.Adapt<AddressModel>();
+            var economyDto = JsonConvert.DeserializeObject<ProductsDto[]>(economy);
             ViewBag.ReservationOwner = reservationOwnerModel;
-            ViewBag.ProductName = economy;
-            var capacityModel= JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
+            ViewBag.Product = economyDto;
+            ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
+            var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.SelectedVehicle = capacityModel;
+            ViewBag.OrderNumber = orderNumber;
             return View();
         }
         [HttpGet]

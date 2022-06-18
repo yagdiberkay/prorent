@@ -130,7 +130,7 @@
                                                 <td>@ViewBag.SelectedVehicle.rentalDays Gün</td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        123 <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                        @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -157,18 +157,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <span class="productName" name="productName">
-                                                        Ek Hizmet 1
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="productPrice">
-                                                        123<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
-                                                    </span>
-                                                </td>
-                                            </tr>
+                                            @foreach (var item in ViewBag.Product)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <span class="productName" name="productName">
+                                                            @item.productName
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="productPrice">
+                                                            @item.totalPrice<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -180,7 +183,7 @@
                                             <td>Hesaplanan Tutar</td>
                                             <td>
                                                 <span class="woocommerce-Price-amount amount">
-                                                    123 <bdi><span class="woocommerce-Price-currencySymbol">TL</span></bdi>
+                                                    @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice <bdi><span class="woocommerce-Price-currencySymbol">TL</span></bdi>
                                                 </span>
                                             </td>
                                         </tr>
@@ -205,7 +208,7 @@
 
                                             <li class="woocommerce-order-overview__order order">
                                                 <span>Sipariş Numarası:</span>
-                                                <strong class="heading-font">#4549</strong>
+                                                <strong class="heading-font">#@ViewBag.OrderNumber</strong>
                                             </li>
 
                                             <li class="woocommerce-order-overview__date date">
@@ -249,7 +252,7 @@
                                             </div>
                                             <div class="single_order_info">
                                                 <h4 class="title">Ödeme BİLGİLERİ</h4>
-                                                <div class="content">Estimated Total - <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>220</bdi></span></div>
+                                                <div class="content">Hesaplanan Toplam Tutar - <span class="woocommerce-Price-amount amount"><bdi>@ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice</bdi><span class="woocommerce-Price-currencySymbol">TL</span></span></div>
                                             </div>
                                         </div>
 
