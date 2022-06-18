@@ -99,7 +99,7 @@
 
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5', '@item.tariffs[0].totalRentalPrice', '@item1.typeNo');" style="cursor:pointer">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5', '@item.tariffs[0].totalRentalPrice', '@item1.typeNo', @item1.classNo);" style="cursor:pointer">
                                                             Sonra Öde
                                                         </a>
                                                     </div>
@@ -113,7 +113,7 @@
 
                                                     </div>
                                                     <div class="pay" style="pointer-events: none;">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5','@item.tariffs[1].totalRentalPrice','@item1.typeNo');">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5','@item.tariffs[1].totalRentalPrice','@item1.typeNo', @item1.classNo);">
                                                             ŞİMDİ Öde
                                                         </a>
                                                     </div>
@@ -150,7 +150,7 @@
 
                         </div>
                     }
-                    <script>
+            <script>
                         (function ($) {
                             "use strict";
                             $(document).ready(function () {
@@ -203,13 +203,13 @@
                         }
                     }
 
-                        function redirectFunction(fullTypeName,img,price,typeNo) {
+                        function redirectFunction(fullTypeName,img,price,typeNo,classNo) {
 
                             var obj = {
                                 rentalDays: @item.rentalDays,
                                 tariffNos: [@item.tariffs.FirstOrDefault().tariffNo],
                                 campaignNo:@item.campaignNo,
-                                classNo:@item.classNo,
+                                classNo: classNo,
                                 language: "TR",
                             };
                             var capacity = {
@@ -231,7 +231,7 @@
                             };
                             window.location.href = `/umbraco/Surface/Reservation/Economy?economyObj=${JSON.stringify(obj)}&capacity=${JSON.stringify(capacity)}`;
                         }
-                    </script>
+            </script>
                 }
             </div>
 

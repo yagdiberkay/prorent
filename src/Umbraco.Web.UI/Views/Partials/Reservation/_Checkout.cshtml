@@ -909,7 +909,7 @@
                     type: "POST",
                        url: "@Url.Action("InsertReservation", "Reservation")",
                        data: { capacity: JSON.stringify(capacity), address: JSON.stringify(address), products: JSON.stringify(products) },
-                    cache: false,
+                       cache: false,
                        success: function (capacityModel) {
                            var orderNumber=@Html.Raw(Json.Encode(@ViewBag.OrderNumber));
                            window.location.href = `/umbraco/Surface/Reservation/Summary?capacity=${capacityModel}&economy=${JSON.stringify(economy)}&reservationOwner=${JSON.stringify(reservationOwner)}&orderNumber=${JSON.stringify(orderNumber)}`;

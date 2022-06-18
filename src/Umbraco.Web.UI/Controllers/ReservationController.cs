@@ -69,7 +69,7 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.extraHours = int.Parse(capacitiesObj["extraHours"].ToString());
             reservationRequestModel.onewayPrice = double.Parse(capacitiesObj["onewayPrice"].ToString());
             reservationRequestModel.onewayCurrency = "TRY";// capacitiesObj["onewayCurrency"].ToString();
-            reservationRequestModel.totalRentalPrice = 600; //double.Parse(capacitiesObj["tariffs"][0]["totalRentalPrice"].ToString());
+            reservationRequestModel.totalRentalPrice = double.Parse(capacitiesObj["tariffs"][0]["totalRentalPrice"].ToString());
             reservationRequestModel.rentalPriceCurrency = "TRY";//capacitiesObj["onewayCurrency"].ToString();
             reservationRequestModel.typeNo = long.Parse(capacitiesObj["vehicleTypes"][0]["typeNo"].ToString());
             reservationRequestModel.addresses = new List<AddressModel>();
@@ -128,6 +128,8 @@ namespace Umbraco.Web.UI.Controllers
                 SendMailOnReservationInsertRequestModel mailModel = new SendMailOnReservationInsertRequestModel();
                 mailModel.resNo = result.resNo;
                 mailModel.toCustomer = true;
+                mailModel.toVendor = true;
+                mailModel.resCorpNo = result.resCorpNo;
 
                 SendMailOnReservationInsertRequestDto mailResultModel = _prorentService.SendMailOnReservationInsert(mailModel).Adapt<SendMailOnReservationInsertRequestDto>();
             }
