@@ -159,7 +159,7 @@
                                             <div class="clearfix"></div>
 
                                             <div class="more">
-                                               @item.productDescription
+                                                @item.productDescription
                                             </div>
                                         </div>
 
@@ -282,38 +282,38 @@
                         var productNameArray = [];
                         jQuery(document).ready(function () {
                             $(".productSelection").click(function () {
-                                productNo = this.dataset["id"];
-                                productPrice = this.dataset["value"];
-                                productName = this.dataset["text"];
-                                if ($(".productSelection span#" + productNo).text() == "Ekle") {
-                                    addedProducts.push({
-                                        productNo: productNo,
-                                        totalPrice: productPrice,
-                                        productName: productName
-                                    });
-                                    productNameArray.push(productName);
-                                    process = "Ekle";
-                                    $(".productSelection span#" + this.dataset["id"]).text("Çıkar");
-                                    this.style.backgroundColor = "#f0c540";
-                                    totalPrice = totalPrice + parseFloat(productPrice);
-                                    $(".totalRentalPrice").text(totalPrice + " TL");
-                                    $(".selectedProducts").text(productNameArray.join());
-                                }
-                                else {
-                                    addedProducts = jQuery.grep(addedProducts, function (value) {
-                                        return value.productNo != productNo;
-                                    });
-                                    productNameArray = jQuery.grep(productNameArray, function (value) {
-                                        return value != productName;
-                                    });
-                                    $(".selectedProducts").text(productNameArray.join());
-                                    process = "Çıkar";
-                                    $(".productSelection span#" + productNo).text("Ekle");
-                                    this.style.backgroundColor = "white";
-                                    totalPrice = totalPrice - parseFloat(productPrice);
-                                    $(".totalRentalPrice").text(totalPrice + " TL");
-                                }
-                                AppendTBody(productName, productPrice + " TL", process, addedProducts.length);
+                                    productNo = this.dataset["id"];
+                                    productPrice = this.dataset["value"];
+                                    productName = this.dataset["text"];
+                                    if ($(".productSelection span#" + productNo).text() == "Ekle") {
+                                        addedProducts.push({
+                                            productNo: productNo,
+                                            totalPrice: productPrice,
+                                            productName: productName
+                                        });
+                                        productNameArray.push(productName);
+                                        process = "Ekle";
+                                        $(".productSelection span#" + this.dataset["id"]).text("Çıkar");
+                                        this.style.backgroundColor = "#f0c540";
+                                        totalPrice = totalPrice + parseFloat(productPrice);
+                                        $(".totalRentalPrice").text(totalPrice + " TL");
+                                        $(".selectedProducts").text(productNameArray.join());
+                                    }
+                                    else {
+                                        addedProducts = jQuery.grep(addedProducts, function (value) {
+                                            return value.productNo != productNo;
+                                        });
+                                        productNameArray = jQuery.grep(productNameArray, function (value) {
+                                            return value != productName;
+                                        });
+                                        $(".selectedProducts").text(productNameArray.join());
+                                        process = "Çıkar";
+                                        $(".productSelection span#" + productNo).text("Ekle");
+                                        this.style.backgroundColor = "white";
+                                        totalPrice = totalPrice - parseFloat(productPrice);
+                                        $(".totalRentalPrice").text(totalPrice + " TL");
+                                    }
+                                    AppendTBody(productName, productPrice + " TL", process, addedProducts.length);
                             });
 
 
@@ -340,7 +340,13 @@
                                 //setting the data in first row itself
                                 setDataOnRow($("#addOnsTable tbody").find("tr").first(), productName, productPrice, process);
 
-                            } else {
+                            }
+                            else if (i == 0) {
+                                    var newRowContent = "<tr><td><span class='productName' name='productName'></span></td><td><span class='productPrice'><bdi><span class='woocommerce-Price-currencySymbol'> TL</span></bdi></span></td></tr>";
+                                $("#addOnsTable tbody").append(newRowContent);
+                                setDataOnRow($("#addOnsTable tbody").find("tr").first(), productName, productPrice, process);
+                            }
+                            else {
 
                                 //clonning the first row and setting data over it and then appending in tbody
                                 var clonnedRow = $($("#addOnsTable tbody").find("tr").first()).clone();

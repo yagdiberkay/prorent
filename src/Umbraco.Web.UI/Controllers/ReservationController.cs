@@ -99,9 +99,6 @@ namespace Umbraco.Web.UI.Controllers
 
             });
             reservationRequestModel.products = productsModel;
-
-            //reservationRequestModel.landingFlight = new FlightModel();
-            //reservationRequestModel.takeoffFlight = new FlightModel();
             reservationRequestModel.referenceNo = string.Empty;
             reservationRequestModel.voucherNo = string.Empty;
             reservationRequestModel.fullCredit = false;
@@ -124,7 +121,6 @@ namespace Umbraco.Web.UI.Controllers
 
             if (result.success)
             {
-                ViewBag.OrderNumber = result.resNo;
                 SendMailOnReservationInsertRequestModel mailModel = new SendMailOnReservationInsertRequestModel();
                 mailModel.resNo = result.resNo;
                 mailModel.toCustomer = true;
@@ -133,9 +129,7 @@ namespace Umbraco.Web.UI.Controllers
 
                 SendMailOnReservationInsertRequestDto mailResultModel = _prorentService.SendMailOnReservationInsert(mailModel).Adapt<SendMailOnReservationInsertRequestDto>();
             }
-            var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
-            ViewBag.SelectedVehicle = capacityModel;
-            return JsonConvert.SerializeObject(capacityModel);
+            return JsonConvert.SerializeObject(result.resNo);
 
         }
 
@@ -223,7 +217,7 @@ namespace Umbraco.Web.UI.Controllers
             ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
             var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.SelectedVehicle = capacityModel;
-            ViewBag.OrderNumber = orderNumber;
+            ViewBag.OrderNumber = JsonConvert.DeserializeObject<string>(orderNumber);
             return View();
         }
         [HttpGet]
