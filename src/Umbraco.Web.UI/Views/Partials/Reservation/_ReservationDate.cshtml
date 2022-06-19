@@ -482,7 +482,7 @@
                         for (var i = 0; i < retval.length; i++) {
                             var o = new Option(retval[i].cityName, retval[i].locNo);
                             /// jquerify the DOM object 'o' so we can use the html method
-                            $(o).html(retval[i].cityName);
+                            $(o).html(retval[i].locName);
                             $("#"+locations+'').append(o);
                         }
                     },
