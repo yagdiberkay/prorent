@@ -48,7 +48,8 @@
                             <div class="content">
                                 <div class="first">
                                     <h5>Araç</h5>
-                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
+                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].className</div>
+                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname ve Benzeri</div>
                                 </div>
                                 <div class="second">
                                     <a class="h5 external" href="#" rel="nofollow">Ek HİZMETLER</a>
@@ -109,6 +110,7 @@
                                 <!--Car rent-->
                                 <div class="stm_rent_table">
                                     <div class="heading heading-font">
+                                        <h3>@ViewBag.SelectedVehicle.vehicleTypes[0].className</h3>
                                         <h4>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</h4>
                                     </div>
                                     <div class="image">
@@ -242,7 +244,8 @@
                                             </div>
                                             <div class="single_order_info">
                                                 <h4 class="title">Araç</h4>
-                                                <div class="content">@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
+                                                <div class="content">@ViewBag.SelectedVehicle.vehicleTypes[0].className</div>
+                                                <div class="content">@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname ve Benzeri</div>
                                             </div>
                                             <div class="single_order_info">
                                                 <h4 class="title">SürücÜ BİLGİLERİ</h4>

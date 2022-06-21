@@ -57,9 +57,9 @@
                                         <div class="col-md-6 col-sm-6">
                                             <div class="top">
                                                 <div class="heading-font">
-                                                    <h3> @item1.mark</h3>
+                                                    <h3> @item1.className</h3>
                                                     <div class="s_title">
-                                                        @item1.model
+                                                        @item1.mark @item1.model ve Benzeri
                                                     </div>
                                                     <div class="infos">
                                                         <div class="single_info stm_single_info_font_stm-rental-fuel">
@@ -99,7 +99,7 @@
 
                                                     </div>
                                                     <div class="pay">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5', '@item.tariffs[0].totalRentalPrice', '@item1.typeNo', @item1.classNo);" style="cursor:pointer">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.mark @item1.model', '@item1.img5', '@item.tariffs[0].totalRentalPrice', '@item1.typeNo', @item1.classNo, '@item1.className');" style="cursor:pointer">
                                                             Sonra Öde
                                                         </a>
                                                     </div>
@@ -113,7 +113,7 @@
 
                                                     </div>
                                                     <div class="pay" style="pointer-events: none;">
-                                                        <a class="heading-font external" onclick="redirectFunction('@item1.typeFullname', '@item1.img5','@item.tariffs[1].totalRentalPrice','@item1.typeNo', @item1.classNo);">
+                                                        <a class="heading-font external" onclick="redirectFunction('@item1.mark @item1.model', '@item1.img5','@item.tariffs[1].totalRentalPrice','@item1.typeNo', @item1.classNo, '@item1.className');">
                                                             ŞİMDİ Öde
                                                         </a>
                                                     </div>
@@ -203,7 +203,7 @@
                         }
                     }
 
-                        function redirectFunction(fullTypeName,img,price,typeNo,classNo) {
+                        function redirectFunction(fullTypeName,img,price,typeNo,classNo, className) {
 
                             var obj = {
                                 rentalDays: @item.rentalDays,
@@ -227,9 +227,10 @@
                                     typeFullname: fullTypeName,
                                     typeNo: typeNo,
                                     img1: img,
+                                    className: className
                                 }]
                             };
-                            window.location.href = `/umbraco/Surface/Reservation/Economy?economyObj=${JSON.stringify(obj)}&capacity=${JSON.stringify(capacity)}`;
+                            window.location.href = `/web/Economy?economyObj=${JSON.stringify(obj)}&capacity=${JSON.stringify(capacity)}`;
                         }
             </script>
                 }

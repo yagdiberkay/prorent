@@ -220,6 +220,8 @@ namespace Umbraco.Web.Runtime
         {
             var meta = PluginController.GetMetadata(controller);
             var url = umbracoPath + "/Surface/" + meta.ControllerName + "/{action}/{id}";
+            if (controller.Name == "ReservationController")
+                url = "web/{action}/{id}";
             var route = RouteTable.Routes.MapRoute(
                 $"umbraco-surface-{meta.ControllerName}",
                 url, // URL to match

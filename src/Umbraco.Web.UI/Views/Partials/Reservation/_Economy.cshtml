@@ -31,6 +31,11 @@
                                     <div class="stm_filled_return_location">@ViewBag.SelectedVehicle.returnLocName</div>
                                     <div class="stm_filled_return_date">@ViewBag.SelectedVehicle.returnDate</div>
                                 </div>
+                                <div class="third">
+                                    <button type="submit" class="redirectSubmit">
+                                        DEĞİŞTİR<i class="fas"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +53,8 @@
                             <div class="content">
                                 <div class="first">
                                     <h5>Araç</h5>
-                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</div>
+                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].className</div>
+                                    <div>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname ve Benzeri</div>
                                 </div>
                                 <div class="second">
                                     <a class="h5 external" href="#" rel="nofollow">Ek HİZMETLER</a>
@@ -189,7 +195,10 @@
                                 <!--Car rent-->
                                 <div class="stm_rent_table">
                                     <div class="heading heading-font">
-                                        <h4>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname</h4>
+                                        <h3>@ViewBag.SelectedVehicle.vehicleTypes[0].className</h3>
+                                    </div>
+                                    <div class="heading heading-font">
+                                        <h4>@ViewBag.SelectedVehicle.vehicleTypes[0].typeFullname ve Benzeri</h4>
                                     </div>
                                     <div class="image">
                                         <img src="https://jupicar.cloud:2028//image/@ViewBag.SelectedVehicle.vehicleTypes[0].img1" />
@@ -361,7 +370,7 @@
                         function redirectFunction(fullTypeName, img) {
                             var capacity = @Html.Raw(Json.Encode(@ViewBag.SelectedVehicle));
                             var economy = addedProducts;
-                            window.location.href = `/umbraco/Surface/Reservation/Checkout?capacity=${JSON.stringify(capacity)}&economy=${JSON.stringify(economy)}`;
+                            window.location.href = `/web/Checkout?capacity=${JSON.stringify(capacity)}&economy=${JSON.stringify(economy)}`;
                         }
                     </script>
                 </div>

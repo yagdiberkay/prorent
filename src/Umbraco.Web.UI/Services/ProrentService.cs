@@ -3,6 +3,7 @@ using Umbraco.Web.UI.TestProrent24Service;
 using Mapster;
 using System.Web.Configuration;
 using System.ServiceModel.Security;
+using System.Linq;
 
 namespace Umbraco.Web.UI.Services
 {
@@ -78,7 +79,10 @@ namespace Umbraco.Web.UI.Services
                     language = language
                 };
                 var response = client.CountriesAsync(countriesRequest);
+
                 result = response.Result.CountriesResponse1.Adapt<CountriesResponseModel[]>();
+              
+                CountriesResponseModel tr = result.Where(x => x.countryName == "TÜRKİYE").FirstOrDefault();
             }
             catch (System.Exception)
             {
@@ -303,7 +307,8 @@ namespace Umbraco.Web.UI.Services
             }
             catch (System.Exception ex)
             {
-                throw;
+                result.success = false;
+                result.message = ex.Message;
             }
             return result;
         }

@@ -128,8 +128,10 @@ namespace Umbraco.Web.UI.Controllers
                 mailModel.resCorpNo = result.resCorpNo;
 
                 SendMailOnReservationInsertRequestDto mailResultModel = _prorentService.SendMailOnReservationInsert(mailModel).Adapt<SendMailOnReservationInsertRequestDto>();
+                return JsonConvert.SerializeObject(result.resNo);
             }
-            return JsonConvert.SerializeObject(result.resNo);
+            else
+                return result.message;
 
         }
 

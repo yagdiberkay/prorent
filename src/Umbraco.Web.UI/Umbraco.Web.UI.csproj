@@ -1005,6 +1005,7 @@
     <Content Include="Umbraco\asset\img\uploads\minivan_van-300x181.png" />
     <Content Include="Umbraco\asset\img\uploads\minivan_van-300x200.png" />
     <Content Include="Umbraco\asset\img\uploads\minivan_van.png" />
+    <Content Include="Umbraco\asset\img\uploads\motors_car_rental_logo.png" />
     <Content Include="Umbraco\asset\img\uploads\motors_car_rental_logo.svg" />
     <Content Include="Umbraco\asset\img\uploads\motors_car_rental_pin.svg" />
     <Content Include="Umbraco\asset\img\uploads\opt.svg" />

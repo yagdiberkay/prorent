@@ -520,13 +520,13 @@
                                 tomorrow.setDate(today.getDate() + 1);
                                 var dayLater = new Date();
                                 dayLater.setDate(today.getDate() + 4);
-                                var economyUrl = '/umbraco/Surface/Reservation/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[758],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
+                                var economyUrl = '/web/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[758],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
                                 $('.redirectToReservationEconomy').attr("href", economyUrl);
-                                var middleUrl = '/umbraco/Surface/Reservation/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[759],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
+                                var middleUrl = '/web/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[759],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
                                 $('.redirectToReservationMiddle').attr("href", middleUrl);
-                                var highUrl = '/umbraco/Surface/Reservation/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[760],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
+                                var highUrl = '/web/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[760],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
                                 $('.redirectToReservationHigh').attr("href", highUrl);
-                                var corparateUrl = '/umbraco/Surface/Reservation/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[762],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
+                                var corparateUrl = '/web/Reservation?obj={"pickupLocNo":"1271","pickupDate":"' + moment(tomorrow).format(dateTimeFormatHide) + '","returnLocNo":"1271","returnDate":"' + moment(dayLater).format(dateTimeFormatHide) + '","classNos":[762],"tariffNos":[380,381],"language":"TR","orderby":"pricedesc"}';
                                 $('.redirectToReservationCorparate').attr("href", corparateUrl);
 
                                 owl.on('initialized.owl.carousel', function (e) {
