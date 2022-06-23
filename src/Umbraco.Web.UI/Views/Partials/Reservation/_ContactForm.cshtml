@@ -7,40 +7,43 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
-    <div role="form" class="wpcf7" id="wpcf7-f347-p311-o1" lang="en-US" dir="ltr">
-        <div class="screen-reader-response">
-            <p role="status" aria-live="polite" aria-atomic="true"></p>
-            <ul></ul>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
+<div role="form" class="wpcf7" id="wpcf7-f347-p311-o1" lang="en-US" dir="ltr">
+    <h3 style="padding-top: 20px;">
+        İLETİŞİM FORMU
+    </h3>
+    <div class="screen-reader-response">
+        <p role="status" aria-live="polite" aria-atomic="true"></p>
+        <ul></ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
                 <div class="form-group">
-                    <div class="form-group">
-                        <div class="contact-us-label">Mesaj</div>
-                        <p>
-                            @Html.TextAreaFor(m => m.Message, new { cols = "40", rows = "10", @class = "wpcf7-form-control wpcf7-textarea" })
-                        </p>
-                    </div>
+                    <div class="contact-us-label">Mesaj</div>
+                    <p>
+                        @Html.TextAreaFor(m => m.Message, new { cols = "40", rows = "10", @class = "wpcf7-form-control wpcf7-textarea" })
+                    </p>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                    <div class="contact-us-label">İSİM SOYAD*</div>
-                    <p>
-                        @Html.TextBoxFor(m => m.Name, new { size = "40", @class = "wpcf7-form-control wpcf7-text wpcf7-validates-as-required" })
-                    </p>
-                </div>
-                <div class="form-group">
-                    <div class="contact-us-label">Eposta*</div>
-                    <p>
-                        @Html.TextBoxFor(m => m.EmailAddress, new { size = "40", @class = "wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required" })
-                    </p>
-                </div>
-                <div class="form-group"></div>
-                <div class="contact-us-submit">
-                    <input type="submit" value="Gönder" class="wpcf7-form-control has-spinner wpcf7-submit contact-us-submit" />
-                </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <div class="contact-us-label">İSİM SOYAD*</div>
+                <p>
+                    @Html.TextBoxFor(m => m.Name, new { size = "40", @class = "wpcf7-form-control wpcf7-text wpcf7-validates-as-required" })
+                </p>
+            </div>
+            <div class="form-group">
+                <div class="contact-us-label">Eposta*</div>
+                <p>
+                    @Html.TextBoxFor(m => m.EmailAddress, new { size = "40", @class = "wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required" })
+                </p>
+            </div>
+            <div class="form-group"></div>
+            <div class="contact-us-submit">
+                <input type="submit" value="Gönder" class="wpcf7-form-control has-spinner wpcf7-submit contact-us-submit" />
             </div>
         </div>
     </div>
+</div>
 }
