@@ -58,9 +58,7 @@
                                     <div class="stm_filled_return_date">@ViewBag.Capacity.returnDate</div>
                                 </div>
                                 <div class="third">
-                                    <button type="submit" class="redirectSubmit">
-                                        DEĞİŞTİR<i class="fas"></i>
-                                    </button>
+                                    <a href="~/date" style="color:blue;"><br>Tarih Güncelle</a>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +197,7 @@
                                                     </td>
                                                     <td>
                                                         <span class="productPrice">
-                                                            @item.totalPrice<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                            @ViewBag.Capacity.rentalDays x @item.totalPrice=@((int)ViewBag.Capacity.rentalDays * (double)item.totalPrice)<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -254,16 +252,15 @@
                                                         <p class="form-row form-row-last" id="billing_company_field" data-priority="30"><label for="billing_company" class="heading-font">ŞİRKET&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_company" id="billing_company" placeholder="" value="" autocomplete="organization" /></span></p>
                                                         <p class="form-row form-row-wide address-field update_totals_on_change" id="billing_country_field" data-priority="40">
                                                             <label for="billing_country" class="heading-font">Ülke&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
-                                                                <select name="billing_country" id="billing_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Ülke Seçiniz&hellip;" data-label="Country / Region">
-                                                                    <option value="">Ülke Seçiniz&hellip;</option>
+                                                                <select name="billing_country" id="billing_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Ülke Seçiniz&hellip;" data-label="Country / Region" required>
                                                                 </select><noscript><button type="submit" name="woocommerce_checkout_update_totals" value="Update country / region">Update country / region</button></noscript>
                                                             </span>
                                                         </p>
                                                         <p class="form-row form-row-wide address-field" id="billing_address_1_field" data-priority="70"><label for="billing_address_1" class="heading-font">Adres&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Adres Yazınız..." value="" autocomplete="address-line1" /></span></p>
-                                                        <p class="form-row form-row-wide address-field" id="billing_city_field" data-priority="90"><label for="billing_city" class="heading-font">Mahalle&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value="" autocomplete="address-level2" /></span></p>
+                                                        <p class="form-row form-row-wide address-field" id="billing_city_field" data-priority="90"><label for="billing_city" class="heading-font">Mahalle&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value="" autocomplete="address-level2" required/></span></p>
                                                         <p class="form-row address-field validate-state" id="billing_state_field" data-priority="60">
                                                             <label for="billing_state" class="heading-font">İl&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
-                                                                <select name="billing_state" id="billing_state" class="state_select " autocomplete="address-level1" data-placeholder="İl Seçiniz&hellip;" data-input-classes="" data-label="Province">
+                                                                <select name="billing_state" id="billing_state" class="state_select " autocomplete="address-level1" data-placeholder="İl Seçiniz&hellip;" data-input-classes="" data-label="Province" required>
                                                                     <option value="">İl Seçiniz&hellip;</option>
                                                                 </select>
                                                             </span>
@@ -282,7 +279,7 @@
 
                                                     <h4 id="ship-to-different-address">
                                                         <label for="ship-to-different-address-checkbox" class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">Ship to a different address?</label>
-                                                        <input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" />
+                                                        <input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" required/>
                                                     </h4>
 
                                                     <div class="shipping_address">
@@ -294,7 +291,7 @@
                                                             <p class="form-row form-row-wide" id="shipping_company_field" data-priority="30"><label for="shipping_company" class="heading-font">Company name&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_company" id="shipping_company" placeholder="" value="" autocomplete="organization" /></span></p>
                                                             <p class="form-row form-row-wide address-field update_totals_on_change" id="shipping_country_field" data-priority="40">
                                                                 <label for="shipping_country" class="heading-font">Country / Region&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
-                                                                    <select name="shipping_country" id="shipping_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Ülke Seçiniz&hellip;" data-label="Country / Region">
+                                                                    <select name="shipping_country" id="shipping_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Ülke Seçiniz&hellip;" data-label="Country / Region" required>
                                                                         <option value="">Ülke Seçiniz&hellip;</option>
 
                                                                     </select><noscript><button type="submit" name="woocommerce_checkout_update_totals" value="Update country / region">Update country / region</button></noscript>
@@ -311,7 +308,7 @@
                                                             <p class="form-row form-row-wide address-field" id="shipping_address_1_field" data-priority="70"><label for="shipping_address_1" class="heading-font">Adres&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_address_1" id="shipping_address_1" placeholder="Adres Yazınız..." value="" autocomplete="address-line1" /></span></p>
 
                                                             <p class="form-row form-row-wide address-field validate-postcode" id="shipping_postcode_field" data-priority="80"><label for="shipping_postcode" class="heading-font">Postcode / ZIP&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="postal-code" /></span></p>
-                                                            <p class="form-row form-row-wide address-field" id="shipping_city_field" data-priority="90"><label for="shipping_city" class="heading-font">Mahalle&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_city" id="shipping_city" placeholder="" value="" autocomplete="address-level2" /></span></p>
+                                                            <p class="form-row form-row-wide address-field" id="shipping_city_field" data-priority="90"><label for="shipping_city" class="heading-font">Mahalle&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_city" id="shipping_city" placeholder="" value="" autocomplete="address-level2" required/></span></p>
 
                                                         </div>
 
@@ -798,7 +795,9 @@
                                     /// jquerify the DOM object 'o' so we can use the html method
                                     $(o).html(retval[i].countryName);
                                     $("#billing_country").append(o);
-                                }
+                                    $("#billing_country").val("TR");
+                                     }
+                                     GetCities("TR");
                             },
                             error: function () {
                             }
@@ -817,6 +816,7 @@
                                     /// jquerify the DOM object 'o' so we can use the html method
                                     $(o).html(retval[i].cityName);
                                     $("#billing_state").append(o);
+                                    $("#billing_state").val("598");//izmir
                                 }
                             },
                             error: function () {

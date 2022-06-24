@@ -169,7 +169,7 @@
                                                     </td>
                                                     <td>
                                                         <span class="productPrice">
-                                                            @item.totalPrice<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                            @ViewBag.SelectedVehicle.rentalDays x @item.totalPrice=@((int)ViewBag.SelectedVehicle.rentalDays * (double)item.totalPrice)<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -185,7 +185,7 @@
                                             <td>Hesaplanan Tutar</td>
                                             <td>
                                                 <span class="woocommerce-Price-amount amount">
-                                                    @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice <bdi><span class="woocommerce-Price-currencySymbol">TL</span></bdi>
+                                                    @ViewBag.TotalPrice <bdi><span class="woocommerce-Price-currencySymbol">TL</span></bdi>
                                                 </span>
                                             </td>
                                         </tr>
@@ -203,13 +203,13 @@
 
                                         <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received heading-font">
                                             <i class="fas fa-check"></i>
-                                            Teşekkürler. SİPARİŞİNİZ oluşturuldu. <a href="" style="color: #1bc744;" class="external" rel="nofollow">Return to account</a>
+                                            Rezervasyonunuz tamamlanmıştır. <a href="" style="color: #1bc744;" class="external" rel="nofollow">Return to account</a>
                                         </p>
 
                                         <ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details heading-font">
 
                                             <li class="woocommerce-order-overview__order order">
-                                                <span>Sipariş Numarası:</span>
+                                                <span>Rezervasyon Numarası:</span>
                                                 <strong class="heading-font">#@ViewBag.OrderNumber</strong>
                                             </li>
 
@@ -255,7 +255,7 @@
                                             </div>
                                             <div class="single_order_info">
                                                 <h4 class="title">Ödeme BİLGİLERİ</h4>
-                                                <div class="content">Hesaplanan Toplam Tutar - <span class="woocommerce-Price-amount amount"><bdi>@ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice</bdi><span class="woocommerce-Price-currencySymbol">TL</span></span></div>
+                                                <div class="content">Hesaplanan Toplam Tutar - <span class="woocommerce-Price-amount amount"><bdi>@ViewBag.TotalPrice</bdi><span class="woocommerce-Price-currencySymbol">TL</span></span></div>
                                             </div>
                                         </div>
 

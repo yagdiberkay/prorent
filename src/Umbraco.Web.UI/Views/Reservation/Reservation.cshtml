@@ -204,7 +204,8 @@
                     }
 
                         function redirectFunction(fullTypeName,img,price,typeNo,classNo, className) {
-
+                            var pickupLocName = $(".stm_filled_pickup_location").text();
+                            var returnLocNo = $(".stm_filled_return_location").text();
                             var obj = {
                                 rentalDays: @item.rentalDays,
                                 tariffNos: [@item.tariffs.FirstOrDefault().tariffNo],
@@ -213,10 +214,10 @@
                                 language: "TR",
                             };
                             var capacity = {
-                                pickupLocName: '@item.pickupLocName',
+                                pickupLocName: pickupLocName,
                                 pickupLocNo:'@item.pickupLocNo',
                                 pickupDate: '@item.pickupDate',
-                                returnLocName:'@item.returnLocName',
+                                returnLocName: returnLocNo,
                                 returnLocNo:'@item.returnLocNo',
                                 returnDate: '@item.returnDate',
                                 rentalDays: @item.rentalDays,

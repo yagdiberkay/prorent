@@ -32,9 +32,7 @@
                                     <div class="stm_filled_return_date">@ViewBag.SelectedVehicle.returnDate</div>
                                 </div>
                                 <div class="third">
-                                    <button type="submit" class="redirectSubmit">
-                                        DEĞİŞTİR<i class="fas"></i>
-                                    </button>
+                                    <a href="~/date" style="color:blue;"><br>Tarih Güncelle</a>
                                 </div>
                             </div>
                         </div>
@@ -155,8 +153,8 @@
                                                 </div>
 
                                                 <div class="stm-add-to-cart added heading-font stm-manage-stock-no">
-                                                    <a class="productSelection" data-id="@item.productNo" data-value="@item.totalPrice" data-text="@item.productName" style="background-color:white;">
-                                                        <span class="add_text" id="@item.productNo">Ekle</span>
+                                                    <a class="productSelection" data-id="@item.productNo" data-value="@item.totalPrice" data-text="@item.productName" style="background-color:white; color:black;">
+                                                        <span class="" id="@item.productNo">Ekle</span>
                                                     </a>
                                                 </div>
 
@@ -294,6 +292,7 @@
                                     productNo = this.dataset["id"];
                                     productPrice = this.dataset["value"];
                                     productName = this.dataset["text"];
+                                    var rentalDays = @Html.Raw(Json.Encode(@ViewBag.SelectedVehicle.rentalDays));
                                     if ($(".productSelection span#" + productNo).text() == "Ekle") {
                                         addedProducts.push({
                                             productNo: productNo,
@@ -304,7 +303,7 @@
                                         process = "Ekle";
                                         $(".productSelection span#" + this.dataset["id"]).text("Çıkar");
                                         this.style.backgroundColor = "#f0c540";
-                                        totalPrice = totalPrice + parseFloat(productPrice);
+                                        totalPrice = totalPrice + parseFloat(productPrice * rentalDays);
                                         $(".totalRentalPrice").text(totalPrice + " TL");
                                         $(".selectedProducts").text(productNameArray.join());
                                     }
@@ -319,10 +318,10 @@
                                         process = "Çıkar";
                                         $(".productSelection span#" + productNo).text("Ekle");
                                         this.style.backgroundColor = "white";
-                                        totalPrice = totalPrice - parseFloat(productPrice);
+                                        totalPrice = totalPrice - parseFloat(productPrice * rentalDays);
                                         $(".totalRentalPrice").text(totalPrice + " TL");
                                     }
-                                    AppendTBody(productName, productPrice + " TL", process, addedProducts.length);
+                                    AppendTBody(productName, productPrice, process, addedProducts.length);
                             });
 
 
@@ -331,8 +330,10 @@
                         //set the data in row
                         function setDataOnRow(rowObject, productName, productPrice, process) {
                             if (process == "Ekle") {
+
+                            var rentalDays = @Html.Raw(Json.Encode(@ViewBag.SelectedVehicle.rentalDays));
                                 $(rowObject).find(".productName").html(productName);
-                                $(rowObject).find(".productPrice").html(productPrice);
+                                $(rowObject).find(".productPrice").html(rentalDays + "x" + productPrice + "=" + (rentalDays * productPrice) +  " TL");
                             }
                             else {
                                 $("#addOnsTable tbody").find('span[name="productName"]').each(function () {

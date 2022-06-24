@@ -223,6 +223,7 @@ namespace Umbraco.Web.UI.Controllers
             ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
             var capacityModel = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.SelectedVehicle = capacityModel;
+            ViewBag.TotalPrice = economyDto.Sum(s => s.totalPrice) * capacityModel.rentalDays + capacityModel.tariffs[0].totalRentalPrice;
             ViewBag.OrderNumber = JsonConvert.DeserializeObject<string>(orderNumber);
             return View();
         }
@@ -233,7 +234,7 @@ namespace Umbraco.Web.UI.Controllers
             var capacityDto = JsonConvert.DeserializeObject<CapacitiesResponseDto>(capacity);
             ViewBag.Capacity = capacityDto;
             ViewBag.Economy = economyDto;
-            ViewBag.TotalPrice = economyDto.Sum(s => s.totalPrice) + capacityDto.tariffs[0].totalRentalPrice;
+            ViewBag.TotalPrice = economyDto.Sum(s => s.totalPrice)* capacityDto.rentalDays + capacityDto.tariffs[0].totalRentalPrice;
             ViewBag.ProductName = string.Join(",", economyDto.Select(s => s.productName).ToList());
             return View();
         }
