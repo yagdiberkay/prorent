@@ -2,6 +2,22 @@
 @{
     Layout = null;
 }
+@section head {
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="~/"></script>
+
+    <script>
+        $(function () {
+            $("#datepicker2").datepicker();
+        });
+    </script>
+}
 <div class="container">
 
     <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_row-no-padding">
@@ -13,7 +29,7 @@
                         <div class="stm-fullwidth-with-parallax-bg">
                             <div class="container">
                                 <div class="stm_wizard_title heading-font">
-                                    Reservation
+                                    REZERVASYON
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
@@ -24,7 +40,7 @@
                                                     <div class="number">
                                                         <span>1</span>
                                                     </div>
-                                                    <label>Your Itinerary</label>
+                                                    <label>Kiralama Bilgileri</label>
                                                 </a>
                                                 <div class="content">
                                                     <div class="first">
@@ -49,15 +65,15 @@
                                                     <div class="number">
                                                         <span>2</span>
                                                     </div>
-                                                    <label>Select Vehicle/Add-ons</label>
+                                                    <label>Araç ve Ek Hizmet Seçimi</label>
                                                 </a>
                                                 <div class="content">
                                                     <div class="first">
-                                                        <h5>Type</h5>
+                                                        <h5>Araç</h5>
                                                         <div>--</div>
                                                     </div>
                                                     <div class="second">
-                                                        <h5>Addons</h5>
+                                                        <h5>Ek HİZMETLER</h5>
                                                         <div>--</div>
                                                     </div>
                                                 </div>
@@ -72,15 +88,15 @@
                                                     <div class="number">
                                                         <span>3</span>
                                                     </div>
-                                                    <label>Reserve Your Vehicle</label>
+                                                    <label>Rezervasyon Bilgileri</label>
                                                 </a>
                                                 <div class="content">
                                                     <div class="first">
-                                                        <h5>Your information</h5>
+                                                        <h5>Rezervasyon SAHİBİ</h5>
                                                         <div>--</div>
                                                     </div>
                                                     <div class="second">
-                                                        <h5>Payment information</h5>
+                                                        <h5>Ödeme BİLGİSİ</h5>
                                                         <div>
                                                             --
                                                         </div>
@@ -114,89 +130,90 @@
                     <div class="stm_rent_car_form_wrapper style_2 text-left ">
                         <div class="stm_rent_car_form">
                             <form action="reservation/" method="get">
-                                <h4>Pick Up</h4>
+                                <h4>KİRALAMA BİLGİLERİ</h4>
                                 <div class="stm_rent_form_fields">
-                                    <h4 class="stm_form_title">Place to pick up the Car*</h4>
+                                    <h4 class="stm_form_title">Başlangıç    </h4>
                                     <div class="stm_pickup_location">
                                         <i class="stm-service-icon-pin"></i>
-                                        <select name="pickup_location" data-class="stm_rent_location">
-                                            <option value="">Choose office</option>
-                                            <option value="486">Arlington Heights</option>
-                                            <option value="485">Downtown</option>
-                                            <option value="484">West Hollywood</option>
-                                            <option value="99">Hollywood</option>
-                                            <option value="98">Koreatown</option>
+                                        <select name="pickup_location" data-class="stm_rent_location" id="startLocations">
+                                            <option value="">Ofis Seçiniz</option>
                                         </select>
                                     </div>
                                     <label>
                                         <input type="checkbox" name="return_same" checked />
-                                        Return to the same location
+                                        Aynı lokasyona döneceğim
                                     </label>
                                     <div class="stm_date_time_input">
-                                        <h4 class="stm_form_title">Pick-up Date/Time*</h4>
+                                        <h4 class="stm_form_title">Kiralama Tarihi*</h4>
                                         <div class="stm_date_input">
-                                            <input type="text" value="" class="stm-date-timepicker-start" name="pickup_date" placeholder="Pickup Date" required readonly />
+                                            <input type="text" value="" class="stm-date-timepicker-start" name="pickup_date" placeholder="Kiralama Tarihi" required readonly />
                                             <i class="stm-icon-date"></i>
                                         </div>
                                     </div>
                                 </div>
 
-                                <h4>Return</h4>
+                                <h4>Teslimat Bilgileri</h4>
                                 <div class="stm_rent_form_fields stm_rent_form_fields-drop">
                                     <div class="stm_same_return ">
                                         <h4 class="stm_form_title">Place to drop the Car*</h4>
                                         <div class="stm_pickup_location stm_drop_location">
                                             <i class="stm-service-icon-pin"></i>
-                                            <select name="drop_location" data-class="stm_rent_location">
-                                                <option value="">Choose office</option>
-                                                <option value="486">Arlington Heights</option>
-                                                <option value="485">Downtown</option>
-                                                <option value="484">West Hollywood</option>
-                                                <option value="99">Hollywood</option>
-                                                <option value="98">Koreatown</option>
+                                            <select name="drop_location" data-class="stm_rent_location" id="dropLocations">
+                                                <option value="">Teslimat Yeri</option>
                                             </select>
 
                                         </div>
                                     </div>
                                     <div class="stm_date_time_input">
-                                        <h4 class="stm_form_title">Drop Date/Time*</h4>
+                                        <h4 class="stm_form_title">Teslimat Tarihi*</h4>
                                         <div class="stm_date_input">
-                                            <input type="text" class="stm-date-timepicker-end" name="return_date" value="" placeholder="Return Date" required readonly />
+                                            <input type="text" class="stm-date-timepicker-end" name="return_date" value="" placeholder="Teslimat Tarihi" required readonly />
                                             <i class="stm-icon-date"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <input type="hidden" name="order_old_days" value="1" />
-                                <button type="submit">Continue reservation</button>
-
+                                <div class="form-btn-wrap">
+                                    <button type="submit" class="redirectSubmit">
+                                        Araçları Lİstele<i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
 
                             </form>
                         </div>
                     </div>
 
                     <script>
-                        (function($) {
+                        (function ($) {
                             "use strict";
 
-                            $(document).ready(function() {
-                                $('input[name="return_same"]').on('change', function() {
+                            $(document).ready(function () {
+                                GetLocations("startLocations");
+                                $('input[name="return_same"]').on('change', function () {
                                     if ($(this).prop('checked')) {
                                         $('.stm_same_return').slideUp();
+                                        $("#dropLocations").find('option')
+                                            .remove()
+                                            .end()
+                                            .append('<option value="">Teslimat Yeri</option>')
+                                            .val('');
+                                        $("#dropLocations option").val($('#startLocations option').filter(':selected').val());
                                     } else {
+                                        GetLocations("dropLocations");
                                         $('.stm_same_return').slideDown();
                                     }
                                 });
 
-                                $('.stm_pickup_location select').on('select2:open', function() {
+                                $('.stm_pickup_location select').on('select2:open', function () {
                                     $('body').addClass('stm_background_overlay');
                                     $('.select2-container').css('width', $('.select2-dropdown').outerWidth());
                                 });
 
-                                $('.stm_pickup_location select').on('select2:close', function() {
+                                $('.stm_pickup_location select').on('select2:close', function () {
                                     $('body').removeClass('stm_background_overlay');
                                 });
 
-                                $('.stm_date_time_input input').on('change', function() {
+                                $('.stm_date_time_input input').on('change', function () {
                                     if ($(this).val() == '') {
                                         $(this).removeClass('active');
                                     } else {
@@ -225,7 +242,7 @@
                                     contents.push(content);
                                 }
 
-                                $(document).on('mouseover', '.stm_rent_location .select2-results__options li', function() {
+                                $(document).on('mouseover', '.stm_rent_location .select2-results__options li', function () {
                                     var currentLi = ($(this).index()) - 1;
                                     $('.stm_rent_location .stm_locations_description').remove();
                                     $('.stm_rent_location').append(contents[currentLi]);
@@ -242,7 +259,7 @@
                                 var startDate = (stmStartVal != '') ? stmStartVal : false;
                                 var endDate = (stmEndVal != '') ? stmEndVal : false;
                                 var dateTimeFormat = 'F j, Y H:i';
-                                var dateTimeFormatHide = 'YYYY/MM/DD HH:mm';
+                                var dateTimeFormatHide = 'YYYY-MM-DD HH:mm';
 
 
 
@@ -259,7 +276,7 @@
                                     validateOnBlur: false,
                                     fixed: false,
                                     lang: 'en',
-                                    onShow: function(ct) {
+                                    onShow: function (ct) {
                                         $('body').addClass('stm_background_overlay stm-lock');
 
                                         var stmEndDate = $('.stm-date-timepicker-end').val() ? moment($('.stm-date-timepicker-end').val()).format(dateTimeFormatHide) : false;
@@ -276,12 +293,12 @@
 
                                         $(".xdsoft_time_variant").css('margin-top', '-600px');
                                     },
-                                    onSelectDate: function() {
+                                    onSelectDate: function () {
                                         $('.stm-date-timepicker-start').datetimepicker('close');
 
                                         $('.xdsoft_time').removeClass('xdsoft_current');
                                     },
-                                    onClose: function(ct, $i) {
+                                    onClose: function (ct, $i) {
                                         startDate = ct;
 
                                         if (ct < new Date()) {
@@ -297,7 +314,7 @@
                                         $('body').removeClass('stm_background_overlay stm-lock');
 
                                     },
-                                    onGenerate: function() {
+                                    onGenerate: function () {
                                         if ($('.stm-date-timepicker-start').val() == '') {
                                             $('.xdsoft_time').removeClass('xdsoft_current');
                                         }
@@ -316,7 +333,7 @@
                                     validateOnBlur: false,
                                     fixed: false,
                                     lang: 'en',
-                                    onShow: function(ct) {
+                                    onShow: function (ct) {
                                         $('body').addClass('stm_background_overlay stm-lock');
 
                                         var stmStartDate = $('.stm-date-timepicker-start').val() ? moment(startDate).add(1, 'day').format(dateTimeFormatHide) : false;
@@ -334,11 +351,11 @@
                                             minDate: stmStartDate
                                         })
                                     },
-                                    onSelectDate: function() {
+                                    onSelectDate: function () {
                                         $('.xdsoft_time').removeClass('xdsoft_current');
                                         $('.stm-date-timepicker-end').datetimepicker('close');
                                     },
-                                    onClose: function(ct, $i) {
+                                    onClose: function (ct, $i) {
                                         endDate = ct;
 
                                         if (ct < new Date()) {
@@ -374,14 +391,14 @@
 
                                         $('body').removeClass('stm_background_overlay stm-lock');
                                     },
-                                    onGenerate: function() {
+                                    onGenerate: function () {
                                         if ($('.stm-date-timepicker-end').val() == '') {
                                             $('.xdsoft_time').removeClass('xdsoft_current');
                                         }
                                     }
                                 });
 
-                                $('.clear-data').on('click', function(e) {
+                                $('.clear-data').on('click', function (e) {
                                     e.preventDefault();
 
                                     $('.stm_rent_car_form form').attr('action', '../reservation/index.html');
@@ -392,10 +409,10 @@
                                         dataType: 'json',
                                         context: this,
                                         data: 'action=stm_ajax_clear_data&security=' + clearData,
-                                        success: function(data) {}
+                                        success: function (data) { }
                                     });
 
-                                    $.each($('.stm_rent_car_form form').serializeArray(), function(i, field) {
+                                    $.each($('.stm_rent_car_form form').serializeArray(), function (i, field) {
                                         if (field.name == 'pickup_location' || field.name == 'drop_location') {
                                             $("select[name='pickup_location']").val('').trigger('change');
                                             $("select[name='drop_location']").val('').trigger('change');
@@ -420,7 +437,7 @@
                                 });
 
                                 /*Set cookie with order data*/
-                                $('.stm_rent_car_form form').on('submit', function(e) {
+                                $('.stm_rent_car_form form').on('submit', function (e) {
                                     var error = false;
 
 
@@ -439,7 +456,7 @@
                                         });
                                     }
 
-                                    $.each($(this).serializeArray(), function(i, field) {
+                                    $.each($(this).serializeArray(), function (i, field) {
                                         $.cookie('stm_' + field.name + '_' + stm_site_blog_id, encodeURIComponent(field.value), {
                                             expires: 7,
                                             path: '/'
@@ -486,15 +503,26 @@
                                     if (error) {
                                         e.preventDefault();
                                     }
+                                    var obj = {
+                                        pickupLocNo: $('#startLocations option').filter(':selected').val(),
+                                        pickupDate: moment(startDate).format(dateTimeFormatHide),
+                                        returnLocNo: $('input[name="return_same"]').prop('checked') == true ? $('#startLocations option').filter(':selected').val() : $('#dropLocations option').filter(':selected').val(),
+                                        returnDate: moment(endDate).format(dateTimeFormatHide),
+                                        classNos: [758, 759, 760, 762],
+                                        tariffNos: [380, 381],
+                                        language: "TR",
+                                        orderby: "default"
+                                    };
+                                    window.location.href = `web/Reservation?obj=${JSON.stringify(obj)}`;
                                 });
 
-                                $('.stm-template-car_rental .stm_rent_order_info .image.image-placeholder a').on('click', function(e) {
+                                $('.stm-template-car_rental .stm_rent_order_info .image.image-placeholder a').on('click', function (e) {
                                     var $stmThis = $('.stm_rent_car_form form');
                                     $stmThis.trigger('submit');
                                     e.preventDefault();
                                 });
 
-                                $('body').on('click touchstart', '.stm-rental-overlay', function(e) {
+                                $('body').on('click touchstart', '.stm-rental-overlay', function (e) {
                                     $('.stm-date-timepicker-start').trigger('blur');
                                     $('.stm-date-timepicker-end').trigger('blur');
                                     $('.xdsoft_datetimepicker').hide();
@@ -516,14 +544,14 @@
                                     dataType: 'json',
                                     context: this,
                                     data: 'startDate=' + $start + '&endDate=' + $end + '&action=stm_ajax_check_is_available_car_date&security=' + availableCarDate,
-                                    success: function(data) {
+                                    success: function (data) {
                                         jQuery("#select-vehicle-popup").attr("href", $("#select-vehicle-popup").attr('href').split("?")[0] + "?pickup_location=" + locationId);
                                         if (data != '') {
                                             clearTimeout(stm_timeout_rental);
                                             jQuery('.choose-another-class').addClass('single-add-to-compare-visible');
                                             jQuery(".choose-another-class").addClass('car-reserved');
                                             jQuery(".choose-another-class").find(".stm-title.h5").html(data);
-                                            stm_timeout_rental = setTimeout(function() {
+                                            stm_timeout_rental = setTimeout(function () {
                                                 jQuery('.choose-another-class').removeClass('single-add-to-compare-visible').removeClass('car-reserved');
                                             }, 10000);
                                         }
@@ -531,6 +559,25 @@
                                 });
                             }
                         }
+                                          function GetLocations(locations) {
+                           $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GetLocations", "Reservation")",
+                    dataType: "json",
+                    cache: false,
+                         success: function (retval) {
+                        for (var i = 0; i < retval.length; i++) {
+                            var o = new Option(retval[i].cityName, retval[i].locNo);
+                            /// jquerify the DOM object 'o' so we can use the html method
+                            $(o).html(retval[i].locName);
+                            $("#"+locations+'').append(o);
+                        }
+                    },
+                               error: function () {
+                                   console.log("ReservatinDate_Hata");
+                    }
+                });
+                }
                     </script>
                 </div>
             </div>

@@ -42,6 +42,10 @@ namespace Umbraco.Web.UI.Controllers
         {
             return View(PARTIAL_VIEW_FOLDER + "_Summary.cshtml");
         }
+        public ActionResult RenderDateForm()
+        {
+            return View(PARTIAL_VIEW_FOLDER + "_Date.cshtml");
+        }
 
         [HttpPost]
         public string InsertReservation(string capacity, string address, string products)
