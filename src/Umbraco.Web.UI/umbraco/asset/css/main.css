@@ -17925,7 +17925,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         padding-right: 35px
     }
     .stm-layout-header-car_rental .stm_rental_button i {
-        top: 5px
+        top: 0px
     }
     .stm-layout-header-car_rental .stm_rental_button span {
         display: none
@@ -66769,7 +66769,7 @@ aside button.report_button.stm-button {
         padding-right: 35px
     }
     .stm-layout-header-car_rental .stm_rental_button i {
-        top: 5px
+        top: 0px
     }
     .stm-layout-header-car_rental .stm_rental_button span {
         display: none

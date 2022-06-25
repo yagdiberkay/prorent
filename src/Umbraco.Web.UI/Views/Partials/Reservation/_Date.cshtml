@@ -36,7 +36,7 @@
                                         <div class="stm_nav_wizard_step stm_nav_wizard_step_1">
 
                                             <div class="inner  current">
-                                                <a href="index.html" class="top heading-font external" rel="nofollow">
+                                                <a class="top heading-font external" rel="nofollow">
                                                     <div class="number">
                                                         <span>1</span>
                                                     </div>
@@ -44,12 +44,12 @@
                                                 </a>
                                                 <div class="content">
                                                     <div class="first">
-                                                        <h5>Pick up</h5>
+                                                        <h5>BAŞLANGIÇ</h5>
                                                         <div class="stm_filled_pickup_location">--</div>
                                                         <div class="stm_filled_pickup_date">--</div>
                                                     </div>
                                                     <div class="second">
-                                                        <h5 class="second">Drop off</h5>
+                                                        <h5 class="second">TESLİM</h5>
                                                         <div class="stm_filled_return_location">--</div>
                                                         <div class="stm_filled_return_date">--</div>
                                                     </div>
@@ -61,7 +61,7 @@
                                         <div class="stm_nav_wizard_step stm_nav_wizard_step_2">
 
                                             <div class="inner ">
-                                                <a href="../reservation/index.html" class="top heading-font external" rel="nofollow">
+                                                <a class="top heading-font external" rel="nofollow">
                                                     <div class="number">
                                                         <span>2</span>
                                                     </div>
@@ -84,7 +84,7 @@
                                         <div class="stm_nav_wizard_step stm_nav_wizard_step_3">
 
                                             <div class="inner ">
-                                                <a href="../checkout/index.html" class="top heading-font external" rel="nofollow">
+                                                <a class="top heading-font external" rel="nofollow">
                                                     <div class="number">
                                                         <span>3</span>
                                                     </div>
@@ -118,7 +118,7 @@
         <div class="wpb_column vc_column_container vc_col-sm-12">
             <div class="vc_column-inner">
                 <div class="wpb_wrapper">
-                    <h2 style="font-size: 26px;color: #2a4045;line-height: 31px;text-align: left" class="vc_custom_heading vc_custom_1485249076121">RESERVE YOUR VEHICLE</h2>
+                    <h2 style="font-size: 26px;color: #2a4045;line-height: 31px;text-align: left" class="vc_custom_heading vc_custom_1485249076121">ARAÇ LİSTELE</h2>
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
                 <div class="wpb_wrapper">
                     <div class="stm_rent_car_form_wrapper style_2 text-left ">
                         <div class="stm_rent_car_form">
-                            <form action="reservation/" method="get">
+                         
                                 <h4>KİRALAMA BİLGİLERİ</h4>
                                 <div class="stm_rent_form_fields">
                                     <h4 class="stm_form_title">Başlangıç    </h4>
@@ -144,7 +144,7 @@
                                         Aynı lokasyona döneceğim
                                     </label>
                                     <div class="stm_date_time_input">
-                                        <h4 class="stm_form_title">Kiralama Tarihi*</h4>
+                                        <h4 class="stm_form_title">KİRALAMA TARİHİ*</h4>
                                         <div class="stm_date_input">
                                             <input type="text" value="" class="stm-date-timepicker-start" name="pickup_date" placeholder="Kiralama Tarihi" required readonly />
                                             <i class="stm-icon-date"></i>
@@ -152,7 +152,7 @@
                                     </div>
                                 </div>
 
-                                <h4>Teslimat Bilgileri</h4>
+                                <h4>TESLİMAT BİLGİLERİ</h4>
                                 <div class="stm_rent_form_fields stm_rent_form_fields-drop">
                                     <div class="stm_same_return ">
                                         <h4 class="stm_form_title">Place to drop the Car*</h4>
@@ -165,7 +165,7 @@
                                         </div>
                                     </div>
                                     <div class="stm_date_time_input">
-                                        <h4 class="stm_form_title">Teslimat Tarihi*</h4>
+                                        <h4 class="stm_form_title">TESLİMAT TARİHİ*</h4>
                                         <div class="stm_date_input">
                                             <input type="text" class="stm-date-timepicker-end" name="return_date" value="" placeholder="Teslimat Tarihi" required readonly />
                                             <i class="stm-icon-date"></i>
@@ -179,7 +179,7 @@
                                     </button>
                                 </div>
 
-                            </form>
+                         
                         </div>
                     </div>
 
@@ -437,7 +437,7 @@
                                 });
 
                                 /*Set cookie with order data*/
-                                $('.stm_rent_car_form form').on('submit', function (e) {
+                                $('.redirectSubmit').click(function (e) {
                                     var error = false;
 
 
@@ -513,7 +513,7 @@
                                         language: "TR",
                                         orderby: "default"
                                     };
-                                    window.location.href = `/umbraco/Surface/Reservation/Reservation?obj=${JSON.stringify(obj)}`;
+                                    window.location.href = `/web/Reservation?obj=${JSON.stringify(obj)}`;
                                 });
 
                                 $('.stm-template-car_rental .stm_rent_order_info .image.image-placeholder a').on('click', function (e) {
