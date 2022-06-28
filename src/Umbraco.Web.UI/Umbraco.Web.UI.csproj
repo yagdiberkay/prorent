@@ -1000,6 +1000,7 @@
     <Content Include="Umbraco\asset\img\uploads\image-1.jpg" />
     <Content Include="Umbraco\asset\img\uploads\image-2-270x180.jpg" />
     <Content Include="Umbraco\asset\img\uploads\image-2-924x449.jpg" />
+    <Content Include="Umbraco\asset\img\uploads\image-2.jpg" />
     <Content Include="Umbraco\asset\img\uploads\image-2b61b.jpg" />
     <Content Include="Umbraco\asset\img\uploads\insurance.svg" />
     <Content Include="Umbraco\asset\img\uploads\man1-66x66.jpg" />
@@ -1017,6 +1018,7 @@
     <Content Include="Umbraco\asset\img\uploads\motors_car_rental_pin.svg" />
     <Content Include="Umbraco\asset\img\uploads\opt.svg" />
     <Content Include="Umbraco\asset\img\uploads\orta-üst_sınıf.png" />
+    <Content Include="Umbraco\asset\img\uploads\orta_sınıf.png" />
     <Content Include="Umbraco\asset\img\uploads\parallax-block-1919x1359.jpg" />
     <Content Include="Umbraco\asset\img\uploads\parallax-block-2-1596x449.jpg" />
     <Content Include="Umbraco\asset\img\uploads\parallax-block-2-270x180.jpg" />
@@ -1042,6 +1044,7 @@
     <Content Include="Umbraco\asset\img\uploads\waiver.svg" />
     <Content Include="Umbraco\asset\img\uploads\wifi.svg" />
     <Content Include="Umbraco\asset\img\uploads\woman-67x67.jpg" />
+    <Content Include="Umbraco\asset\img\uploads\üst_sınıf.png" />
     <Content Include="Umbraco\asset\js\main.js" />
     <Content Include="Umbraco\asset\webfonts\aircrafts-icon-font\stm-aircrafts-icon73d7.svg" />
     <Content Include="Umbraco\asset\webfonts\auto-parts-font\stm-ap-icon92a8.svg" />
