@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -62,6 +63,7 @@ namespace Umbraco.Web.UI.Controllers
             {
                 item.currency = "TRY";
                 item.salesType = "1";
+                item.selected = true;
             }
             reservationRequestModel.pickupDate = capacitiesObj["pickupDate"].ToString();
             reservationRequestModel.returnDate = capacitiesObj["returnDate"].ToString();
@@ -78,9 +80,11 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.typeNo = long.Parse(capacitiesObj["vehicleTypes"][0]["typeNo"].ToString());
             reservationRequestModel.addresses = new List<AddressModel>();
             long cityy = 0;
+
+
             reservationRequestModel.addresses.Add(new AddressModel
             {
-                idNo = "34290",
+                idNo = addressObj["corpName"].ToString(),
                 addressNo = long.Parse(addressObj["addressNo"].ToString()),
                 addressCorpNo = long.Parse(addressObj["addressCorpNo"].ToString()),
                 addressType = addressObj["addressType"].ToString(),
@@ -88,19 +92,20 @@ namespace Umbraco.Web.UI.Controllers
                 shippingAddress = bool.Parse(addressObj["shippinAddress"].ToString()),
                 name = addressObj["name"].ToString(),
                 lastname = addressObj["lastname"].ToString(),
-                corpName = addressObj["corpName"].ToString(),
-                corpStyle = addressObj["corpStyle"].ToString(),
+                corpName = string.Empty,
+                corpStyle = string.Empty,
                 address = addressObj["address"].ToString(),
-                districtName = addressObj["districtName"].ToString(),
+                districtName = addressObj["address"].ToString(),
                 cityNo = long.TryParse(addressObj["cityNo"].ToString(), out cityy) == false ? 0 : long.Parse(addressObj["cityNo"].ToString()),
                 countryCode = addressObj["countryCode"].ToString(),
-                phone11 = addressObj["phone11"].ToString(),
-                phone22 = addressObj["phone22"].ToString(),
-                mobPhone1 = addressObj["mobPhone1"].ToString(),
-                mobPhone2 = addressObj["mobPhone2"].ToString(),
-                phoneHome = addressObj["phoneHome"].ToString(),
-                email = addressObj["email"].ToString()
-
+                phone11 = "009" + addressObj["phone11"].ToString(),
+                phone22 = "009" + addressObj["phone11"].ToString(),
+                mobPhone1 = "009" + addressObj["phone11"].ToString(),
+                mobPhone2 = "009" + addressObj["phone11"].ToString(),
+                phoneHome = "009" + addressObj["phone11"].ToString(),
+                email = addressObj["email"].ToString(),
+                birthDate = addressObj["corpStyle"].ToString(),
+                licenseNo = string.Empty
             });
             reservationRequestModel.products = productsModel;
             reservationRequestModel.referenceNo = string.Empty;
@@ -114,7 +119,7 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.paymentTypeNo = 353;//Nakit
             reservationRequestModel.tariffNo = 380; //Şimdi öde
             reservationRequestModel.campaignNo = long.Parse(capacitiesObj["campaignNo"].ToString());
-            reservationRequestModel.note = string.Empty;
+            reservationRequestModel.note = addressObj["districtName"].ToString();
             reservationRequestModel.webSource = "TR";
             reservationRequestModel.requireConfirmation = true;//Araç kiralama firmasından ayrıca rezervasyon onayı istenecekse “true
             reservationRequestModel.brokerUserNo = 0;

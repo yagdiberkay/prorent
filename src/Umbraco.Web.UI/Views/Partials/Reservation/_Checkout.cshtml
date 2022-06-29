@@ -7,6 +7,7 @@
         border-color: red;
     }
 </style>
+}
 <div class="stm-template-car_rental single-product woocommerce">
 
     <div class="entry-header left small_title_box no_woo_padding" style="">
@@ -254,24 +255,28 @@
                                                     <div class="stm-billing-fields woocommerce-billing-fields__field-wrapper">
                                                         <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10"><label for="billing_first_name" class="heading-font">İSİM&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder="" value="" autocomplete="given-name" /></span></p>
                                                         <p class="form-row form-row-last validate-required" id="billing_last_name_field" data-priority="20"><label for="billing_last_name" class="heading-font">Soyad&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_last_name" id="billing_last_name" placeholder="" value="" autocomplete="family-name" /></span></p>
-                                                        <p class="form-row form-row-first" id="billing_driver_license_field" data-priority="25"><label for="billing_driver_license" class="heading-font">TC KİMLİK No&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_driver_license" id="billing_driver_license" placeholder="" value="" autocomplete="driver_license" /></span></p>
-                                                        <p class="form-row form-row-last" id="billing_company_field" data-priority="30"><label for="billing_company" class="heading-font">DOĞUM TARİHİ&nbsp;<span class="optional"></span></label><span class="stm_date_input woocommerce-input-wrapper"><input type="text" class="stm-date-timepicker-start" name="billing_company" id="billing_company" placeholder="" value="" autocomplete="organization" /></span></p>
-                                                        <p class="form-row form-row-wide address-field update_totals_on_change" id="billing_country_field" data-priority="40">
+                                                        <p class="form-row form-row-first" id="billing_driver_license_field" data-priority="25"><label for="billing_driver_license" class="heading-font">TC KİMLİK No / Pasaport No&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_driver_license" id="billing_driver_license" placeholder="" value="" autocomplete="driver_license" /></span></p>
+                                                        <p class="form-row form-row-last" id="billing_company_field" data-priority="30">
+                                                            <label for="billing_company" class="heading-font">DOĞUM TARİHİ&nbsp;<span class="optional"></span></label>
+                                                            <span class="stm_date_input woocommerce-input-wrapper"><input type="text" class="stm-date-timepicker-start" maxlength="10" name="billing_company" id="billing_company" placeholder="yyyy-MM-dd" value="" autocomplete="organization" /></span>
+                                                        </p>
+                                                        <p class="form-row form-row-wide address-field update_totals_on_change" id="billing_country_field" data-priority="400">
                                                             <label for="billing_country" class="heading-font">Ülke&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
                                                                 <select name="billing_country" id="billing_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Ülke Seçiniz&hellip;" data-label="Country / Region" required>
                                                                 </select><noscript><button type="submit" name="woocommerce_checkout_update_totals" value="Update country / region">Update country / region</button></noscript>
                                                             </span>
                                                         </p>
-                                                        <p class="form-row form-row-wide address-field" id="billing_address_1_field" data-priority="70"><label for="billing_address_1" class="heading-font">Adres&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Adres Yazınız..." value="" autocomplete="address-line1" /></span></p>
-                                                        <p class="form-row form-row-wide address-field" id="billing_city_field" data-priority="90"><label for="billing_city" class="heading-font">İLETMEK İSTEDİKLERİNİZ (FATURA, UÇUŞ VB.)&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value="" autocomplete="address-level2" required/></span></p>
-                                                        <p class="form-row address-field validate-state" id="billing_state_field" data-priority="60">
+                                                        <p class="form-row address-field validate-state" id="billing_state_field" data-priority="50">
                                                             <label for="billing_state" class="heading-font">ŞEHİR&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
                                                                 <select name="billing_state" id="billing_state" class="state_select " autocomplete="address-level1" data-placeholder="Şehir Seçiniz&hellip;" data-input-classes="" data-label="Province" required>
                                                                     <option value="">Şehir Seçiniz&hellip;</option>
                                                                 </select>
                                                             </span>
                                                         </p>
-                                                        <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100"><label for="billing_phone" class="heading-font">Telefon&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="" value="" autocomplete="tel" /></span></p>
+                                                        <p class="form-row form-row-wide address-field" id="billing_address_1_field" data-priority="10"><label for="billing_address_1" class="heading-font">Adres&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Adres Yazınız..." value="" autocomplete="address-line1" /></span></p>
+                                                        <p class="form-row form-row-wide address-field" id="billing_city_field" data-priority="70"><label for="billing_city" class="heading-font">İLETMEK İSTEDİKLERİNİZ (FATURA, UÇUŞ VB.)&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value="" autocomplete="address-level2" required /></span></p>
+
+                                                        <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100"><label for="billing_phone" class="heading-font">Telefon&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="tel" maxlength="10" class="input-text " name="billing_phone" id="billing_phone" placeholder="0123456789" value="" autocomplete="tel" /></span></p>
                                                         <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110"><label for="billing_email" class="heading-font">E-posta&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="email username" /></span></p>
                                                     </div>
 
@@ -285,7 +290,7 @@
 
                                                     <h4 id="ship-to-different-address">
                                                         <label for="ship-to-different-address-checkbox" class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">Ship to a different address?</label>
-                                                        <input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" required/>
+                                                        <input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" required />
                                                     </h4>
 
                                                     <div class="shipping_address">
@@ -311,10 +316,10 @@
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide address-field" id="shipping_address_2_field" data-priority="60"><label for="shipping_address_2" class="heading-font">Apartment, suite, unit, etc.&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_address_2" id="shipping_address_2" placeholder="Apartment, suite, unit, etc. " value="" autocomplete="address-line2" /></span></p>
-                                                            <p class="form-row form-row-wide address-field" id="shipping_address_1_field" data-priority="70"><label for="shipping_address_1" class="heading-font">Adres&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_address_1" id="shipping_address_1" placeholder="Adres Yazınız..." value="" autocomplete="address-line1" /></span></p>
+                                                            <p class="form-row form-row-wide address-field" id="shipping_address_1_field" data-priority="70"><label for="shipping_address_1" class="heading-font">Adres&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_address_1" id="shipping_address_1" value="" autocomplete="address-line1" /></span></p>
 
                                                             <p class="form-row form-row-wide address-field validate-postcode" id="shipping_postcode_field" data-priority="80"><label for="shipping_postcode" class="heading-font">Postcode / ZIP&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="postal-code" /></span></p>
-                                                            <p class="form-row form-row-wide address-field" id="shipping_city_field" data-priority="90"><label for="shipping_city" class="heading-font">Mahalle&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_city" id="shipping_city" placeholder="" value="" autocomplete="address-level2" required/></span></p>
+                                                            <p class="form-row form-row-wide address-field" id="shipping_city_field" data-priority="90"><label for="shipping_city" class="heading-font">Mahalle&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="shipping_city" id="shipping_city" placeholder="" value="" autocomplete="address-level2" required /></span></p>
 
                                                         </div>
 
@@ -861,10 +866,29 @@
                                 $('input[name="billing_address_1"]').addClass('stm_error');
                                 error = true;
                             }
+                            if ($('input[name="billing_company"]').val() != '') {
+                                var regExp = /^[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+                                var phone = $('input[name="billing_company"]').val().match(regExp);
+
+                                if (!phone) {
+                                    $('input[name="billing_company"]').addClass('stm_error');
+                                    error = false;
+                                }
+                            }
                             if ($('input[name="billing_phone"]').val() == '') {
 
                                 $('input[name="billing_phone"]').addClass('stm_error');
                                 error = true;
+                            }
+                            else
+                            {
+                                var regExp = /^[0-1]{1}[0-9]{9}/;
+                                var phone = $('input[name="billing_phone"]').val().match(regExp);
+     
+                                if (!phone) {
+                                    $('input[name="billing_phone"]').addClass('stm_error');
+                                    error = false;
+                                }
                             }
                             if ($('input[name="billing_email"]').val() == '') {
 

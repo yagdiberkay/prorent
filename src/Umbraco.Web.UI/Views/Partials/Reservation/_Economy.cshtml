@@ -168,7 +168,7 @@
 
                                             <div class="clearfix"></div>
 
-                                            <div class="more">
+                                            <div class="more" style="display:block;">
                                                 @item.productDescription
                                             </div>
                                         </div>
@@ -294,6 +294,7 @@
                         var totalPrice = parseFloat('@ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice');
                         var productNameArray = [];
                         jQuery(document).ready(function () {
+
                             $(".productSelection").click(function () {
                                     productNo = this.dataset["id"];
                                     productPrice = this.dataset["value"];
