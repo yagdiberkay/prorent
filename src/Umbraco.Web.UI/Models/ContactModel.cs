@@ -8,7 +8,9 @@ namespace Umbraco.Web.UI.Models
         [Display(Name = "Adınız (gerekli)")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Lütfen eposta adresi giriniz.")]
+        [EmailAddress(ErrorMessage = "Lütfen eposta adresini doğru formatta giriniz.")]
         public string EmailAddress { get; set; }
+
         [Required(ErrorMessage = "Lütfen mesaj giriniz.")]
         public string Message { get; set; }
     }
