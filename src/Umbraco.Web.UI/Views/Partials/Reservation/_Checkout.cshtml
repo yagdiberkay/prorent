@@ -258,7 +258,7 @@
                                                         <p class="form-row form-row-first" id="billing_driver_license_field" data-priority="25"><label for="billing_driver_license" class="heading-font">TC KİMLİK No / Pasaport No&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_driver_license" id="billing_driver_license" placeholder="" value="" autocomplete="driver_license" /></span></p>
                                                         <p class="form-row form-row-last" id="billing_company_field" data-priority="30">
                                                             <label for="billing_company" class="heading-font">DOĞUM TARİHİ&nbsp;<span class="optional"></span></label>
-                                                            <span class="stm_date_input woocommerce-input-wrapper"><input type="text" class="stm-date-timepicker-start" maxlength="10" name="billing_company" id="billing_company" placeholder="yyyy-MM-dd" value="" autocomplete="organization" /></span>
+                                                            <span class="stm_date_input woocommerce-input-wrapper"><input type="text" class="stm-date-timepicker-start" maxlength="10" name="billing_company" id="billing_company" placeholder="1990-01-20" value="" autocomplete="organization" /></span>
                                                         </p>
                                                         <p class="form-row form-row-wide address-field update_totals_on_change" id="billing_country_field" data-priority="400">
                                                             <label for="billing_country" class="heading-font">Ülke&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
@@ -276,7 +276,7 @@
                                                         <p class="form-row form-row-wide address-field" id="billing_address_1_field" data-priority="10"><label for="billing_address_1" class="heading-font">Adres&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Adres Yazınız..." value="" autocomplete="address-line1" /></span></p>
                                                         <p class="form-row form-row-wide address-field" id="billing_city_field" data-priority="70"><label for="billing_city" class="heading-font">İLETMEK İSTEDİKLERİNİZ (FATURA, UÇUŞ VB.)&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value="" autocomplete="address-level2" required /></span></p>
 
-                                                        <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100"><label for="billing_phone" class="heading-font">Telefon&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="tel" maxlength="10" class="input-text " name="billing_phone" id="billing_phone" placeholder="0123456789" value="" autocomplete="tel" /></span></p>
+                                                        <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100"><label for="billing_phone" class="heading-font">Telefon&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="tel" maxlength="11" class="input-text " name="billing_phone" id="billing_phone" placeholder="0123456789" value="" autocomplete="tel" /></span></p>
                                                         <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110"><label for="billing_email" class="heading-font">E-posta&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="email username" /></span></p>
                                                     </div>
 
@@ -952,7 +952,7 @@
                        data: { capacity: JSON.stringify(capacity), address: JSON.stringify(address), products: JSON.stringify(products) },
                        cache: false,
                        success: function (orderNumber) {
-                           if (orderNumber.length > 10)
+                           if (orderNumber.length > 20)
                                alert(orderNumber);
                            else
                             window.location.href = `/web/Summary?capacity=${JSON.stringify(capacity)}&economy=${JSON.stringify(economy)}&reservationOwner=${JSON.stringify(reservationOwner)}&orderNumber=${JSON.stringify(orderNumber)}`;

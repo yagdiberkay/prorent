@@ -137,7 +137,7 @@ namespace Umbraco.Web.UI.Controllers
                 mailModel.resCorpNo = result.resCorpNo;
 
                 SendMailOnReservationInsertRequestDto mailResultModel = _prorentService.SendMailOnReservationInsert(mailModel).Adapt<SendMailOnReservationInsertRequestDto>();
-                return JsonConvert.SerializeObject(result.resNo);
+                return JsonConvert.SerializeObject(result.resNo + " - " + result.resCorpNo);
             }
             else
                 return result.message;
@@ -193,9 +193,9 @@ namespace Umbraco.Web.UI.Controllers
             var model = reservationDto.Adapt<CapacitiesRequestModel>();
             CapacitiesResponseDto[] resultModel = _prorentService.GetCapacities(model).Adapt<CapacitiesResponseDto[]>();
             if (model.orderby == "priceasc")
-                resultModel = resultModel.OrderBy(x => x.onewayPrice).ToArray();
+                resultModel = resultModel.OrderBy(x => x.tariffs[0].totalRentalPrice).ToArray();
             else if (reservationDto.orderby == "pricedesc")
-                resultModel = resultModel.OrderByDescending(x => x.onewayPrice).ToArray();
+                resultModel = resultModel.OrderByDescending(x => x.tariffs[0].totalRentalPrice).ToArray();
             return View(resultModel);
         }
         [HttpPost]
