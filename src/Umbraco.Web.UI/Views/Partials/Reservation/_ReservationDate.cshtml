@@ -165,6 +165,7 @@
                             format: dateTimeFormat,
                             dayOfWeekStart: 1,
                             defaultDate: stmToday,
+                            defaultTime : '12:00',
                             defaultSelect: false,
                             closeOnDateSelect: false,
                             timeHeightInTimePicker: 40,
@@ -183,7 +184,8 @@
 
                                 this.setOptions({
                                     minDate: new Date(),
-                                    maxDate: stmEndDate
+                                    maxDate: stmEndDate,
+                                    defaultTime : '09:00'
                                 });
 
                                 $(".xdsoft_time_variant").css('margin-top', '-600px');
