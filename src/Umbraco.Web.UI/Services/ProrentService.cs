@@ -294,6 +294,7 @@ namespace Umbraco.Web.UI.Services
         public OperationResultModel InsertReservation(ReservationRequestModel model)
         {
             var data = model.Adapt<reservation>();
+            data.addresses[0].address1 = model.addresses[0].address;
             OperationResultModel result = new OperationResultModel();
             try
             {

@@ -219,7 +219,7 @@
                                             <tr>
                                                 <td>@ViewBag.SelectedVehicle.rentalDays <span>Gün</span></td>
                                                 <td>
-                                                    @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice
+                                                    @ViewBag.SelectedVehicle.rentalDays X @(ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice / ViewBag.SelectedVehicle.rentalDays) =  @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice
                                                     <span class="woocommerce-Price-amount amount">
                                                         <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                     </span>
@@ -252,7 +252,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="productPrice">
-                                                        <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                        <bdi><span class="woocommerce-Price-currencySymbol">@ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice TL</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -337,7 +337,7 @@
 
                             var rentalDays = @Html.Raw(Json.Encode(@ViewBag.SelectedVehicle.rentalDays));
                                 $(rowObject).find(".productName").html(productName);
-                                $(rowObject).find(".productPrice").html(rentalDays + "x" + productPrice + "=" + (rentalDays * productPrice) +  " TL");
+                                $(rowObject).find(".productPrice").html(rentalDays + " X " + productPrice + " = " + (rentalDays * productPrice) +  " TL");
                             }
                             else {
                                 $("#addOnsTable tbody").find('span[name="productName"]').each(function () {

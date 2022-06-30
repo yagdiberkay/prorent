@@ -132,7 +132,7 @@
                                                 <td>@ViewBag.SelectedVehicle.rentalDays Gün</td>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                        @ViewBag.SelectedVehicle.rentalDays X @(ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice / ViewBag.SelectedVehicle.rentalDays) = @ViewBag.SelectedVehicle.tariffs[0].totalRentalPrice <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -169,7 +169,7 @@
                                                     </td>
                                                     <td>
                                                         <span class="productPrice">
-                                                            @ViewBag.SelectedVehicle.rentalDays x @item.totalPrice=@((int)ViewBag.SelectedVehicle.rentalDays * (double)item.totalPrice)<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                            @ViewBag.SelectedVehicle.rentalDays X @item.totalPrice=@((int)ViewBag.SelectedVehicle.rentalDays * (double)item.totalPrice)<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -210,7 +210,7 @@
 
                                             <li class="woocommerce-order-overview__order order">
                                                 <span>Rezervasyon Numarası:</span>
-                                                <strong class="heading-font">#@ViewBag.OrderNumber</strong>
+                                                <strong class="heading-font">@ViewBag.OrderNumber</strong>
                                             </li>
 
                                             <li class="woocommerce-order-overview__date date">

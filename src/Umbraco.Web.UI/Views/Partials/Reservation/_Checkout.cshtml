@@ -168,9 +168,9 @@
                                             </tr>
                                             <!--FIXED PRICE-->
                                             <tr>
-                                                <td>@ViewBag.Capacity.rentalDays<span>Gün</span></td>
+                                                <td>@ViewBag.Capacity.rentalDays<span> Gün</span></td>
                                                 <td>
-                                                    @ViewBag.Capacity.tariffs[0].totalRentalPrice
+                                                    @ViewBag.Capacity.rentalDays X @(ViewBag.Capacity.tariffs[0].totalRentalPrice / ViewBag.Capacity.rentalDays) = @ViewBag.Capacity.tariffs[0].totalRentalPrice
                                                     <span class="woocommerce-Price-amount amount">
                                                         <bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                     </span>
@@ -204,7 +204,7 @@
                                                     </td>
                                                     <td>
                                                         <span class="productPrice">
-                                                            @ViewBag.Capacity.rentalDays x @item.totalPrice=@((int)ViewBag.Capacity.rentalDays * (double)item.totalPrice)<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
+                                                            @ViewBag.Capacity.rentalDays X @item.totalPrice = @((int)ViewBag.Capacity.rentalDays * (double)item.totalPrice)<bdi><span class="woocommerce-Price-currencySymbol"> TL</span></bdi>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -258,7 +258,7 @@
                                                         <p class="form-row form-row-first" id="billing_driver_license_field" data-priority="25"><label for="billing_driver_license" class="heading-font">TC KİMLİK No / Pasaport No&nbsp;<abbr class="required" title="Zorunlu">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_driver_license" id="billing_driver_license" placeholder="" value="" autocomplete="driver_license" /></span></p>
                                                         <p class="form-row form-row-last" id="billing_company_field" data-priority="30">
                                                             <label for="billing_company" class="heading-font">DOĞUM TARİHİ&nbsp;<span class="optional"></span></label>
-                                                            <span class="stm_date_input woocommerce-input-wrapper"><input type="text" class="stm-date-timepicker-start" maxlength="10" name="billing_company" id="billing_company" placeholder="1990-01-20" value="" autocomplete="organization" /></span>
+                                                            <span class="stm_date_input woocommerce-input-wrapper"><input type="text" class="stm-date-timepicker-start" maxlength="10" name="billing_company" id="billing_company" placeholder="01/01/1990" value="" autocomplete="organization" /></span>
                                                         </p>
                                                         <p class="form-row form-row-wide address-field update_totals_on_change" id="billing_country_field" data-priority="400">
                                                             <label for="billing_country" class="heading-font">Ülke&nbsp;<span class="optional"></span></label><span class="woocommerce-input-wrapper">
@@ -844,7 +844,7 @@
                             $('input[name="billing_address_1"]').removeClass('stm_error');
                             $('input[name="billing_phone"]').removeClass('stm_error');
                             $('input[name="billing_email"]').removeClass('stm_error');
-
+                            $('input[name="billing_company"]').removeClass('stm_error');
 
                             if ($('input[name="billing_first_name"]').val() == '') {
 
@@ -867,12 +867,12 @@
                                 error = true;
                             }
                             if ($('input[name="billing_company"]').val() != '') {
-                                var regExp = /^[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+                                var regExp = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/;
                                 var phone = $('input[name="billing_company"]').val().match(regExp);
 
                                 if (!phone) {
                                     $('input[name="billing_company"]').addClass('stm_error');
-                                    error = false;
+                                    error = true;
                                 }
                             }
                             if ($('input[name="billing_phone"]').val() == '') {
@@ -884,16 +884,25 @@
                             {
                                 var regExp = /^[0-1]{1}[0-9]{9}/;
                                 var phone = $('input[name="billing_phone"]').val().match(regExp);
-     
+
                                 if (!phone) {
                                     $('input[name="billing_phone"]').addClass('stm_error');
-                                    error = false;
+                                    error = true;
                                 }
                             }
                             if ($('input[name="billing_email"]').val() == '') {
 
                                 $('input[name="billing_email"]').addClass('stm_error');
                                 error = true;
+                            }
+                            else {
+                                var regExp = /[A-Z0-9._%+-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;;
+                                var email = $('input[name="billing_email"]').val().match(regExp);
+
+                                if (!email) {
+                                    $('input[name="billing_email"]').addClass('stm_error');
+                                    error = true;
+                                }
                             }
                             if ($('input[name="terms"]').prop('checked') == false) {
 

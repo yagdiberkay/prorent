@@ -64,6 +64,8 @@ namespace Umbraco.Web.UI.Controllers
                 item.currency = "TRY";
                 item.salesType = "1";
                 item.selected = true;
+                item.unitPrice = item.totalPrice;
+                item.totalPrice = item.totalPrice * int.Parse(capacitiesObj["rentalDays"].ToString());
             }
             reservationRequestModel.pickupDate = capacitiesObj["pickupDate"].ToString();
             reservationRequestModel.returnDate = capacitiesObj["returnDate"].ToString();
@@ -85,6 +87,7 @@ namespace Umbraco.Web.UI.Controllers
             reservationRequestModel.addresses.Add(new AddressModel
             {
                 idNo = addressObj["corpName"].ToString(),
+                idType = "1",
                 addressNo = long.Parse(addressObj["addressNo"].ToString()),
                 addressCorpNo = long.Parse(addressObj["addressCorpNo"].ToString()),
                 addressType = addressObj["addressType"].ToString(),
@@ -104,9 +107,10 @@ namespace Umbraco.Web.UI.Controllers
                 mobPhone2 = "009" + addressObj["phone11"].ToString(),
                 phoneHome = "009" + addressObj["phone11"].ToString(),
                 email = addressObj["email"].ToString(),
-                birthDate = addressObj["corpStyle"].ToString(),
                 licenseNo = string.Empty
             });
+            if (addressObj["corpStyle"].ToString() != string.Empty)
+                reservationRequestModel.addresses[0].birthDate = addressObj["corpStyle"].ToString().Substring(6, 4) + "-" + addressObj["corpStyle"].ToString().Substring(3, 2) + "-" + addressObj["corpStyle"].ToString().Substring(0, 2);
             reservationRequestModel.products = productsModel;
             reservationRequestModel.referenceNo = string.Empty;
             reservationRequestModel.voucherNo = string.Empty;
